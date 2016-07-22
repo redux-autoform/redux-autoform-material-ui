@@ -1,0 +1,14 @@
+sudo: false
+language: node_js
+node_js:
+  - stable
+cache:
+  directories:
+    - node_modules
+before_install:
+branches:
+  only:
+    - master
+    - /^greenkeeper-.*$/
+after_success:
+  - bash <(curl -s https://codecov.io/bash)

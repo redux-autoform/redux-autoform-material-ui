@@ -1,0 +1,25 @@
+{
+  "name": "redux-autoform-material-ui",
+  "version": "1.0.0",
+  "description": "Material-UI integration for redux-autoform",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/redux-autoform/redux-autoform-material-ui.git"
+  },
+  "keywords": [
+    "material-ui",
+    "autoform",
+    "redux-autoform",
+    "ui"
+  ],
+  "author": "Jonatan Salas",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/redux-autoform/redux-autoform-material-ui/issues"
+  },
+  "homepage": "https://github.com/redux-autoform/redux-autoform-material-ui#readme"
+}

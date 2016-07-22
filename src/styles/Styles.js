@@ -1,0 +1,1 @@
+//TODO JS: global object with inline style definitions..

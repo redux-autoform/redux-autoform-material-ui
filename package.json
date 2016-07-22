@@ -26,7 +26,8 @@
   "dependencies": {
     "material-ui": "^0.15.2",
     "react": "^15.2.1",
-    "react-dom": "^15.2.1"
+    "react-dom": "^15.2.1",
+    "redux-autoform-utils": "^1.0.3"
   },
   "devDependencies": {
     "babel-cli": "^6.6.5",

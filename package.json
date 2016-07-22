@@ -23,6 +23,11 @@
     "url": "https://github.com/redux-autoform/redux-autoform-material-ui/issues"
   },
   "homepage": "https://github.com/redux-autoform/redux-autoform-material-ui#readme",
+  "dependencies": {
+    "material-ui": "^0.15.2",
+    "react": "^15.2.1",
+    "react-dom": "^15.2.1"
+  },
   "devDependencies": {
     "babel-cli": "^6.6.5",
     "babel-core": "^6.7.4",

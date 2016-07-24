@@ -1,2 +1,3 @@
-# redux-autoform-material-ui [![Build Status](https://travis-ci.org/redux-autoform/redux-autoform-material-ui.svg?branch=master)](https://travis-ci.org/redux-autoform/redux-autoform-material-ui)
+# redux-autoform-material-ui [![Build Status](https://travis-ci.org/redux-autoform/redux-autoform-material-ui.svg?branch=master)](https://travis-ci.org/redux-autoform/redux-autoform-material-ui) [![codecov](https://codecov.io/gh/redux-autoform/redux-autoform-material-ui/branch/master/graph/badge.svg)](https://codecov.io/gh/redux-autoform/redux-autoform-material-ui) [![Coverage Status](https://coveralls.io/repos/github/redux-autoform/redux-autoform-material-ui/badge.svg?branch=master)](https://coveralls.io/github/redux-autoform/redux-autoform-material-ui?branch=master)
+
 Material-UI extension for redux-autoform

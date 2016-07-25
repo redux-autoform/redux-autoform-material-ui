@@ -1,0 +1,13 @@
+{
+    default: {
+        type: "bool",
+        displayName: "Default",
+        component: "Checkbox"
+    },
+    help: {
+        type: "bool",
+        displayName: "Help",
+        help: "This is some help",
+        component: "Checkbox"
+    }
+}

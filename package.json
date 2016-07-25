@@ -4,6 +4,7 @@
   "description": "Material-UI integration for redux-autoform",
   "main": "index.js",
   "scripts": {
+    "build-demo": "cross-env NODE_ENV=production babel-node ./tools/build-demo.js",
     "build-lib": "cross-env NODE_ENV=production babel-node ./tools/build-lib.js",
     "test": "mocha ./test --compilers js:babel-register",
     "coverage": "babel-node ./node_modules/.bin/isparta cover _mocha"

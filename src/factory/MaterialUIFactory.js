@@ -2,17 +2,17 @@ import ComponentFactory from 'redux-autoform-utils/lib/factory/ComponentFactory'
 
 //TODO Jonatan.Salas: Uncomment when finished
 
-// import TextBox from '../components/fieldComponents/TextBox';
-// import Select from '../components/fieldComponents/Select';
-// import TextArea from '../components/fieldComponents/TextArea';
-// import Group from '../components/groupComponents/Group';
-// import ArrayContainer from '../components/fieldComponents/ArrayContainer';
-// import DateTimePicker from '../components/fieldComponents/DateTimePicker';
-// import Lookup from '../components/fieldComponents/Lookup';
-// import Static from '../components/fieldComponents/Static';
-// import FieldGroup from '../components/fieldComponents/FieldGroup';
-// import Checkbox from '../components/fieldComponents/CheckBox';
-// import Radio from '../components/fieldComponents/Radio';
+// import TextBox from '../components/field/TextBox';
+// import Select from '../components/field/Select';
+// import TextArea from '../components/field/TextArea';
+import Group from '../components/group/Group';
+// import ArrayContainer from '../components/field/ArrayContainer';
+// import DateTimePicker from '../components/field/DateTimePicker';
+// import Lookup from '../components/field/Lookup';
+// import Static from '../components/field/Static';
+// import FieldGroup from '../components/field/FieldGroup';
+import Checkbox from '../components/field/CheckBox';
+// import Radio from '../components/field/Radio';
 
 class BootstrapFactory extends ComponentFactory {
     constructor(config) {
@@ -29,7 +29,7 @@ class BootstrapFactory extends ComponentFactory {
         // this.registerFieldComponent('TextArea', ['string'], TextArea);
         // this.registerFieldComponent('ArrayContainer', ['array'], ArrayContainer);
         // this.registerFieldComponent('DateTimePicker', ['datetime', 'date', 'time'], DateTimePicker);
-        // this.registerFieldComponent('Checkbox', ['bool'], Checkbox);
+        this.registerFieldComponent('Checkbox', ['bool'], Checkbox);
         // this.registerFieldComponent('Static', ['string', 'int', 'float', 'datetime', 'date', 'time', 'bool'], Static);
         // this.registerFieldComponent('FieldGroup', ['group'], FieldGroup);
         //

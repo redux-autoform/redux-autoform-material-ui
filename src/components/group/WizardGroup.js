@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import BaseGroup from './BaseGroup';
-import { Button, Row, Col, ButtonToolbar } from 'react-bootstrap';
+import { RaisedButton, Toolbar, ToolbarGroup } from 'material-ui';
 
 const mergeJson = (arr) => arr.reduce((prev, actual) => ({...prev, ...actual}));
 
@@ -119,40 +119,36 @@ class WizardGroup extends BaseGroup {
 
         if (position != 0) {
             backButton = (
-                <Button bsStyle="primary" bsSize="large" onClick={this.isFlowInMyPosition()? this.backToFlow : this.backStep}>
-                    Back
-                </Button>
+                <RaisedButton label="Back" onClick={this.isFlowInMyPosition()? this.backToFlow : this.backStep} primary/>
             );
         }
 
         if (position != totalSteps) {
             nextButton = (
-                <Button bsStyle="primary" bsSize="large" onClick={transition? () => transition(this.wizardContext) : this.nextStep}>
-                    Next
-                </Button>
+                <RaisedButton label="Next" onClick={transition? () => transition(this.wizardContext) : this.nextStep} primary/>
             );
         }
 
         if (position == totalSteps) {
             submitButton = (
-                <Button className="pull-right" bsStyle="success" bsSize="large" type="submit"  disabled={submitting || false}>
-                    Submit
-                </Button>
+                <RaisedButton label="Submit" type="submit" onClick={transition? () => transition(this.wizardContext) : this.nextStep} disabled={submitting || false} primary/>
             )
         }
 
         return (
-            <Row>
-                <Col xs={6} md={4}/>
-                <Col xs={6} md={4}/>
-                <Col xs={6} md={4}>
-                    <ButtonToolbar className="button-toolbar pull-right">
-                        {backButton}
-                        {nextButton}
-                        {submitButton}
-                    </ButtonToolbar>
-                </Col>
-            </Row>
+            <div className="row">
+                <div className="col-md-4"></div>
+                <div className="col-md-4"></div>
+                <div className="col-md-4">
+                    <Toolbar>
+	                    <ToolbarGroup lastChild>
+                            {backButton}
+		                    {nextButton}
+		                    {submitButton}
+	                    </ToolbarGroup>
+                    </Toolbar>
+                </div>
+            </div>
         )
     };
 
@@ -179,11 +175,11 @@ class WizardGroup extends BaseGroup {
 
         return (
             <section>
-                <Row>
+                <div className="row">
                     <div className="metaform-group">
                         {steps[position].content}
                     </div>
-                </Row>
+                </div>
                 {buttonSection}
             </section>
         );

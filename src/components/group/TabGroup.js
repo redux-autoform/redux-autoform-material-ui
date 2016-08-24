@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import BaseGroup from './BaseGroup';
 import { Nav, NavItem, Row } from 'react-bootstrap';
+import { Tab, Tabs } from 'material-ui';
 
 class TabGroup extends BaseGroup {
 	static propTypes = {
@@ -58,7 +59,10 @@ class TabGroup extends BaseGroup {
         return components;
     };
 
-	onNavItemSelected = (eventKey) => this.setState({position: eventKey});
+	onTabSelected = (event) => {
+		event.preventDefault();
+		this.setState({position: event.target.value});
+	};
 
 	render() {
 		let {layout} = this.props;
@@ -67,22 +71,17 @@ class TabGroup extends BaseGroup {
 
 		return (
 			<section>
-				<Row>
+				<div className="row">
 					<div className="metaform-group">
-						<Nav bsStyle="tabs" activeKey={position} onSelect={this.onNavItemSelected} navbar justified>
-							{
-								layout.groups.map(({ title }, index) => (
-									<NavItem key={index} eventKey={index}>
-										{title}
-									</NavItem>
-								))
-							}
-						</Nav>
+						<Tabs initialSelectedIndex={position} onChange={this.onTabSelected}>{
+							layout.groups.map(({ title }, index) => <Tab key={index} label={title} value={index}/>)
+						}
+						</Tabs>
 						<div className="metaform-group-content">
 							{content[position]}
 						</div>
 					</div>
-				</Row>
+				</div>
 			</section>
 		);
 	}

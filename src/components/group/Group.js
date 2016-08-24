@@ -31,14 +31,14 @@ class Group extends BaseGroup {
 
         return (
             <section style={style}>
-                <Row>
+                <div className="row">
                     <div className="metaform-group">
                         { header }
                         <div className="metaform-group-content">
                             { content }
                         </div>
                     </div>
-                </Row>
+                </div>
             </section>
         );
 

@@ -5,7 +5,6 @@ import _ from 'underscore';
 import psjon from '../../package.json';
 import { AutoForm } from 'redux-autoform';
 import { EditComponentFactory, DetailsComponentFactory } from '../../src/index';
-import { Alert, Badge } from 'react-bootstrap';
 import moment from 'moment';
 import numbro from 'numbro';
 import reactWidgetsMomentLocalizer from 'react-widgets/lib/localizers/moment';
@@ -57,33 +56,33 @@ class LiveSchemaEditor extends Component {
      */
     getErrorRenderer = (ex) => {
         return (
-            <Alert bsStyle='danger'>
+            <div>
                 <h4>Oh snap! The configuration is not valid.</h4>
                 <p>Detailed information:
                     <b>{ex.message}</b>
                 </p>
-            </Alert>
+            </div>
         );
     };
 
 
-    getUnderDevelopmentAlert = () => {
-        let { formOptions } = this.props;
-
-        if (formOptions.componentFactory == 'details') {
-            return (
-                <Alert bsStyle="danger">
-                    <p><b>Experimental feature</b></p>
-                    <p>Details forms are still under development. For now, it's just a lot of Static components instead of
-                        editing components. Also,
-                        it only works when the field doesn't explicitly specify the component, and it does'nt work for all types. Arrays,
-                        for instance, are still not supported.</p>
-                </Alert>
-            );
-        }
-
-        return null;
-    };
+    // getUnderDevelopmentAlert = () => {
+    //     let { formOptions } = this.props;
+    //
+    //     if (formOptions.componentFactory == 'details') {
+    //         return (
+    //             <Alert bsStyle="danger">
+    //                 <p><b>Experimental feature</b></p>
+    //                 <p>Details forms are still under development. For now, it's just a lot of Static components instead of
+    //                     editing components. Also,
+    //                     it only works when the field doesn't explicitly specify the component, and it does'nt work for all types. Arrays,
+    //                     for instance, are still not supported.</p>
+    //             </Alert>
+    //         );
+    //     }
+    //
+    //     return null;
+    // };
 
     getAutoform = () => {
         let { preset } = this.props;
@@ -97,7 +96,6 @@ class LiveSchemaEditor extends Component {
         if (!presetObject) {
             throw Error(`Could not find preset. Preset name: ${preset}`);
         }
-
 
         try {
             autoFormProps = this.getAutoFormProps(preset, presetObject.initialValues);
@@ -133,7 +131,7 @@ class LiveSchemaEditor extends Component {
             <div className="live-schema-editor">
                 <div className='row'>
                     <div className="col-md-12">
-                        <h2>redux-autoform-bootstrap-ui demo {psjon.version} <Badge>Ctrl + H = Redux DevTools</Badge>
+                        <h2>redux-autoform-material-ui demo {psjon.version} <Badge>Ctrl + H = Redux DevTools</Badge>
                             <a className="pull-right" target="_blank" href="https://github.com/redux-autoform/redux-autoform"
                                 style={{color: 'black'}}>
                                 <i className="fa fa-github" aria-hidden="true"/>
@@ -147,7 +145,6 @@ class LiveSchemaEditor extends Component {
                         <div className="row">
                             <div className="col-md-12">
                                 <FormOptions editorSchema={metaForm ? metaForm.schema.value : ''} {...formOptions} {...formOptionsActions}/>
-                                {this.getUnderDevelopmentAlert()}
                             </div>
                         </div>
                         <div className="row">

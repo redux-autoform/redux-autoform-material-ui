@@ -6,6 +6,7 @@
   "scripts": {
     "build-demo": "cross-env NODE_ENV=production babel-node ./tools/build-demo.js",
     "build-lib": "cross-env NODE_ENV=production babel-node ./tools/build-lib.js",
+    "start": "cross-env NODE_ENV=development babel-node ./demo/Server.js",
     "test": "mocha ./test --compilers js:babel-register",
     "coverage": "babel-node ./node_modules/.bin/isparta cover _mocha"
   },
@@ -29,7 +30,7 @@
     "material-ui": "^0.15.2",
     "react": "^15.2.1",
     "react-dom": "^15.2.1",
-    "redux-autoform-utils": "^1.0.3"
+    "redux-autoform-utils": "^1.0.4-experimental"
   },
   "devDependencies": {
     "babel-cli": "^6.6.5",
@@ -56,15 +57,16 @@
     "mocha": "^3.0.0",
     "moment": "^2.14.1",
     "npm": "^3.3.4",
-    "numbro": "^1.9.1",
+    "numbro": "^1.9.3",
     "path": "^0.12.7",
     "phantomjs": "^2.1.7",
     "raw-loader": "^0.5.1",
     "react-ace": "^3.4.1",
+    "react-bootstrap": "^0.30.3",
     "react-hot-loader": "^1.3.0",
     "react-router": "^2.0.0",
     "react-router-redux": "^4.0.2",
-    "redux-autoform": "^0.10.0",
+    "redux-autoform": "^0.10.5-experimental",
     "redux-devtools": "^3.2.0",
     "redux-devtools-dock-monitor": "^1.1.1",
     "redux-devtools-log-monitor": "^1.0.9",

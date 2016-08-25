@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 import BaseGroup from './BaseGroup';
-import { Nav, NavItem, Row } from 'react-bootstrap';
 import { Tab, Tabs } from 'material-ui';
 
 class TabGroup extends BaseGroup {

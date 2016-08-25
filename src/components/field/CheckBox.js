@@ -37,7 +37,7 @@ class CheckBox extends Component {
                         <label/>
                     </div>
                     <div className="col-xs-12 col-offset-140 no-padding-col">
-                        { content }
+                        {content}
                     </div>
                 </div>
             );

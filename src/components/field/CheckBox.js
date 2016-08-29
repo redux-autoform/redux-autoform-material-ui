@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { getDisplayName } from 'redux-autoform-utils';
 import Checkbox from 'material-ui/Checkbox';
 
+//TODO JS: delete this and move to css
 const styles = {
     checkbox: {
         marginTop: '0 !important',

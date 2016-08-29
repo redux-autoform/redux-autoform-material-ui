@@ -12,4 +12,9 @@ const Root = ({children, handleSubmit}) => {
     );
 };
 
+Root.propTypes = {
+    children: PropTypes.object.isRequired,
+    handleSubmit: PropTypes.func.isRequired
+};
+
 export default Root;

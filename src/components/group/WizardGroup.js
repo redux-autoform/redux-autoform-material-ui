@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import BaseGroup from './BaseGroup';
-import { RaisedButton, Toolbar, ToolbarGroup } from 'material-ui';
+import {RaisedButton, Toolbar, ToolbarGroup} from 'material-ui';
 
 const mergeJson = (arr) => arr.reduce((prev, actual) => ({...prev, ...actual}));
 
@@ -15,37 +15,40 @@ class WizardGroup extends BaseGroup {
     // Expose functions to the user in order to make the transitions, and the field values of the form
     wizardContext = {
         fields: {},
-        goToStep: (stepName) => {
-            let steps = this.getSteps();
-            let foundStep = steps.find((step) => step.name === stepName);
-
-            if(foundStep) {
-                this.trackStepFlow(foundStep.position);
-                this.setState({position: foundStep.position})
-            }
-            else
-                console.error(`Step ${stepName} does not exists`);
-
-        },
-        goToPosition: (position) => {
-            let { totalSteps } = this.state;
-
-            if(position >= 0 && position <= totalSteps) {
-                this.trackStepFlow(position);
-                this.setState({position});
-            }
-            else
-                console.error(`Position ${position} does not exists`);
-        },
-        next: () => {
-            this.nextStep();
-        }
+        goToStep: (stepName) => this.toStep(stepName),
+        goToPosition: (position) => this.toPosition(position),
+        next: () => this.nextStep()
     };
 
     state = {
         position: 0,
         totalSteps: this.props.layout.groups.length - 1,
         stepFlow: []
+    };
+
+    toStep = (stepName) => {
+        let steps = this.getSteps();
+        let foundStep = steps.find((step) => step.name === stepName);
+
+        if(foundStep) {
+            this.trackStepFlow(foundStep.position);
+            this.setState({position: foundStep.position})
+        }
+        else {
+            console.error(`Step ${stepName} does not exists`);
+        }
+    };
+
+    toPosition =  (position) => {
+        let {totalSteps} = this.state;
+
+        if (position >= 0 && position <= totalSteps) {
+            this.trackStepFlow(position);
+            this.setState({position});
+        }
+        else {
+            console.error(`Position ${position} does not exists`);
+        }
     };
 
     // Saves an object containing the step position that started the flow and the position after that flow
@@ -82,7 +85,6 @@ class WizardGroup extends BaseGroup {
             return stepFlow[length - 1].position == position;
 
         return false;
-
     };
 
     nextStep = () => {
@@ -97,14 +99,11 @@ class WizardGroup extends BaseGroup {
         this.setState({position : position - 1})
     };
 
-
-
     updateWizardContext = () => {
         let { fields } = this.props;
 
         // Reads each field value of autoform and creates an object fieldName => fieldValue.
         this.wizardContext.fields = mergeJson(fields.map(field => ({[field.name]: field.reduxFormProps.value})));
-
     };
 
     getButtonSection = (steps) => {

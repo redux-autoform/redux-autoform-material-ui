@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ButtonToolbar, Button }from 'react-bootstrap'
+import { ButtonToolbar, Button } from 'react-bootstrap'
 
 class Layout extends Component {
     render() {

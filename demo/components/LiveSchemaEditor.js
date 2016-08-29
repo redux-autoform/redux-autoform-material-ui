@@ -5,11 +5,6 @@ import _ from 'underscore';
 import psjon from '../../package.json';
 import { AutoForm } from 'redux-autoform';
 import { EditComponentFactory, DetailsComponentFactory } from '../../src/index';
-import moment from 'moment';
-import numbro from 'numbro';
-import reactWidgetsMomentLocalizer from 'react-widgets/lib/localizers/moment';
-import momentLocalizer from 'redux-autoform-utils/lib/localization/momentLocalizer';
-import numbroLocalizer from 'redux-autoform-utils/lib/localization/numbroLocalizer';
 import ButtonToolbar from './ButtonToolbar';
 import FormOptions from './FormOptions';
 
@@ -114,24 +109,14 @@ class LiveSchemaEditor extends Component {
         return _.find(presets, p => p.name == preset);
     };
 
-    setLocalizers = () => {
-        // setting date localizer
-        reactWidgetsMomentLocalizer(moment);
-        momentLocalizer(moment);
-
-        // setting number localizer
-        numbroLocalizer(numbro);
-    };
-
     render() {
         let { reduxFormActions, preset, metaForm, formOptions, formOptionsActions } = this.props;
-        this.setLocalizers();
 
         return (
             <div className="live-schema-editor">
                 <div className='row'>
                     <div className="col-md-12">
-                        <h2>redux-autoform-material-ui demo {psjon.version} <Badge>Ctrl + H = Redux DevTools</Badge>
+                        <h2>redux-autoform-material-ui demo {psjon.version}
                             <a className="pull-right" target="_blank" href="https://github.com/redux-autoform/redux-autoform"
                                 style={{color: 'black'}}>
                                 <i className="fa fa-github" aria-hidden="true"/>

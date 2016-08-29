@@ -6,6 +6,8 @@ import ComponentFactory from 'redux-autoform-utils/lib/factory/ComponentFactory'
 // import Select from '../components/field/Select';
 // import TextArea from '../components/field/TextArea';
 import Group from '../components/group/Group';
+import TabGroup from '../components/group/TabGroup';
+import WizardGroup from '../components/group/WizardGroup';
 // import ArrayContainer from '../components/field/ArrayContainer';
 // import DateTimePicker from '../components/field/DateTimePicker';
 // import Lookup from '../components/field/Lookup';
@@ -33,7 +35,9 @@ class BootstrapFactory extends ComponentFactory {
         // this.registerFieldComponent('Static', ['string', 'int', 'float', 'datetime', 'date', 'time', 'bool'], Static);
         // this.registerFieldComponent('FieldGroup', ['group'], FieldGroup);
         //
-        // this.registerGroupComponent('Group', Group);
+        this.registerGroupComponent('Group', Group);
+        this.registerGroupComponent('TabGroup', TabGroup);
+        this.registerGroupComponent('WizardGroup', WizardGroup);
     };
     
     setDefaultConfiguration = (config) => {

@@ -1,4 +1,5 @@
-import React, {Component, PropTypes} from 'react';
+import React, { Component, PropTypes } from 'react';
+import { SelectField, MenuItem } from 'material-ui';
 
 class Select extends Component {
     static propTypes = {
@@ -12,21 +13,19 @@ class Select extends Component {
         addonAfter: PropTypes.string
     };
 
-    // getOptions = () => {
-    //     let {options} = this.props;
-    //
-    //     return options.map((item, index) => (
-    //         <option key={index} value={item.value}>
-    //             {item.text}
-    //         </option>
-    //     ));
-    // };
-    //
-    // render() {
-    //     return <Input componentClass="select" {...this.props}>
-    //         { this.getOptions() }
-    //     </Input>
-    // }
+    render() {
+        let { options, value, onChange, displayName } = this.props;
+
+        return (
+            <SelectField floatingLabelText={displayName} value={value} onChange={onChange} floatingLabelFixed>
+	        {
+                options.map(({ value, text }, index) => (
+                    <MenuItem key={index} value={value} primaryText={text}/>
+                ))
+            }
+            </SelectField>
+        )
+    }
 }
 
 export default Select;

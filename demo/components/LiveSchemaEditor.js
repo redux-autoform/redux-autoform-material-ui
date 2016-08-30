@@ -7,7 +7,7 @@ import { AutoForm } from 'redux-autoform';
 import { EditComponentFactory, DetailsComponentFactory } from '../../src/index';
 import ButtonToolbar from './ButtonToolbar';
 import FormOptions from './FormOptions';
-import { AppBar } from 'material-ui';
+import { AppBar, Card } from 'material-ui';
 
 class LiveSchemaEditor extends Component {
     static propTypes = {
@@ -115,33 +115,44 @@ class LiveSchemaEditor extends Component {
 
         return (
             <div className="live-schema-editor">
-                <div className='row'>
-                    <div className="col-md-12">
-                        <AppBar title={`redux-autoform-material-ui demo ${psjon.version}`}/>
-                        <h2>
-                            <a className="pull-right" target="_blank" href="https://github.com/redux-autoform/redux-autoform"
-                                style={{color: 'black'}}>
-                                <i className="fa fa-github" aria-hidden="true"/>
-                            </a>
-                        </h2>
-                    </div>
-                    <div className="col-md-5">
-                        <LiveSchemaEditorForm formOptionActions={formOptionsActions} reduxFormActions={reduxFormActions} selectedPreset={preset} initialValues={this.getPresetObject()}/>
-                    </div>
-                    <div className="col-md-7">
-                        <div className="row">
-                            <div className="col-md-12">
-                                <FormOptions editorSchema={metaForm ? metaForm.schema.value : ''} {...formOptions} {...formOptionsActions}/>
-                            </div>
-                        </div>
-                        <div className="row">
-                            <div className="col-md-12">
-                                <div className="live-schema-editor-mount-node">
-                                    {this.getAutoform()}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+	            <AppBar title={`redux-autoform-material-ui demo ${psjon.version}`}/>
+	            <h2>
+		            <a target="_blank" href="https://github.com/redux-autoform/redux-autoform-material-ui"
+		               style={{color: 'black'}}>
+			            <i className="fa fa-github" aria-hidden="true"/>
+		            </a>
+	            </h2>
+	            <div className='row'>
+		            <div className="col-md-6">
+	                    <Card>
+	                        <LiveSchemaEditorForm
+		                        formOptionActions={formOptionsActions}
+		                        reduxFormActions={reduxFormActions}
+		                        selectedPreset={preset}
+		                        initialValues={this.getPresetObject()}
+	                        />
+	                    </Card>
+		            </div>
+		            <div className="col-md-6">
+	                    <Card>
+	                        <div className="row">
+	                            <div className="col-md-12">
+	                                <FormOptions
+		                                editorSchema={metaForm ? metaForm.schema.value : ''}
+		                                {...formOptions}
+		                                {...formOptionsActions}
+	                                />
+	                            </div>
+	                        </div>
+	                        <div className="row">
+	                            <div className="col-md-12">
+	                                <div className="live-schema-editor-mount-node">
+	                                    {this.getAutoform()}
+	                                </div>
+	                            </div>
+	                        </div>
+	                    </Card>
+		            </div>
                 </div>
             </div>
         )

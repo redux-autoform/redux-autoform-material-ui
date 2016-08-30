@@ -1,6 +1,5 @@
 import React, {Component, PropTypes} from 'react';
 import CodeEditor from './CodeEditor';
-import { FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
 import { reduxForm } from 'redux-form';
 import { browserHistory } from 'react-router';
 import presets from '../presets';
@@ -25,41 +24,40 @@ class LiveSchemaEditorForm extends Component {
             <div className="container-fluid">
                 <div className='row'>
                     <div className="col-md-6">
-                        <h4>Select a <span style={{color: 'red'}}>preset:</span></h4>
+                        <h4>Select a <span>preset:</span></h4>
                     </div>
 	                <div className="col-md-6">
-		                <SelectField onChange={this.onPresetChange} value={selectedPreset}>
+		                <SelectField onChange={this.onPresetChange} value={selectedPreset} fullWidth>
 			                { this.getOptions() }
 		                </SelectField>
                     </div>
                 </div>
                 <div className='row'>
                     <div className="col-md-6">
-                        <FormGroup controlId="formBasicText">
-                            <ControlLabel>
-                                Entity name
-                            </ControlLabel>
-                            <FormControl type="text" value="" placeholder="Enter text" { ... entityName }/>
-                            <FormControl.Feedback />
-                        </FormGroup>
+	                    <TextField
+		                    floatingLabelText="Entity name"
+		                    type="text"
+		                    value=""
+		                    hintText="Enter text"
+		                    fullWidth
+		                    {...entityName}
+	                    />
                     </div>
                     <div className="col-md-6">
-                        <FormGroup controlId="formBasicText2">
-                            <ControlLabel>
-                                Layout name
-                            </ControlLabel>
-                            <FormControl type="text" value="" placeholder="Enter text" { ...layoutName }/>
-                            <FormControl.Feedback />
-                        </FormGroup>
+	                    <TextField
+		                    floatingLabelText="Layout name"
+		                    type="text"
+		                    value=""
+		                    hintText="Enter text"
+		                    fullWidth
+		                    {...layoutName}
+	                    />
                     </div>
                 </div>
                 <div className="row">
                     <div className="col-md-12">
-                        <div>
-                            <h3>Schema</h3>
-                            <CodeEditor { ...schema}/>
-                            <FormControl.Feedback />
-                        </div>
+	                    <h3>Schema</h3>
+	                    <CodeEditor { ...schema}/>
                     </div>
                 </div>
             </div>

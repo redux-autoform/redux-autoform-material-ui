@@ -21,16 +21,9 @@ class LiveSchemaEditor extends Component {
         let { metaForm, formOptions } = this.props;
 
         if (!formName) throw Error('Form name cannot be empty');
-        if (!metaForm)
-            return undefined;
+        if (!metaForm) return undefined;
 
-        let factory;
-
-        if(formOptions.componentFactory == 'edit') {
-            factory = EditComponentFactory;
-        } else {
-            factory = DetailsComponentFactory;
-        }
+        let factory = (formOptions.componentFactory == 'edit')? EditComponentFactory : DetailsComponentFactory;
 
         return {
             form: formName,
@@ -61,7 +54,6 @@ class LiveSchemaEditor extends Component {
             </div>
         );
     };
-
 
     // getUnderDevelopmentAlert = () => {
     //     let { formOptions } = this.props;
@@ -116,7 +108,7 @@ class LiveSchemaEditor extends Component {
 
         return (
             <div>
-	            <Paper zDepth={2}>
+	            <Paper zDepth={1}>
 	                <Toolbar>
 		                <ToolbarTitle text={`redux-autoform-material-ui demo ${psjon.version}`}/>
 		                <ToolbarGroup lastChild>

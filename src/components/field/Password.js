@@ -20,13 +20,14 @@ class Password extends Component {
     };
     
     render() {
-        let {value, error, displayName, name, onChange} = this.props;
+        let {value, error, displayName, name, onChange, placeholder} = this.props;
 
         return (
             <TextField
                 name={name}
                 value={value}
                 errorText={error}
+                hintText={placeholder}
                 floatingLabelText={displayName}
                 type="password"
                 onChange={onChange}

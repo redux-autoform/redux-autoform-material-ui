@@ -12,7 +12,8 @@ class TextArea extends Component {
         error: PropTypes.string,
         addonBefore: PropTypes.string,
         addonAfter: PropTypes.string,
-        fieldLayout: PropTypes.string
+        fieldLayout: PropTypes.string,
+	    rows: PropTypes.number
     };
 
 	static childContextTypes = {
@@ -20,15 +21,17 @@ class TextArea extends Component {
 	};
 
     render() {
-        let {value, error, displayName, name, onChange} = this.props;
+        let {value, error, displayName, name, onChange, rows, placeholder} = this.props;
 
         return (
             <TextField
                 name={name}
                 value={value}
                 errorText={error}
+                hintText={placeholder}
                 floatingLabelText={displayName}
                 type="text"
+                rows={rows}
                 onChange={onChange}
                 fullWidth
                 multiline

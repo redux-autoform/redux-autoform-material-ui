@@ -14,20 +14,20 @@ class Email extends Component {
         addonAfter: PropTypes.string,
         fieldLayout: PropTypes.string
     };
-
-
+	
     static childContextTypes = {
         muiTheme: PropTypes.object.isRequired
     };
 
     render() {
-        let {value, error, displayName, name, onChange} = this.props;
+        let {value, error, displayName, name, onChange, placeholder} = this.props;
 
         return (
             <TextField
                 name={name}
                 value={value}
                 errorText={error}
+                hintText={placeholder}
                 floatingLabelText={displayName}
                 type="email"
                 onChange={onChange}

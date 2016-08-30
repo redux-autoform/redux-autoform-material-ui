@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { getDisplayName } from 'redux-autoform-utils';
 import Checkbox from 'material-ui/Checkbox';
 
@@ -26,7 +26,6 @@ class CheckBox extends Component {
             />
         )
     };
-
 
     static childContextTypes = {
         muiTheme: PropTypes.object.isRequired

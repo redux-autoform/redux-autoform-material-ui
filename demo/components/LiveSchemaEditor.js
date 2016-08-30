@@ -7,8 +7,7 @@ import { AutoForm } from 'redux-autoform';
 import { EditComponentFactory, DetailsComponentFactory } from '../../src/index';
 import ButtonToolbar from './ButtonToolbar';
 import FormOptions from './FormOptions';
-import { Link } from 'react-router';
-import { Toolbar, ToolbarGroup, ToolbarTitle, RaisedButton, Paper, Card } from 'material-ui';
+import { Toolbar, ToolbarGroup, ToolbarTitle, RaisedButton, Paper, Card, IconButton } from 'material-ui';
 
 class LiveSchemaEditor extends Component {
     static propTypes = {
@@ -106,24 +105,19 @@ class LiveSchemaEditor extends Component {
     render() {
         let { reduxFormActions, preset, metaForm, formOptions, formOptionsActions } = this.props;
 
-        return (
+	    return (
             <div>
-	            <Paper zDepth={1}>
+	            <Paper zDepth={1} style={{marginBottom: "20px"}}>
 	                <Toolbar>
-		                <ToolbarTitle text={`redux-autoform-material-ui demo ${psjon.version}`}/>
+		                <ToolbarGroup>
+			                <IconButton iconClassName="fa fa-github" href="https://github.com/redux-autoform/redux-autoform-material-ui"/>
+			            </ToolbarGroup>
+		                <ToolbarTitle text={`Redux Autoform Material-UI Demo ${psjon.version}`}/>
 		                <ToolbarGroup lastChild>
-			                <RaisedButton label="Documentation" secondary>
-				                <Link to="https://github.com/redux-autoform/redux-autoform/blob/master/docs-md/documentation.md"/>
-			                </RaisedButton>
+			                <RaisedButton label="Documentation" href="https://github.com/redux-autoform/redux-autoform/blob/master/docs-md/documentation.md" secondary/>
 			            </ToolbarGroup>
 	                </Toolbar>
 	            </Paper>
-	            <h2>
-		            <a target="_blank" href="https://github.com/redux-autoform/redux-autoform-material-ui"
-		               style={{color: 'black'}}>
-			            <i className="fa fa-github" aria-hidden="true"/>
-		            </a>
-	            </h2>
 	            <div className='row'>
 		            <div className="col-md-5">
 	                    <Card>

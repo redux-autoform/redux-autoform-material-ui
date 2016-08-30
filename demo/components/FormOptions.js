@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { RaisedButton, Toolbar, ToolbarGroup } from 'material-ui';
+import { FlatButton, Toolbar, ToolbarGroup } from 'material-ui';
 
 class FormOptions extends Component {
     static propTypes = {
@@ -16,11 +16,11 @@ class FormOptions extends Component {
 	            <div className="row">
 		            <Toolbar>		
 			            <ToolbarGroup>
-				            <RaisedButton label="Update" onClick={ () => updateForm(editorSchema) } primary/>
-				            <RaisedButton label="Stacked" active={fieldLayout == 'stacked'} onClick={ () => setStackedFieldLayout() } primary/>
-				            <RaisedButton label="Inline" active={fieldLayout == 'inline'} onClick={ () => setInlineFieldLayout() } primary/>
-				            <RaisedButton label="Edit" active={componentFactory == 'edit'} onClick={ () => setEditComponentFactory() } primary/>
-				            <RaisedButton label="Details" active={componentFactory == 'details'} onClick={ () => setDetailsComponentFactory() } primary/>
+				            <FlatButton label="Update" onClick={ () => updateForm(editorSchema) }/>
+				            <FlatButton label="Stacked" active={fieldLayout == 'stacked'} onClick={ () => setStackedFieldLayout() }/>
+				            <FlatButton label="Inline" active={fieldLayout == 'inline'} onClick={ () => setInlineFieldLayout() }/>
+				            <FlatButton label="Edit" active={componentFactory == 'edit'} onClick={ () => setEditComponentFactory() }/>
+				            <FlatButton label="Details" active={componentFactory == 'details'} onClick={ () => setDetailsComponentFactory() }/>
 		                </ToolbarGroup>
 		            </Toolbar>
 		        </div>

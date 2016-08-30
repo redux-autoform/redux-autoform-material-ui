@@ -6,8 +6,7 @@ import presets from '../presets';
 import { SelectField, MenuItem, TextField } from 'material-ui';
 
 class LiveSchemaEditorForm extends Component {
-    onPresetChange = (event, index, value) => {
-	    console.info(JSON.stringify(value));
+    handleChange = (event, index, value) => {
         browserHistory.push(`/redux-autoform/demo.html?preset=${value}`);
     };
     
@@ -23,12 +22,14 @@ class LiveSchemaEditorForm extends Component {
         return (
             <div className="container-fluid">
                 <div className='row'>
-                    <div className="col-md-6">
-                        <h4>Select a <span>preset:</span></h4>
-                    </div>
-	                <div className="col-md-6">
-		                <SelectField onChange={this.onPresetChange} value={selectedPreset} fullWidth>
-			                { this.getOptions() }
+	                <div className="col-md-12">
+		                <SelectField
+			                floatingLabelText="Take a Preset from the List"
+			                onChange={this.handleChange}
+			                value={selectedPreset}
+			                fullWidth
+			                floatingLabelFixed>
+			                    {this.getOptions()}
 		                </SelectField>
                     </div>
                 </div>
@@ -56,16 +57,18 @@ class LiveSchemaEditorForm extends Component {
                 </div>
                 <div className="row">
                     <div className="col-md-12">
-	                    <h3>Schema</h3>
-	                    <CodeEditor { ...schema}/>
+	                    <h5 style={{color: "#757575"}}>Schema</h5>
                     </div>
                 </div>
+	            <div className="row">
+		            <div className="col-md-12">
+			            <CodeEditor { ...schema}/>
+		            </div>
+	            </div>
             </div>
         );
     }
 }
-
-LiveSchemaEditorForm.propTypes = {};
 
 export default reduxForm({
     form: 'meta',

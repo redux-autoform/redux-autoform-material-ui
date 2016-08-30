@@ -24,8 +24,6 @@ class CheckBox extends Component {
 
     getContent = () => {
         let { value, name, displayName, error, touched, onChange, onBlur } = this.props;
-        let validationState = error && touched ? 'error' : null;
-        let checkboxProps = { onChange, onBlur, validationState };
 
         return (
             <Checkbox
@@ -42,8 +40,9 @@ class CheckBox extends Component {
     };
 
     render() {
-        let { fieldLayout } = this.props;
-        let content = this.getContent();
+        let { value, name, displayName, error, touched, onChange, onBlur, fieldLayout } = this.props;
+	    let validationState = error && touched ? 'error' : null;
+	    let checkboxProps = { onChange, onBlur, validationState };
 
         if (fieldLayout == 'inline') {
             return (
@@ -52,13 +51,24 @@ class CheckBox extends Component {
                         <label/>
                     </div>
                     <div className="col-xs-12 col-offset-140 no-padding-col">
-                        {content}
+	                    <Checkbox
+		                    label={getDisplayName(displayName, name)}
+		                    defaultChecked={value}
+		                    style={styles.checkbox}
+		                    {...checkboxProps}
+	                    />
                     </div>
                 </div>
             );
-        }
-        else {
-            return content;
+        } else {
+            return (
+	            <Checkbox
+		            label={getDisplayName(displayName, name)}
+		            defaultChecked={value}
+		            style={styles.checkbox}
+		            {...checkboxProps}
+                />
+            );
         }
     }
 }

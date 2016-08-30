@@ -22,19 +22,6 @@ class CheckBox extends Component {
 		fieldLayout: PropTypes.string
 	};
 
-    getContent = () => {
-        let { value, name, displayName, error, touched, onChange, onBlur } = this.props;
-
-        return (
-            <Checkbox
-                label={getDisplayName(displayName, name)}
-                defaultChecked={value}
-                style={styles.checkbox}
-                {...checkboxProps}
-            />
-        )
-    };
-
     static childContextTypes = {
         muiTheme: PropTypes.object.isRequired
     };

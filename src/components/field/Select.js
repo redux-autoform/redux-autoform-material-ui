@@ -13,6 +13,10 @@ class Select extends Component {
         addonAfter: PropTypes.string
     };
 
+    static childContextTypes = {
+        muiTheme: PropTypes.object.isRequired
+    };
+
     render() {
         let { options, value, onChange, displayName } = this.props;
 

@@ -15,6 +15,10 @@ class TextBox extends Component {
         fieldLayout: PropTypes.string
     };
 
+    static childContextTypes = {
+        muiTheme: PropTypes.object.isRequired
+    };
+
     render() {
         let {value, error, displayName, name, onChange} = this.props;
 

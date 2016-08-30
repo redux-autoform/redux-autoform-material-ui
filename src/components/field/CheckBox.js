@@ -27,6 +27,11 @@ class CheckBox extends Component {
         )
     };
 
+
+    static childContextTypes = {
+        muiTheme: PropTypes.object.isRequired
+    };
+
     render() {
         let { fieldLayout } = this.props;
         let content = this.getContent();

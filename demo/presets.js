@@ -22,6 +22,30 @@ export default [
         schema: require('./presets/layouts.txt')
     },
     {
+        name: 'layoutsTabs',
+        displayName: 'Layouts - Tabs',
+        entityName: 'contact',
+        layoutName: 'edit',
+        formTitle: 'Edit contact',
+        schema: require('./presets/layoutsTabs.txt')
+    },
+    {
+        name: 'layoutsWizard',
+        displayName: 'Layouts - Wizard (Experimental)',
+        entityName: 'contact',
+        layoutName: 'wizard',
+        formTitle: 'Edit contact',
+        schema: require('./presets/layoutsWizard.txt')
+    },
+    {
+        name: 'layoutsConditionalWizard',
+        displayName: 'Layouts - Conditional Wizard (Experimental)',
+        entityName: 'contact',
+        layoutName: 'wizard',
+        formTitle: 'Edit contact',
+        schema: require('./presets/layoutsConditionalWizard.txt')
+    },
+    {
         name: 'schemaTypeSimple',
         displayName: 'Schema types - Simple',
         entityName: '',
@@ -70,6 +94,14 @@ export default [
         schema: require('./presets/componentsTextBoxFloat.txt')
     },
     {
+        name: 'componentsPassword',
+        displayName: 'Components - Password',
+        entityName: 'contact',
+        layoutName: '',
+        formTitle: 'Edit contact',
+        schema: require('./presets/componentsPassword.txt')
+    },
+    {
         name: 'componentsTextArea',
         displayName: 'Components - TextArea',
         entityName: 'contact',
@@ -116,5 +148,15 @@ export default [
         layoutName: 'edit',
         formTitle: 'Edit contact',
         schema: require('./presets/componentsFieldGroup.txt')
+    },
+    {
+        name: 'componentsFileUpload',
+        displayName: 'Components - FileUpload (Experimental)',
+        entityName: 'contact',
+        layoutName: 'edit',
+        formTitle: 'Edit contact',
+        schema: require('./presets/componentsFileUpload.txt')
     }
+
+
 ]

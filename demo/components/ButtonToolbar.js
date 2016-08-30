@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
-import { ButtonToolbar, Button } from 'react-bootstrap'
+import { Toolbar, ToolbarGroup, RaisedButton } from 'material-ui';
 
 class Layout extends Component {
     render() {
-
         let { submitting } = this.props;
 
         return (
-            <ButtonToolbar className="button-toolbar">
-                <Button className="pull-right" bsStyle="success" bsSize="large" type="submit"  disabled={submitting}>
-                    Submit
-                </Button>
-            </ButtonToolbar>
+            <Toolbar>
+	            <ToolbarGroup firstChild/>
+                <ToolbarGroup lastChild>
+                    <RaisedButton label="Submit" type="submit" disabled={submitting} primary/>
+                </ToolbarGroup>
+            </Toolbar>
         );
     }
 }

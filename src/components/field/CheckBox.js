@@ -12,6 +12,16 @@ const styles = {
 };
 
 class CheckBox extends Component {
+	static propTypes = {
+		value: PropTypes.any,
+		onChange: PropTypes.func.isRequired,
+		placeholder: PropTypes.string,
+		displayName: PropTypes.string,
+		name: PropTypes.string.isRequired,
+		error: PropTypes.string,
+		fieldLayout: PropTypes.string
+	};
+
     getContent = () => {
         let { value, name, displayName, error, touched, onChange, onBlur } = this.props;
         let validationState = error && touched ? 'error' : null;

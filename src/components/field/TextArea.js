@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import { TextField } from 'material-ui';
 
 //TODO JS we have to emulate the addonBefore and addonAfter
 class TextArea extends Component {

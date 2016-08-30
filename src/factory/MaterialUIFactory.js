@@ -1,13 +1,15 @@
 import ComponentFactory from 'redux-autoform-utils/lib/factory/ComponentFactory';
 
 //TODO Jonatan.Salas: Uncomment when finished
+import Root from '../components/common/Root';
+
+import Group from '../components/group/Group';
+import TabGroup from '../components/group/TabGroup';
+import WizardGroup from '../components/group/WizardGroup';
 
 import TextBox from '../components/field/TextBox';
 import Select from '../components/field/Select';
 import TextArea from '../components/field/TextArea';
-import Group from '../components/group/Group';
-import TabGroup from '../components/group/TabGroup';
-import WizardGroup from '../components/group/WizardGroup';
 import ArrayContainer from '../components/field/ArrayContainer';
 import DateTimePicker from '../components/field/DateTimePicker';
 import Lookup from '../components/field/Lookup';
@@ -39,11 +41,15 @@ class BootstrapFactory extends ComponentFactory {
         this.registerGroupComponent('Group', Group);
         this.registerGroupComponent('TabGroup', TabGroup);
         this.registerGroupComponent('WizardGroup', WizardGroup);
+
+        this.registerRootComponent("default", Root);
     };
     
     setDefaultConfiguration = (config) => {
         this.setDefaultFieldComponents(config);
         this.setDefaultGroupComponent('Group');
+
+        this.setCurrentRoot("default");
     };
 
 }

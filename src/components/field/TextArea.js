@@ -34,7 +34,6 @@ class TextArea extends Component {
                 rows={rows}
                 onChange={onChange}
                 fullWidth
-                multiline
             />
         );
     }

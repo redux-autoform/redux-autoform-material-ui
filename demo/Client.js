@@ -8,6 +8,10 @@ import {browserHistory} from 'react-router'
 import {render} from 'react-dom';
 import './less/styles.less';
 import injectTapEventPlugin from 'react-tap-event-plugin';
+import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+
 
 injectTapEventPlugin();
 
@@ -16,7 +20,9 @@ const history = syncHistoryWithStore(browserHistory, store);
 
 render(
     <Provider store={store}>
-        <Router history={history} routes={routes}/>
+	    <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
+            <Router history={history} routes={routes}/>
+	    </MuiThemeProvider>
     </Provider>,
     document.getElementById('#app_container')
 );    

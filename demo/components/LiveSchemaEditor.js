@@ -7,6 +7,7 @@ import { AutoForm } from 'redux-autoform';
 import { EditComponentFactory, DetailsComponentFactory } from '../../src/index';
 import ButtonToolbar from './ButtonToolbar';
 import FormOptions from './FormOptions';
+import { AppBar } from 'material-ui';
 
 class LiveSchemaEditor extends Component {
     static propTypes = {
@@ -116,7 +117,8 @@ class LiveSchemaEditor extends Component {
             <div className="live-schema-editor">
                 <div className='row'>
                     <div className="col-md-12">
-                        <h2>redux-autoform-material-ui demo {psjon.version}
+                        <AppBar title={`redux-autoform-material-ui demo ${psjon.version}`}/>
+                        <h2>
                             <a className="pull-right" target="_blank" href="https://github.com/redux-autoform/redux-autoform"
                                 style={{color: 'black'}}>
                                 <i className="fa fa-github" aria-hidden="true"/>

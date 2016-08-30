@@ -7,7 +7,8 @@ import { AutoForm } from 'redux-autoform';
 import { EditComponentFactory, DetailsComponentFactory } from '../../src/index';
 import ButtonToolbar from './ButtonToolbar';
 import FormOptions from './FormOptions';
-import { AppBar, Card } from 'material-ui';
+import { Link } from 'react-router';
+import { Toolbar, ToolbarGroup, ToolbarTitle, RaisedButton, Paper, Card } from 'material-ui';
 
 class LiveSchemaEditor extends Component {
     static propTypes = {
@@ -114,8 +115,17 @@ class LiveSchemaEditor extends Component {
         let { reduxFormActions, preset, metaForm, formOptions, formOptionsActions } = this.props;
 
         return (
-            <div className="live-schema-editor">
-	            <AppBar title={`redux-autoform-material-ui demo ${psjon.version}`}/>
+            <div>
+	            <Paper zDepth={2}>
+	                <Toolbar>
+		                <ToolbarTitle text={`redux-autoform-material-ui demo ${psjon.version}`}/>
+		                <ToolbarGroup lastChild>
+			                <RaisedButton label="Documentation" secondary>
+				                <Link to="https://github.com/redux-autoform/redux-autoform/blob/master/docs-md/documentation.md"/>
+			                </RaisedButton>
+			            </ToolbarGroup>
+	                </Toolbar>
+	            </Paper>
 	            <h2>
 		            <a target="_blank" href="https://github.com/redux-autoform/redux-autoform-material-ui"
 		               style={{color: 'black'}}>
@@ -123,7 +133,7 @@ class LiveSchemaEditor extends Component {
 		            </a>
 	            </h2>
 	            <div className='row'>
-		            <div className="col-md-6">
+		            <div className="col-md-5">
 	                    <Card>
 	                        <LiveSchemaEditorForm
 		                        formOptionActions={formOptionsActions}
@@ -133,7 +143,7 @@ class LiveSchemaEditor extends Component {
 	                        />
 	                    </Card>
 		            </div>
-		            <div className="col-md-6">
+		            <div className="col-md-7">
 	                    <Card>
 	                        <div className="row">
 	                            <div className="col-md-12">

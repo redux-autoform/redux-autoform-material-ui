@@ -5,11 +5,7 @@ class LiveSchemaEditorPage extends Component {
     render() {
         let { location } = this.props;
         
-        return (
-            <div>
-                <LiveSchemaEditorContainer preset={location.query.preset} />
-            </div>
-        )
+        return <LiveSchemaEditorContainer preset={location.query.preset}/>;
     }
 }
 

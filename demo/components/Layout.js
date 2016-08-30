@@ -7,7 +7,7 @@ class Layout extends Component {
  
         return (
             <div>
-                <div className="container-fluid">
+                <div className="container-fluid" style={{}}>
                     { children }
                 </div>
                 <DevTools />;

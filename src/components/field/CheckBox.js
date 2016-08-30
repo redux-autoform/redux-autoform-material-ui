@@ -19,7 +19,8 @@ class CheckBox extends Component {
 		displayName: PropTypes.string,
 		name: PropTypes.string.isRequired,
 		error: PropTypes.string,
-		fieldLayout: PropTypes.string
+		fieldLayout: PropTypes.string,
+		defaultChecked: PropTypes.bool
 	};
 
     static childContextTypes = {
@@ -27,9 +28,12 @@ class CheckBox extends Component {
     };
 
     render() {
-        let { value, name, displayName, error, touched, onChange, onBlur, fieldLayout } = this.props;
-	    let validationState = error && touched ? 'error' : null;
-	    let checkboxProps = { onChange, onBlur, validationState };
+        let { value, name, displayName, onChange, onBlur, fieldLayout, defaultChecked, error, touched } = this.props;
+	    // let validationState = error && touched ? 'error' : null;
+
+	    if (defaultChecked === true || value === true) {
+		    value = true;
+	    }
 
         if (fieldLayout == 'inline') {
             return (
@@ -41,8 +45,9 @@ class CheckBox extends Component {
 	                    <Checkbox
 		                    label={getDisplayName(displayName, name)}
 		                    defaultChecked={value}
+		                    onChange={onChange}
+		                    onBlur={onBlur}
 		                    style={styles.checkbox}
-		                    {...checkboxProps}
 	                    />
                     </div>
                 </div>
@@ -52,8 +57,9 @@ class CheckBox extends Component {
 	            <Checkbox
 		            label={getDisplayName(displayName, name)}
 		            defaultChecked={value}
+		            onChange={onChange}
+		            onBlur={onBlur}
 		            style={styles.checkbox}
-		            {...checkboxProps}
                 />
             );
         }

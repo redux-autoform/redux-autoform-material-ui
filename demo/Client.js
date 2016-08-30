@@ -7,6 +7,9 @@ import {syncHistoryWithStore} from 'react-router-redux';
 import {browserHistory} from 'react-router'
 import {render} from 'react-dom';
 import './less/styles.less';
+import injectTapEventPlugin from 'react-tap-event-plugin';
+
+injectTapEventPlugin();
 
 const store = configureStore();
 const history = syncHistoryWithStore(browserHistory, store);

@@ -58,9 +58,8 @@ class TabGroup extends BaseGroup {
         return components;
     };
 
-	onTabSelected = (event) => {
-		event.preventDefault();
-		this.setState({position: event.target.value});
+	onTabSelected = (position) => {
+		this.setState({position: position});
 	};
 
 	render() {

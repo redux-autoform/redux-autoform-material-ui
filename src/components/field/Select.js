@@ -17,16 +17,37 @@ class Select extends Component {
         muiTheme: PropTypes.object.isRequired
     };
 
+	state = {
+		value: null
+	};
+
+	handleChange = (event, index, value) => {
+		let { onChange } = this.props;
+
+		onChange(value);
+		this.setState({value});
+	};
+
+	getItems = () => {
+		let { options } = this.props;
+
+		return  options.map(({ value, text }, index) => (
+			<MenuItem key={index} value={value} primaryText={text}/>
+		));
+	};
+
     render() {
-        let { options, value, onChange, displayName } = this.props;
+        let { displayName, placeholder } = this.props;
+		let { value } = this.state;
 
         return (
-            <SelectField floatingLabelText={displayName} value={value} onChange={onChange} floatingLabelFixed>
-	        {
-                options.map(({ value, text }, index) => (
-                    <MenuItem key={index} value={value} primaryText={text}/>
-                ))
-            }
+            <SelectField
+	            floatingLabelText={displayName}
+	            value={value}
+	            hintText={placeholder}
+	            onChange={this.handleChange}
+	            floatingLabelFixed>
+	            {this.getItems()}
             </SelectField>
         )
     }

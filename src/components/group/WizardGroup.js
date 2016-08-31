@@ -136,15 +136,14 @@ class WizardGroup extends BaseGroup {
 
         return (
             <div className="row">
-                <div className="col-md-4"></div>
-                <div className="col-md-4"></div>
-                <div className="col-md-4">
+                <div className="col-md-12">
                     <Toolbar>
-	                    <ToolbarGroup lastChild>
+                        <ToolbarGroup firstChild/>
+                        <ToolbarGroup lastChild>
                             {backButton}
-		                    {nextButton}
-		                    {submitButton}
-	                    </ToolbarGroup>
+                            {nextButton}
+                            {submitButton}
+                        </ToolbarGroup>
                     </Toolbar>
                 </div>
             </div>

@@ -69,17 +69,19 @@ class TabGroup extends BaseGroup {
 
 		return (
 			<section>
-				<div className="row">
-					<div className="metaform-group">
-						<Tabs initialSelectedIndex={position} onChange={this.onTabSelected}>{
-							layout.groups.map(({ title }, index) => <Tab key={index} label={title} value={index}/>)
-						}
-						</Tabs>
-						<div className="metaform-group-content">
-							{content[position]}
-						</div>
-					</div>
-				</div>
+                <div className="container-fluid">
+                    <div className="row">
+                        <div className="metaform-group">
+                            <Tabs initialSelectedIndex={position} onChange={this.onTabSelected}>{
+                                layout.groups.map(({ title }, index) => <Tab key={index} label={title} value={index}/>)
+                            }
+                            </Tabs>
+                            <div className="metaform-group-content">
+                                {content[position]}
+                            </div>
+                        </div>
+                    </div>
+                </div>
 			</section>
 		);
 	}

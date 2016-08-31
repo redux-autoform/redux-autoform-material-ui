@@ -16,11 +16,30 @@ class FormOptions extends Component {
 	            <div className="row">
 		            <Toolbar>		
 			            <ToolbarGroup>
-				            <FlatButton label="Update" onClick={ () => updateForm(editorSchema) }/>
-				            <FlatButton label="Stacked" active={fieldLayout == 'stacked'} onClick={ () => setStackedFieldLayout() }/>
-				            <FlatButton label="Inline" active={fieldLayout == 'inline'} onClick={ () => setInlineFieldLayout() }/>
-				            <FlatButton label="Edit" active={componentFactory == 'edit'} onClick={ () => setEditComponentFactory() }/>
-				            <FlatButton label="Details" active={componentFactory == 'details'} onClick={ () => setDetailsComponentFactory() }/>
+				            <FlatButton
+								label="Update"
+								onClick={ () => updateForm(editorSchema) }
+							/>
+				            <FlatButton
+								label="Stacked"
+                                disabled={fieldLayout !== 'stacked'}
+								onClick={ () => setStackedFieldLayout() }
+							/>
+				            <FlatButton
+								label="Inline"
+                                disabled={fieldLayout !== 'inline'}
+								onClick={ () => setInlineFieldLayout() }
+							/>
+				            <FlatButton
+								label="Edit"
+								disabled={componentFactory !== 'edit'}
+								onClick={ () => setEditComponentFactory() }
+							/>
+				            <FlatButton
+								label="Details"
+								disabled={componentFactory !== 'details'}
+								onClick={ () => setDetailsComponentFactory() }
+							/>
 		                </ToolbarGroup>
 		            </Toolbar>
 		        </div>

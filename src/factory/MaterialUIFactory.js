@@ -1,6 +1,5 @@
 import ComponentFactory from 'redux-autoform-utils/lib/factory/ComponentFactory';
 
-//TODO Jonatan.Salas: Uncomment when finished
 import Root from '../components/common/Root';
 
 import Group from '../components/group/Group';
@@ -21,7 +20,7 @@ import Checkbox from '../components/field/CheckBox';
 import Radio from '../components/field/Radio';
 import FileUpload from '../components/field/FileUpload';
 
-class BootstrapFactory extends ComponentFactory {
+class MaterialUIFactory extends ComponentFactory {
     constructor(config) {
         super();
         this.setBaseComponents();
@@ -59,4 +58,4 @@ class BootstrapFactory extends ComponentFactory {
 
 }
 
-export default BootstrapFactory;
+export default MaterialUIFactory;

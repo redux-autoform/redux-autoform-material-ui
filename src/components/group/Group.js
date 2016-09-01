@@ -27,13 +27,11 @@ class Group extends BaseGroup {
     };
 
     render() {
-        let {layout} = this.props;
-
         return (
-            <section style={(layout.headLess)? { marginTop: "15px" } : null}>
+            <section>
                 <div className="row">
                     <div className="metaform-group">
-                        <div className="col-md-12">
+                        <div className="col-md-12" style={{marginTop: "10px"}}>
                             {this.getHeader()}
                         </div>
                         <div className="metaform-group-content">

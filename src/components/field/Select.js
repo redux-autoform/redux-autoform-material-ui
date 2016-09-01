@@ -37,16 +37,18 @@ class Select extends Component {
 	};
 
     render() {
-        let { displayName, placeholder } = this.props;
+        let { displayName, placeholder, error } = this.props;
 		let { value } = this.state;
 
         return (
             <SelectField
+	            errorText={error}
 	            floatingLabelText={displayName}
 	            value={value}
 	            hintText={placeholder}
 	            onChange={this.handleChange}
-	            floatingLabelFixed>
+	            floatingLabelFixed
+	            fullWidth>
 	            {this.getItems()}
             </SelectField>
         )

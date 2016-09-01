@@ -20,19 +20,44 @@ class TextBox extends Component {
     };
 
     render() {
-        let {value, error, displayName, name, onChange, placeholder} = this.props;
+        let {value, error, displayName, name, onChange, placeholder, addonBefore, addonAfter} = this.props;
+        let before = null, after = null, textField = "col-md-12";
+
+	    if (addonBefore) {
+		    textField = "col-md-8";
+			before = (
+				<div className="col-md-4">
+					<p className="center-block">{addonBefore}</p>
+				</div>
+			)
+	    }
+
+	    if (addonAfter) {
+		    textField = "col-md-8";
+		    after = (
+			    <div className="col-md-4">
+				    <p className="center-block">{addonAfter}</p>
+			    </div>
+		    )
+	    }
 
         return (
-            <TextField
-                name={name}
-                value={value}
-                errorText={error}
-                hintText={placeholder}
-                floatingLabelText={displayName}
-                type="text"
-                onChange={onChange}
-                fullWidth
-            />
+	        <div className="col-md-12">
+		        {after}
+		        <div className={textField}>
+		            <TextField
+		                name={name}
+		                value={value}
+		                errorText={error}
+		                hintText={placeholder}
+		                floatingLabelText={displayName}
+		                type="text"
+		                onChange={onChange}
+		                fullWidth
+		            />
+		        </div>
+		        {before}
+	        </div>
         );
     }
 }

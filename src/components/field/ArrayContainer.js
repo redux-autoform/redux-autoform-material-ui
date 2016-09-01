@@ -116,7 +116,7 @@ class ArrayContainer extends Component {
         } else {
             return (
                 <div style={div}>
-                    <span style={span}>This array is empty </span><FlatButton label="Add new Item" backgroundColor="#ffd54f" onClick={this.handleAdd} style={{float: "right"}}/>
+                    <span style={span}>This array is empty </span><FlatButton label="Add new Item" backgroundColor="#ffe082" onClick={this.handleAdd} style={{float: "right"}}/>
                 </div>
             );
         }

@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { RaisedButton } from 'material-ui';
+import { FlatButton, RaisedButton } from 'material-ui';
 import Item from '../common/ArrayContainerItem';
 
 class ArrayContainer extends Component {
@@ -14,28 +14,27 @@ class ArrayContainer extends Component {
     };
 
     handleItemClick = (event, child, index) => {
-
-        console.info("This is the event value: " + Object.keys(event.target));
         let { id, value, fields, onChange, reduxFormProps: { swapFields, removeField } } = this.props;
+        let key = child.key;
 
-        switch (event.target.value) {
-            case 0:
+        switch (key) {
+            case "remove":
                 removeField(index);
                 break;
-            case 1:
+            case "move_up":
                 if (index > 0) {
                     swapFields(index, index - 1);
                 }
                 break;
-            case 2:
+            case "move_down":
                 if (index < fields.length - 1) {
                     swapFields(index, index + 1);
                 }
                 break;
-            case 3:
+            case "move_first":
                 swapFields(index, 0);
                 break;
-            case 4:
+            case "move_last":
                 swapFields(index, fields.length - 1);
                 break;
         }
@@ -94,12 +93,30 @@ class ArrayContainer extends Component {
     getAllComponents = () => {
         let components = this.getComponents();
 
+        const div = {
+            width: "100%",
+            display: "table",
+            marginTop: "5px",
+            marginBottom: "5px",
+            padding: "5px",
+            backgroundColor: "#ffecb3",
+            border: "1px solid #ffe082",
+            borderRadius: "2px",
+            justifyContent: "center"
+        };
+
+        const span = {
+            float: "left",
+            marginTop: "7px",
+            marginRight: "5px"
+        };
+
         if (components.length) {
             return components;
         } else {
             return (
-                <div>
-                    This array is empty. Consider <a onClick={ this.handleAdd }>adding a new item</a>.
+                <div style={div}>
+                    <span style={span}>This array is empty </span><FlatButton label="Add new Item" backgroundColor="#ffd54f" onClick={this.handleAdd} style={{float: "right"}}/>
                 </div>
             );
         }
@@ -114,9 +131,9 @@ class ArrayContainer extends Component {
         return (
             <div>
                 <div className="array-container-content">
-                    { components }
+                    {components}
                 </div>
-                { addBar }
+                {addBar}
             </div>
         );
     }

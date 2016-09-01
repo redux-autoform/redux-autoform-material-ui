@@ -10,7 +10,6 @@ class ArrayContainerItem extends Component {
 
     handleAction = (event, child) => {
         let { onAction, index } = this.props;
-        console.log("This is the array container Index: " + index);
         onAction(event, child, index);
     };
 
@@ -40,11 +39,11 @@ class ArrayContainerItem extends Component {
                                 useLayerForClickAway
                                 animated
                             >
-                                <MenuItem key={0} primaryText="Remove"/>
-                                <MenuItem key={1} primaryText="Move Up"/>
-                                <MenuItem key={2} primaryText="Move down"/>
-                                <MenuItem key={3} primaryText="Move first"/>
-                                <MenuItem key={4} primaryText="Move last"/>
+                                <MenuItem key="remove" primaryText="Remove"/>
+                                <MenuItem key="move_up" primaryText="Move Up"/>
+                                <MenuItem key="move_down" primaryText="Move down"/>
+                                <MenuItem key="move_first" primaryText="Move first"/>
+                                <MenuItem key="move_last" primaryText="Move last"/>
                             </IconMenu>
                         </div>
                     </div>

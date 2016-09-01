@@ -6,8 +6,7 @@ class TextBox extends Component {
     static propTypes = {
         value: PropTypes.any,
         onChange: PropTypes.func.isRequired,
-        placeholder: PropTypes.string,
-        displayName: PropTypes.string,
+        placeholder: PropTypes.string, displayName: PropTypes.string,
         name: PropTypes.string.isRequired,
         error: PropTypes.string,
         addonBefore: PropTypes.string,
@@ -42,23 +41,17 @@ class TextBox extends Component {
 	    }
 
         return (
-	        <div className="col-md-12">
-		        {after}
-		        <div className={textField}>
-		            <TextField
-		                name={name}
-		                value={value}
-		                errorText={error}
-		                hintText={placeholder}
-		                floatingLabelText={displayName}
-		                type="text"
-		                onChange={onChange}
-		                fullWidth
-		            />
-		        </div>
-		        {before}
-	        </div>
-        );
+			<TextField
+				name={name}
+				value={value}
+				errorText={error}
+				hintText={placeholder}
+				floatingLabelText={displayName}
+				type="text"
+				onChange={onChange}
+				fullWidth
+			/>
+		);
     }
 }
 

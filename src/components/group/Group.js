@@ -27,15 +27,18 @@ class Group extends BaseGroup {
     };
 
     render() {
+        let header = this.getHeader();
+        let content = this.getContent();
+
         return (
             <section>
                 <div className="row">
                     <div className="metaform-group">
                         <div className="col-md-12" style={{marginTop: "10px"}}>
-                            {this.getHeader()}
+                            {header}
                         </div>
                         <div className="metaform-group-content">
-                            {this.getContent()}
+                            {content}
                         </div>
                     </div>
                 </div>

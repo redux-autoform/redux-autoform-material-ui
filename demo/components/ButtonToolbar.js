@@ -6,8 +6,8 @@ class Layout extends Component {
         let { submitting } = this.props;
 
         return (
-            <Toolbar>
-	            <ToolbarGroup firstChild/>
+            <Toolbar style={{backgroundColor: "#ffffff"}}>
+                <ToolbarGroup firstChild/>
                 <ToolbarGroup lastChild>
                     <RaisedButton label="Submit" type="submit" disabled={submitting} primary/>
                 </ToolbarGroup>

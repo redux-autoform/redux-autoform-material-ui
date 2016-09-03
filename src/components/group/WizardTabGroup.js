@@ -94,7 +94,7 @@ class TabGroup extends BaseGroup {
         return (
             <div className="row">
                 <div className="col-md-12">
-                    <Toolbar>
+                    <Toolbar style={{backgroundColor: "#ffffff"}}>
                         <ToolbarGroup firstChild/>
                         <ToolbarGroup lastChild>
                             {backButton}

@@ -26,7 +26,7 @@ class LiveSchemaEditorForm extends Component {
 		                <SelectField
 			                floatingLabelText="Take a Preset from the List"
 			                onChange={this.handleChange}
-			                value={selectedPreset}
+			                value={selectedPreset || presets[0].name}
 			                fullWidth
 			                floatingLabelFixed>
 			                    {this.getOptions()}

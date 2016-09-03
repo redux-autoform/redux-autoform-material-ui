@@ -1,6 +1,6 @@
 if (process.env.APP_ENV !== 'browser') {
-    require.extensions['.txt'] = function (module, filename) {
-        var fs = require('fs');
+    require.extensions['.txt'] = (module, filename) => {
+        const fs = require('fs');
         module.exports = fs.readFileSync(filename, 'utf8');
     };
 }

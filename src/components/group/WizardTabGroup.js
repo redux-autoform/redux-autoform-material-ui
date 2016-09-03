@@ -117,8 +117,6 @@ class TabGroup extends BaseGroup {
 		let content = this.getContent();
         let buttonSection = this.getButtonSection();
 
-        console.info("This is the current position selected: " + position);
-
 		return (
 			<section>
                 <div className="container-fluid">

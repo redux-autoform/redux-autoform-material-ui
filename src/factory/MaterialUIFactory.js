@@ -5,6 +5,7 @@ import Root from '../components/common/Root';
 import Group from '../components/group/Group';
 import TabGroup from '../components/group/TabGroup';
 import WizardGroup from '../components/group/WizardGroup';
+import WizardTabGroup from '../components/group/WizardTabGroup';
 
 import TextBox from '../components/field/TextBox';
 import Password from '../components/field/Password';
@@ -45,6 +46,7 @@ class MaterialUIFactory extends ComponentFactory {
         this.registerGroupComponent('Group', Group);
         this.registerGroupComponent('TabGroup', TabGroup);
         this.registerGroupComponent('WizardGroup', WizardGroup);
+        this.registerGroupComponent('WizardTabGroup', WizardTabGroup);
 
         this.registerRootComponent("default", Root);
     };

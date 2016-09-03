@@ -117,12 +117,14 @@ class TabGroup extends BaseGroup {
 		let content = this.getContent();
         let buttonSection = this.getButtonSection();
 
+        console.info("This is the current position selected: " + position);
+
 		return (
 			<section>
                 <div className="container-fluid">
                     <div className="row">
                         <div className="metaform-group">
-                            <Tabs initialSelectedIndex={position} onChange={this.onTabSelected}>{
+                            <Tabs initialSelectedIndex={position} value={position} onChange={this.onTabSelected}>{
                                 layout.groups.map(({ title }, index) => <Tab key={index} label={title} value={index}/>)
                             }
                             </Tabs>

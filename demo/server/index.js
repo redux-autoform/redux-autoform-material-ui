@@ -2,7 +2,7 @@ import fs from 'fs';
 import React from 'react';
 import express from 'express';
 import path from 'path';
-import webpackConfig from '../../webpack/webpack.config.demo.dev';
+import webpackConfig from '../../webpack.config.demo.dev';
 import colors from 'colors';
 import webpackMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';

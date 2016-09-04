@@ -4,7 +4,7 @@
   "description": "Material-UI integration for redux-autoform",
   "main": "index.js",
   "scripts": {
-    "build-demo": "cross-env NODE_ENV=production babel-node ./tools/build-demo.js",
+    "build-demo": "cross-env NODE_ENV=production babel-node ./node_modules/.bin/webpack --config webpack.config.demo.prod.js && ./tools/build-demo.js",
     "build-lib": "cross-env NODE_ENV=production babel-node ./tools/build-lib.js",
     "start": "cross-env NODE_ENV=development babel-node ./demo/server/index.js",
     "test": "mocha ./test --compilers js:babel-register",

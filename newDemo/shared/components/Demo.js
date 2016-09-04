@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import LiveSchemaEditorContainer from '../container/LiveSchemaEditorContainer';
+import LiveSchemaEditorContainer from '../containers/LiveSchemaEditorContainer';
 
 class LiveSchemaEditorPage extends Component {
     render() {

@@ -1,6 +1,6 @@
 import React from 'react';
-import App from '../container/App';
-import Demo from '../component/Demo.js';
+import App from '../containers/App';
+import Demo from './Demo.js';
 
 import { Route, Redirect } from 'react-router';
 

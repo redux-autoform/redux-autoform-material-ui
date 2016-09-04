@@ -10,9 +10,12 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import numbro from 'numbro';
+import { numbroLocalizer } from 'redux-autoform';
 
 import './styles/Styles.less';
 
+numbroLocalizer(numbro);
 injectTapEventPlugin();
 
 const store = configureStore();

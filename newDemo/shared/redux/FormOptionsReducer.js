@@ -1,7 +1,7 @@
 import clone from 'clone';
 import _ from 'underscore';
 import presets from '../presets/presets';
-import FormActions from './FormActions';
+import FormActions from './FormOptionsActions';
 
 const defaultSchema = _.find(presets, p => p.name == 'default');
 
@@ -11,7 +11,7 @@ const initialState = {
     schema: defaultSchema.schema
 };
 
-const formReducer = (state = initialState, action) => {
+const formOptionsReducer = (state = initialState, action) => {
     let newState;
     
     switch (action.type) {
@@ -50,4 +50,4 @@ const formReducer = (state = initialState, action) => {
     }
 };
 
-export default formReducer;
+export default formOptionsReducer;

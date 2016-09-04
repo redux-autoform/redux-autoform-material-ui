@@ -5,9 +5,9 @@ import thunk from 'redux-thunk';
 import {hashHistory} from 'react-router';
 import {routerMiddleware} from 'react-router-redux';
 import rootReducer from './RootReducer';
-import DevTools from '../components/DevTools';
+import DevTools from '../component/DevTools';
 import observe from './StoreObserver';
-import { updateForm } from './FormActions';
+import { updateForm } from './FormOptionsActions';
 import presets from '../presets/presets';
 import _ from 'underscore';
 

@@ -1,2 +1,2 @@
-import Layout from '../components/Layout';
+import Layout from '../component/Layout';
 export default Layout;

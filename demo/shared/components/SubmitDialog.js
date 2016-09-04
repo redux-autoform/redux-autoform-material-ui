@@ -29,7 +29,7 @@ export default class SubmitDialog extends Component {
                     autoScrollBodyContent
                 >
                     <div className="submit-dialog">
-                        <pre>
+                        <pre className="roboto">
                             {JSON.stringify(args[0], null, 2)}
                         </pre>
                     </div>

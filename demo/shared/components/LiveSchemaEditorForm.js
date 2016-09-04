@@ -17,7 +17,7 @@ class LiveSchemaEditorForm extends Component {
     };
 
     render() {
-        const { fields: {entityName, layoutName, schema}, selectedPreset, formOptionActions } = this.props;
+        const { fields: {entityName, layoutName, schema}, selectedPreset } = this.props;
 
         return (
             <div className="container-fluid">
@@ -62,7 +62,7 @@ class LiveSchemaEditorForm extends Component {
                 </div>
 	            <div className="row">
 		            <div className="col-md-12">
-			            <CodeEditor { ...schema}/>
+			            <CodeEditor {...schema}/>
 		            </div>
 	            </div>
             </div>

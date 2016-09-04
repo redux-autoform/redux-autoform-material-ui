@@ -1,6 +1,6 @@
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import LiveSchemaEditor from '../components/LiveSchemaEditor';
+import LiveSchemaEditor from '../components/LiveSchemaEditorView';
 import { change, initialize } from 'redux-form';
 import { setInlineFieldLayout, setStackedFieldLayout, setEditComponentFactory, setDetailsComponentFactory, updateForm } from '../redux/actions/FormOptionsActions';
 

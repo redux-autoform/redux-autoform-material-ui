@@ -5,8 +5,8 @@ import _ from 'underscore';
 import pkg from '../../../package.json';
 import { AutoForm } from 'redux-autoform';
 import { EditComponentFactory, DetailsComponentFactory } from '../../../src/index';
-import ButtonToolbar from './ButtonToolbar';
-import FormOptions from './FormOptions';
+import ButtonToolbar from './SubmitToolbar';
+import FormOptions from './OptionsToolbar';
 import SubmitDialog from './SubmitDialog';
 import { Toolbar, ToolbarGroup, ToolbarTitle, RaisedButton, Paper, Card, IconButton } from 'material-ui';
 

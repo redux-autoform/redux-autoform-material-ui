@@ -1,6 +1,6 @@
 import React from 'react';
 import {Router} from 'react-router'
-import routes from '../shared/components/Routes';
+import routes from '../shared/routes/Routes';
 import configureStore from '../shared/redux/store/Store';
 import {Provider} from 'react-redux';
 import {syncHistoryWithStore} from 'react-router-redux';

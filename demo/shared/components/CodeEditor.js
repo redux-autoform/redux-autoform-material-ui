@@ -13,7 +13,7 @@ class CodeEditor extends Component {
         // metadata
         let props = { value, name, ref: 'input', readOnly, onChange, mode, width, theme: 'github', height, fontSize: 14,  editorProps: {$blockScrolling: true} };
 
-        return <AceEditor className="code-editor" {...props}/>;
+        return <AceEditor className="code-editor roboto" {...props}/>;
     }
 }
 

@@ -6,9 +6,9 @@ class Layout extends Component {
         let { children } = this.props;
 
         return (
-            <div>
-                <div className="container-fluid">
-                    { children }
+            <div className="container-fluid">
+                <div>
+                    {children}
                 </div>
                 <DevTools />;
             </div>

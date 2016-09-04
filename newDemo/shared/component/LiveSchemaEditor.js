@@ -7,6 +7,7 @@ import { AutoForm } from 'redux-autoform';
 import { EditComponentFactory, DetailsComponentFactory } from '../../../src/index';
 import ButtonToolbar from './ButtonToolbar';
 import FormOptions from './FormOptions';
+import SubmitDialog from './SubmitDialog';
 import { Toolbar, ToolbarGroup, ToolbarTitle, RaisedButton, Paper, Card, IconButton } from 'material-ui';
 
 class LiveSchemaEditor extends Component {
@@ -16,7 +17,20 @@ class LiveSchemaEditor extends Component {
         formOptionsActions: PropTypes.object.isRequired
     };
 
-    getAutoFormProps(formName, initialValues) {
+    state = {
+        open: false,
+        result: null
+    };
+
+    handleResult = (args) => {
+        this.setState({open: true, result: args});
+    };
+
+    handleClose = () => {
+        this.setState({open: false});
+    };
+
+    getAutoFormProps = (formName, initialValues) => {
         let { metaForm, formOptions } = this.props;
 
         if (!formName) throw Error('Form name cannot be empty');
@@ -34,15 +48,10 @@ class LiveSchemaEditor extends Component {
             componentFactory: factory,
             errorRenderer: this.errorRenderer,
             initialValues: initialValues,
-            onSubmit: (...args) => console.log(args)
+            onSubmit: (...args) => this.handleResult(args)
         };
-    }
+    };
 
-    /**
-     * Renders an exception box
-     * @param ex
-     * @returns {XML}
-     */
     getErrorRenderer = (ex) => {
         return (
             <div>
@@ -53,24 +62,6 @@ class LiveSchemaEditor extends Component {
             </div>
         );
     };
-
-    // getUnderDevelopmentAlert = () => {
-    //     let { formOptions } = this.props;
-    //
-    //     if (formOptions.componentFactory == 'details') {
-    //         return (
-    //             <Alert bsStyle="danger">
-    //                 <p><b>Experimental feature</b></p>
-    //                 <p>Details forms are still under development. For now, it's just a lot of Static components instead of
-    //                     editing components. Also,
-    //                     it only works when the field doesn't explicitly specify the component, and it does'nt work for all types. Arrays,
-    //                     for instance, are still not supported.</p>
-    //             </Alert>
-    //         );
-    //     }
-    //
-    //     return null;
-    // };
 
     getAutoform = () => {
         let { preset } = this.props;
@@ -104,9 +95,11 @@ class LiveSchemaEditor extends Component {
 
     render() {
         let { reduxFormActions, preset, metaForm, formOptions, formOptionsActions } = this.props;
+        let { open, result } = this.state;
 
 	    return (
             <div>
+                <SubmitDialog open={open} args={result} handleClose={this.handleClose}/>
 	            <Paper zDepth={1} style={{marginBottom: "20px"}}>
 	                <Toolbar>
 		                <ToolbarGroup>

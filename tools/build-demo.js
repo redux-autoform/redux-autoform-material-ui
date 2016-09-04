@@ -7,7 +7,7 @@ import {exec} from 'child-process-promise';
 import {renderToString} from 'react-dom/server';
 import 'colors';
 
-require.extensions['.html'] = function (module, filename) {
+require.extensions['.html'] = (module, filename) => {
     module.exports = fs.readFileSync(filename, 'utf8');
 };
 
@@ -31,9 +31,9 @@ rimraf(demoBuiltRoot)
     .then(() => {
         console.log('writing static page files...');
 
-        let wrap = require('../demo/pages/BasePage.html')
-            .replace(/\$\{cssBundlePath\}/g, 'assets/main.css')
-            .replace(/\$\{jsBundlePath\}/g, 'assets/bundle.js');
+        let wrap = require('../demo/client/index.html')
+            .replace(/\$\{css\}/g, 'assets/bundle.css')
+            .replace(/\$\{js\}/g, 'assets/bundle.js');
 
         let demoHtmlPath = path.join(demoBuilt, 'demo.html');
         return fsep.writeFile(demoHtmlPath, wrap);

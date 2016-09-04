@@ -6,7 +6,7 @@
   "scripts": {
     "build-demo": "cross-env NODE_ENV=production babel-node ./tools/build-demo.js",
     "build-lib": "cross-env NODE_ENV=production babel-node ./tools/build-lib.js",
-    "start": "cross-env NODE_ENV=development babel-node ./demo/Server.js",
+    "start": "cross-env NODE_ENV=development babel-node ./demo/server/index.js",
     "test": "mocha ./test --compilers js:babel-register",
     "coverage": "babel-node ./node_modules/.bin/isparta cover _mocha"
   },

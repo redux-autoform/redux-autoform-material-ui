@@ -1,6 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 import LiveSchemaEditorForm from './LiveSchemaEditorForm';
-import presets from '../presets/presets';
+import presets from '../../client/presets/presets';
 import _ from 'underscore';
 import pkg from '../../../package.json';
 import { AutoForm } from 'redux-autoform';

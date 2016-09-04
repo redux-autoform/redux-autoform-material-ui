@@ -1,6 +1,6 @@
 import clone from 'clone';
 import _ from 'underscore';
-import presets from '../../presets/presets';
+import presets from '../../../client/presets/presets';
 import FormActions from '../actions/FormOptionsActions';
 
 const defaultSchema = _.find(presets, p => p.name == 'default');

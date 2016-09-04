@@ -8,7 +8,7 @@ import rootReducer from '../reducers/RootReducer';
 import DevTools from '../../components/DevTools';
 import observe from './StoreObserver';
 import { updateForm } from '../actions/FormOptionsActions';
-import presets from '../../presets/presets';
+import presets from '../../../client/presets/presets';
 import _ from 'underscore';
 
 const router = routerMiddleware(hashHistory);

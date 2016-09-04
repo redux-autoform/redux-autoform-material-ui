@@ -2,7 +2,7 @@ import React, {Component, PropTypes} from 'react';
 import CodeEditor from './CodeEditor';
 import { reduxForm } from 'redux-form';
 import { browserHistory } from 'react-router';
-import presets from '../presets/presets';
+import presets from '../../client/presets/presets';
 import { SelectField, MenuItem, TextField } from 'material-ui';
 
 class LiveSchemaEditorForm extends Component {

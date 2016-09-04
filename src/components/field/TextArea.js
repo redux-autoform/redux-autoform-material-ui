@@ -31,9 +31,10 @@ class TextArea extends Component {
                 hintText={placeholder}
                 floatingLabelText={displayName}
                 type="text"
-                rows={rows}
+                rowsMax={rows}
                 onChange={onChange}
                 fullWidth
+                multiLine
             />
         );
     }

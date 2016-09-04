@@ -1,0 +1,62 @@
+{
+    entities: [
+        {
+            name: "contact",
+            fields: [
+                {
+                    component: "Number",
+                    name: "default",
+                    displayName: "Default",
+                    type: "string",
+                    min: 0,
+                    max: 100
+                },
+                {
+                    component: "Number",
+                    name: "required",
+                    displayName: "Required",
+                    type: "string",
+                    required: true,
+                    min: 0,
+                    max: 100
+                },
+                {
+                    component: "Number",
+                    name: "placeholder",
+                    displayName: "Placeholder",
+                    type: "string",
+                    placeholder: "This is a place holder",
+                    min: 0,
+                    max: 100
+                },
+                {
+                    component: "Number",
+                    name: "addonBefore",
+                    displayName: "Addon before",
+                    type: "string",
+                    addonBefore: "This is something before",
+                    min: 0,
+                    max: 100
+                },
+                {
+                    component: "Number",
+                    name: "addonAfter",
+                    displayName: "Addon after",
+                    type: "string",
+                    addonAfter: "This is something after",
+                    min: 0,
+                    max: 100
+                },
+                {
+                    component: "Number",
+                    name: "help",
+                    displayName: "Help",
+                    type: "string",
+                    help: "This is some help",
+                    min: 0,
+                    max: 100
+                }
+            ]
+        }
+    ]
+}

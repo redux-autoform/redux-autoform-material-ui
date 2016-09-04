@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import LiveSchemaEditorContainer from '../containers/LiveSchemaEditorContainer';
 
-class LiveSchemaEditorPage extends Component {
+class Demo extends Component {
     render() {
         let { location } = this.props;
         
@@ -9,4 +9,4 @@ class LiveSchemaEditorPage extends Component {
     }
 }
 
-export default LiveSchemaEditorPage;
+export default Demo;

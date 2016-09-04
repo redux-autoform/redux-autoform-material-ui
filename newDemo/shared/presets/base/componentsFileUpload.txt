@@ -1,0 +1,28 @@
+{
+    entities: [
+        {
+            name: "contact",
+            fields: [
+                {
+                    name: "fileUploader",
+                    type: "string",
+
+                }
+            ],
+            layouts: [
+                {
+                    name: "edit",
+                    fields: [
+                        {
+                            name: "fileUploader",
+                            displayName: "File Upload",
+                            component: "FileUpload",
+                            url: "/upload"
+
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

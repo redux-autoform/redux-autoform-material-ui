@@ -1,0 +1,108 @@
+{
+    entities: [
+        {
+            name: "contact",
+            fields: [
+                { name: "f1", displayName: "Field 1", type: "string" },
+                { name: "f2", displayName: "Field 2", type: "string" },
+                { name: "f3", displayName: "Field 3", type: "string" },
+                { name: "f4", displayName: "Field 4", type: "string" },
+                { name: "f5", displayName: "Field 5", type: "string" },
+                { name: "f6", displayName: "Field 6", type: "string" },
+                { name: "f7", displayName: "Field 7", type: "string" },
+                { name: "f8", displayName: "Field 8", type: "string" },
+            ],
+            layouts: [
+                {
+                    name: 'wizard',
+                    component: 'WizardGroup',
+                    groups: [
+                        {
+                            title: 'First',
+                            name: "first",
+                            fields: [
+                                {
+                                    name: 'f1'
+                                },
+                                {
+                                    name: 'f2',
+                                    size: 8
+                                }
+                            ],
+                            transition: (context) => {
+                                if(context.fields.f1 === "goTo3")
+                                   context.goToStep("third");
+                                else
+                                   context.next();
+                            }
+                        },
+                        {
+                            title: 'Second',
+                            name: "second",
+                            orientation: 'horizontal',
+                            fields: [
+                                {
+                                    name: 'f3'
+                                },
+                                {
+                                    name: 'f4'
+                                }
+                            ]
+                        },
+                        {
+                            title: 'Third',
+                            name: "third",
+                            orientation: 'horizontal',
+                            fields: [
+                                {
+                                    name: 'f5',
+                                    size: 4
+                                }
+
+                            ],
+                            transition: (context) => {
+                                if(context.fields.f2 === "goToLast")
+                                   context.goToStep("last");
+                                else
+                                   context.next();
+                            }
+                        },
+                        {
+                            title: 'Fourth',
+                            name: "fourth",
+                            orientation: 'horizontal',
+                            fields: [
+                                {
+                                    name: 'f6',
+                                    size: 8
+                                }
+                            ]
+                        },
+                        {
+                            title: 'Fifth',
+                            name: "fifth",
+                            orientation: 'horizontal',
+                            fields: [
+                                {
+                                    name: 'f7',
+                                    size: 8
+                                }
+                            ]
+                        },
+                        {
+                            title: 'Last',
+                            name: "last",
+                            orientation: 'horizontal',
+                            fields: [
+                                {
+                                    name: 'f8',
+                                    innerSize: 3
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

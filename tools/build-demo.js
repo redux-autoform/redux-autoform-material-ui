@@ -7,7 +7,7 @@ import {exec} from 'child-process-promise';
 import {renderToString} from 'react-dom/server';
 import 'colors';
 
-require.extensions['.html'] = function (module, filename) {
+require.extensions['.html'] = (module, filename) => {
     module.exports = fs.readFileSync(filename, 'utf8');
 };
 
@@ -31,18 +31,17 @@ rimraf(demoBuiltRoot)
     .then(() => {
         console.log('writing static page files...');
 
-        let wrap = require('../demo/pages/BasePage.html')
-            .replace(/\$\{cssBundlePath\}/g, 'assets/main.css')
-            .replace(/\$\{jsBundlePath\}/g, 'assets/bundle.js');
+        let wrap = require('../demo/client/index.html')
+            .replace(/\$\{css\}/g, 'assets/main.css')
+            .replace(/\$\{js\}/g, 'assets/bundle.js');
 
         let demoHtmlPath = path.join(demoBuilt, 'demo.html');
+
+        console.log('finish writing page files...');
+
         return fsep.writeFile(demoHtmlPath, wrap);
 
     })
-    .then(() => {
-        console.log('running webpack on webpack.config.demo.prod.js...');
-        return exec(`webpack --config webpack.config.demo.prod.js`);
-    })
     .then(() => fsep.copyAsync(licenseSrc, licenseDest))
     .then(() => console.log('demo built'.green))
-    .catch(e=> console.log(e));
+    .catch(e => console.log(e));

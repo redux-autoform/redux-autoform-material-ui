@@ -108,13 +108,11 @@ class WizardGroup extends BaseGroup {
 
     getButtonSection = (steps) => {
         let { position, totalSteps } = this.state;
-        let { submitting } = this.props;
 
         let { transition } = steps[position];
 
         let nextButton = null;
         let backButton = null;
-        let submitButton = null;
 
         if (position != 0) {
             backButton = (
@@ -128,21 +126,14 @@ class WizardGroup extends BaseGroup {
             );
         }
 
-        if (position == totalSteps) {
-            submitButton = (
-                <RaisedButton label="Submit" type="submit" onClick={transition? () => transition(this.wizardContext) : this.nextStep} disabled={submitting || false} primary/>
-            )
-        }
-
         return (
             <div className="row">
                 <div className="col-md-12">
-                    <Toolbar>
+                    <Toolbar style={{backgroundColor: "#ffffff"}}>
                         <ToolbarGroup firstChild/>
                         <ToolbarGroup lastChild>
                             {backButton}
                             {nextButton}
-                            {submitButton}
                         </ToolbarGroup>
                     </Toolbar>
                 </div>

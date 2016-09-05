@@ -12,11 +12,9 @@ const lessDest = path.join(lib, '/styles');
 console.log('building lib'.green);
 
 rimraf(lib)
-    .then(function (error) {
+    .then((error) => {
         let babelCli = '"./node_modules/.bin/babel" src -d lib';
-        return exec(babelCli).fail(function (error) {
-            console.log(colors.red(error))
-        });
+        return exec(babelCli).fail((error) => console.log(colors.red(error)));
     })
     .then(() => fsep.copyAsync(lessSrc, lessDest))
     .then(() => console.log('lib built'.green));

@@ -4,9 +4,9 @@
   "description": "Material-UI integration for redux-autoform",
   "main": "index.js",
   "scripts": {
-    "build-demo": "cross-env NODE_ENV=production babel-node ./tools/build-demo.js",
+    "build-demo": "cross-env NODE_ENV=production babel-node ./node_modules/.bin/webpack --config webpack.config.demo.prod.js && ./tools/build-demo.js",
     "build-lib": "cross-env NODE_ENV=production babel-node ./tools/build-lib.js",
-    "start": "cross-env NODE_ENV=development babel-node ./demo/Server.js",
+    "start": "cross-env NODE_ENV=development babel-node ./demo/server/index.js",
     "test": "mocha ./test --compilers js:babel-register",
     "coverage": "babel-node ./node_modules/.bin/isparta cover _mocha"
   },
@@ -49,6 +49,7 @@
     "cross-env": "^2.0.0",
     "css-loader": "^0.23.1",
     "express": "^4.14.0",
+    "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.9.0",
     "fs-extra-promise": "^0.4.0",
     "isparta": "^4.0.0",

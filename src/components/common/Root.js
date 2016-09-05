@@ -6,13 +6,13 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 const Root = ({children, handleSubmit}) => {
     return (
 	    <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
-	        <div className="meta-form">
-	            <form onSubmit={handleSubmit}>
-	                <div className="container-fluid">
-	                    {children}
-	                </div>
-	            </form>
-	        </div>
+            <div className="container-fluid">
+                <div className="meta-form">
+                    <form onSubmit={handleSubmit}>
+                        {children}
+                    </form>
+                </div>
+            </div>
 	    </MuiThemeProvider>
     );
 };

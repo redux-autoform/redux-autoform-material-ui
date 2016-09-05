@@ -5,7 +5,9 @@ import Root from '../components/common/Root';
 import Group from '../components/group/Group';
 import TabGroup from '../components/group/TabGroup';
 import WizardGroup from '../components/group/WizardGroup';
+import WizardTabGroup from '../components/group/WizardTabGroup';
 
+import Number from '../components/field/Number';
 import TextBox from '../components/field/TextBox';
 import Password from '../components/field/Password';
 import Email from '../components/field/Email';
@@ -30,7 +32,8 @@ class MaterialUIFactory extends ComponentFactory {
     setBaseComponents = () => {
 	    this.registerFieldComponent('TextBox', ['string', 'int', 'float', 'datetime', 'date', 'time'], TextBox);
 	    this.registerFieldComponent('Password', ['string'], Password);
-	    this.registerFieldComponent('Email', ['string'], Email);
+	    this.registerFieldComponent('Number', ['string'], Number);
+        this.registerFieldComponent('Email', ['string'], Email);
 	    this.registerFieldComponent('Select', ['string'], Select);
 	    this.registerFieldComponent('Radio', ['string'], Radio);
 	    this.registerFieldComponent('Lookup', ['string'], Lookup);
@@ -45,6 +48,7 @@ class MaterialUIFactory extends ComponentFactory {
         this.registerGroupComponent('Group', Group);
         this.registerGroupComponent('TabGroup', TabGroup);
         this.registerGroupComponent('WizardGroup', WizardGroup);
+        this.registerGroupComponent('WizardTabGroup', WizardTabGroup);
 
         this.registerRootComponent("default", Root);
     };

@@ -19,21 +19,26 @@ class TextBox extends Component {
     };
 
     render() {
-        let { value, error, displayName, name, onChange, placeholder } = this.props;
-
-        return (
-			<TextField
-				name={name}
-				value={value}
-				errorText={error}
-				hintText={placeholder}
-				floatingLabelText={displayName}
-				type="text"
-				onChange={onChange}
-				fullWidth
-			/>
-		);
-    }
+        let { value, error, displayName, name, onChange, placeholder, touched, active } = this.props;
+	    let errors = null;
+	    
+	    if (touched || active) {
+		    errors = error;
+	    }
+	    
+	    return (
+		    <TextField
+			    name={name}
+			    value={value}
+			    errorText={errors}
+			    hintText={placeholder}
+			    floatingLabelText={displayName}
+			    type="text"
+			    onChange={onChange}
+			    fullWidth
+		    />
+	    );
+	}
 }
 
 export default TextBox;

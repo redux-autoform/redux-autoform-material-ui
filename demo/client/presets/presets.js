@@ -12,14 +12,14 @@ export default [
         entityName: 'contact',
         layoutName: 'edit',
         formTitle: 'Edit contact',
-        schema: require('./base/default.txt')
+        schema: require('./base/group/Default.txt')
     },
     {
         name: 'layouts',
         displayName: 'Layouts',
         entityName: 'contact',
         layoutName: 'edit',
-        schema: require('./base/layouts.txt')
+        schema: require('./base/group/Group.txt')
     },
     {
         name: 'layoutsTabs',
@@ -27,7 +27,7 @@ export default [
         entityName: 'contact',
         layoutName: 'edit',
         formTitle: 'Edit contact',
-        schema: require('./base/layoutsTabs.txt')
+        schema: require('./base/group/Tabs.txt')
     },
     {
         name: 'layoutsWizardTabs',
@@ -35,7 +35,7 @@ export default [
         entityName: 'contact',
         layoutName: 'edit',
         formTitle: 'Edit contact',
-        schema: require('./base/layoutsWizardTabs.txt')
+        schema: require('./base/group/WizardTabs.txt')
     },
     {
         name: 'layoutsWizard',
@@ -43,7 +43,7 @@ export default [
         entityName: 'contact',
         layoutName: 'wizard',
         formTitle: 'Edit contact',
-        schema: require('./base/layoutsWizard.txt')
+        schema: require('./base/group/Wizard.txt')
     },
     {
         name: 'layoutsConditionalWizard',
@@ -51,7 +51,7 @@ export default [
         entityName: 'contact',
         layoutName: 'wizard',
         formTitle: 'Edit contact',
-        schema: require('./base/layoutsConditionalWizard.txt')
+        schema: require('./base/group/ConditionalWizard.txt')
     },
     {
         name: 'schemaTypeSimple',
@@ -59,7 +59,7 @@ export default [
         entityName: '',
         layoutName: '',
         formTitle: 'Edit contact',
-        schema: require('./base/schemaTypesSimple.txt')
+        schema: require('./base/group/SchemaSimple.txt')
     },
     {
         name: 'componentsCheckbox',
@@ -67,7 +67,7 @@ export default [
         entityName: '',
         layoutName: '',
         formTitle: 'Edit contact',
-        schema: require('./base/ComponentsCheckbox.txt')
+        schema: require('./base/components/Checkbox.txt')
     },
     {
         name: 'componentsDateTimePicker',
@@ -75,7 +75,7 @@ export default [
         entityName: 'contact',
         layoutName: '',
         formTitle: 'Edit contact',
-        schema: require('./base/componentsDateTimePicker.txt')
+        schema: require('./base/components/DateTimePicker.txt')
     },
     {
         name: 'componentsTextBox',
@@ -83,7 +83,7 @@ export default [
         entityName: 'contact',
         layoutName: '',
         formTitle: 'Edit contact',
-        schema: require('./base/componentsTextBox.txt')
+        schema: require('./base/components/TextBox.txt')
     },
     {
         name: 'componentsNumber',
@@ -91,7 +91,7 @@ export default [
         entityName: 'contact',
         layoutName: '',
         formTitle: 'Edit contact',
-        schema: require('./base/componentsNumber.txt')
+        schema: require('./base/components/Number.txt')
     },
     {
         name: 'componentsTextBoxInt',
@@ -99,7 +99,7 @@ export default [
         entityName: 'contact',
         layoutName: '',
         formTitle: 'Edit contact',
-        schema: require('./base/componentsTextBoxInt.txt')
+        schema: require('./base/components/TextBoxInt.txt')
     },
     {
         name: 'componentsTextBoxFloat',
@@ -107,7 +107,7 @@ export default [
         entityName: 'contact',
         layoutName: '',
         formTitle: 'Edit contact',
-        schema: require('./base/componentsTextBoxFloat.txt')
+        schema: require('./base/components/TextBoxFloat.txt')
     },
     {
         name: 'componentsPassword',
@@ -115,7 +115,7 @@ export default [
         entityName: 'contact',
         layoutName: '',
         formTitle: 'Edit contact',
-        schema: require('./base/componentsPassword.txt')
+        schema: require('./base/components/Password.txt')
     },
     {
         name: 'componentsTextArea',
@@ -123,7 +123,7 @@ export default [
         entityName: 'contact',
         layoutName: '',
         formTitle: 'Edit contact',
-        schema: require('./base/componentsTextArea.txt')
+        schema: require('./base/components/TextArea.txt')
     },
     {
         name: 'componentsSelect',
@@ -131,7 +131,7 @@ export default [
         entityName: 'contact',
         layoutName: '',
         formTitle: 'Edit contact',
-        schema: require('./base/componentsSelect.txt')
+        schema: require('./base/components/Select.txt')
     },
     {
         name: 'componentsRadio',
@@ -139,7 +139,7 @@ export default [
         entityName: 'contact',
         layoutName: '',
         formTitle: 'Edit contact',
-        schema: require('./base/componentsRadio.txt')
+        schema: require('./base/components/Radio.txt')
     },
     {
         name: 'componentsLookup',
@@ -147,7 +147,7 @@ export default [
         entityName: 'contact',
         layoutName: '',
         formTitle: 'Edit contact',
-        schema: require('./base/componentsLookup.txt')
+        schema: require('./base/components/Lookup.txt')
     },
     {
         name: 'componentsArrayContainer',
@@ -155,7 +155,7 @@ export default [
         entityName: 'contact',
         layoutName: '',
         formTitle: 'Edit contact',
-        schema: require('./base/componentsArrrayContainer.txt')
+        schema: require('./base/components/ArrrayContainer.txt')
     },
     {
         name: 'componentsFieldGroup',
@@ -163,7 +163,7 @@ export default [
         entityName: 'contact',
         layoutName: 'edit',
         formTitle: 'Edit contact',
-        schema: require('./base/componentsFieldGroup.txt')
+        schema: require('./base/components/FieldGroup.txt')
     },
     {
         name: 'componentsFileUpload',
@@ -171,8 +171,6 @@ export default [
         entityName: 'contact',
         layoutName: 'edit',
         formTitle: 'Edit contact',
-        schema: require('./base/componentsFileUpload.txt')
+        schema: require('./base/components/FileUpload.txt')
     }
-
-
 ]

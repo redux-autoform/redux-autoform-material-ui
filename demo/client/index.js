@@ -11,11 +11,14 @@ import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import numbro from 'numbro';
-import { numbroLocalizer } from 'redux-autoform';
+import moment from 'moment';
+import { numbroLocalizer, momentLocalizer } from 'redux-autoform';
 
 import './styles/Styles.less';
 
 numbroLocalizer(numbro);
+momentLocalizer(moment);
+
 injectTapEventPlugin();
 
 const store = configureStore();

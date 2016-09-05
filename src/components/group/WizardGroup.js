@@ -80,7 +80,7 @@ class WizardGroup extends BaseGroup {
     isFlowInMyPosition = () => {
         let { stepFlow, position } = this.state;
         let { length } = stepFlow;
-        if(length > 0)
+        if (length > 0)
             return stepFlow[length - 1].position == position;
 
         return false;

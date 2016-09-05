@@ -2,12 +2,18 @@ import React, { Component, PropTypes } from 'react';
 import BaseGroup from './BaseGroup';
 import { Tab, Tabs } from 'material-ui';
 
+const mergeJson = (arr) => arr.reduce((prev, actual) => ({...prev, ...actual}));
+
 class TabGroup extends BaseGroup {
 	static propTypes = {
 		component: PropTypes.string,
 		fields: PropTypes.array.isRequired,
 		layout: PropTypes.object.isRequired,
 		componentFactory: PropTypes.object.isRequired
+	};
+
+	tabsContext = {
+		fields: {}
 	};
 
 	state = {
@@ -62,10 +68,20 @@ class TabGroup extends BaseGroup {
 		this.setState({position: position});
 	};
 
+	updateTabContext = () => {
+		let { fields } = this.props;
+
+		// Reads each field value of autoform and creates an object fieldName => fieldValue.
+		this.tabsContext.fields = mergeJson(fields.map(field => ({[field.name]: field.reduxFormProps.error})));
+	}; 
+
 	render() {
 		let {layout} = this.props;
 		let {position} = this.state;
 		let content = this.getContent();
+
+		this.updateTabContext();
+		console.info("This is the context " + JSON.stringify(this.tabsContext.fields));
 
 		return (
 			<section>

@@ -21,13 +21,18 @@ class TextBox extends Component {
     };
 
     render() {
-        let { value, error, displayName, name, onChange, placeholder, min, max } = this.props;
+        let { value, error, displayName, name, onChange, placeholder, min, max, touched, active } = this.props;
+	    let errors = null;
+
+	    if (touched || active) {
+		    errors = error;
+	    }
 
         return (
 			<TextField
 				name={name}
 				value={min || value}
-				errorText={error}
+				errorText={errors}
 				hintText={placeholder}
 				floatingLabelText={displayName}
 				type="number"

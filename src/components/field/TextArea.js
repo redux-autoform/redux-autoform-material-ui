@@ -21,13 +21,18 @@ class TextArea extends Component {
 	};
 
     render() {
-        let {value, error, displayName, name, onChange, rows, placeholder} = this.props;
+        let {value, error, displayName, name, onChange, rows, placeholder, touched, active} = this.props;
+        let errors = null;
+
+        if (touched || active) {
+            errors = error;
+        }
 
         return (
             <TextField
                 name={name}
                 value={value}
-                errorText={error}
+                errorText={errors}
                 hintText={placeholder}
                 floatingLabelText={displayName}
                 type="text"

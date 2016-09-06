@@ -20,13 +20,18 @@ class Email extends Component {
     };
 
     render() {
-        let {value, error, displayName, name, onChange, placeholder} = this.props;
+        let {value, error, displayName, name, onChange, placeholder, touched, active} = this.props;
+        let errors = null;
+
+        if (touched || active) {
+            errors = error;
+        }
 
         return (
             <TextField
                 name={name}
                 value={value}
-                errorText={error}
+                errorText={errors}
                 hintText={placeholder}
                 floatingLabelText={displayName}
                 type="email"

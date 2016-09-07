@@ -14,6 +14,8 @@ import numbro from 'numbro';
 import moment from 'moment';
 import { numbroLocalizer, momentLocalizer } from 'redux-autoform';
 
+import 'babel-polyfill';
+
 import './styles/Styles.less';
 
 numbroLocalizer(numbro);

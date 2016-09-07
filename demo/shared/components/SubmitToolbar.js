@@ -12,6 +12,8 @@ class SubmitToolbar extends Component {
 	    let { pristine, submitting, errors } = this.props;
 	    let disabled = !!(pristine || errors.length > 0 || submitting);
 
+		console.info("This is the error object => " + JSON.stringify(errors, null, 2));
+
         return (
             <Toolbar style={{backgroundColor: "#ffffff"}}>
                 <ToolbarGroup firstChild/>

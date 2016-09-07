@@ -10,8 +10,6 @@ class TextArea extends Component {
         displayName: PropTypes.string,
         name: PropTypes.string.isRequired,
         error: PropTypes.string,
-        addonBefore: PropTypes.string,
-        addonAfter: PropTypes.string,
         fieldLayout: PropTypes.string,
 	    rows: PropTypes.number
     };

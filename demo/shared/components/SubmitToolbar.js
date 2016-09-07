@@ -1,16 +1,22 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { Toolbar, ToolbarGroup, RaisedButton } from 'material-ui';
 
 class SubmitToolbar extends Component {
-    render() {
-        let { submitting } = this.props;
-        console.info("This are the props " + JSON.stringify(this.props, null, 2));
+	static propTypes = {
+		pristine: PropTypes.bool.isRequired,
+		submitting: PropTypes.bool.isRequired,
+		errors: PropTypes.array.isRequired
+	};
+	
+	render() {
+	    let { pristine, submitting, errors } = this.props;
+	    let disabled = !!(pristine || errors.length > 0 || submitting);
 
         return (
             <Toolbar style={{backgroundColor: "#ffffff"}}>
                 <ToolbarGroup firstChild/>
                 <ToolbarGroup lastChild>
-                    <RaisedButton label="Submit" type="submit" disabled={submitting} primary/>
+                    <RaisedButton label="Submit" type="submit" disabled={disabled} primary/>
                 </ToolbarGroup>
             </Toolbar>
         );

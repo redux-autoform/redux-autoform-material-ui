@@ -7,7 +7,7 @@
     "build-demo": "cross-env NODE_ENV=production babel-node ./node_modules/.bin/webpack --config webpack.config.demo.prod.js && ./tools/build-demo.js",
     "build-lib": "cross-env NODE_ENV=production babel-node ./tools/build-lib.js",
     "start": "cross-env NODE_ENV=development babel-node ./demo/server/index.js",
-    "test": "mocha ./test --compilers js:babel-register",
+    "test": "mocha ./test --compilers js:babel-register --require babel-polyfill",
     "coverage": "babel-node ./node_modules/.bin/isparta cover _mocha"
   },
   "repository": {

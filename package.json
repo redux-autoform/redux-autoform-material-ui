@@ -27,11 +27,12 @@
   },
   "homepage": "https://github.com/redux-autoform/redux-autoform-material-ui#readme",
   "dependencies": {
+    "isomorphic-fetch": "^2.2.1",
     "material-ui": "^0.15.2",
     "react": "^15.2.1",
     "react-dom": "^15.2.1",
-    "redux-autoform-utils": "^1.0.4-experimental",
-    "react-redux": "^4.4.5"
+    "react-redux": "^4.4.5",
+    "redux-autoform-utils": "^1.0.4-experimental"
   },
   "devDependencies": {
     "babel-cli": "^6.6.5",

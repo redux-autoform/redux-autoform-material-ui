@@ -20,11 +20,7 @@ class TextArea extends Component {
 
     render() {
         let {value, error, displayName, name, onChange, rows, placeholder, touched, active} = this.props;
-        let errors = null;
-
-        if (touched || active) {
-            errors = error;
-        }
+        let errors = (touched || active)? error : null;
 
         return (
             <TextField

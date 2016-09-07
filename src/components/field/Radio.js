@@ -11,7 +11,7 @@ class Radio extends Component {
         let { options, name, fieldLayout } = this.props;
 
         // // these props don't vary per item
-        // let invariantRadioProps = { inline: fieldLayout == 'inline', name, onChange: this.handleChange };
+        // let invariantRadioProps = { inline: fieldLayout == 'inline', name, onChange: this.onChange };
 
         return options.map(({text, value}, index) => (
             <RadioButton key={index} label={text} value={value} onChange={this.handleChange}/>

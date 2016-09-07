@@ -20,11 +20,7 @@ class TextBox extends Component {
 
     render() {
         let { value, error, displayName, name, onChange, placeholder, min, max, touched, active } = this.props;
-	    let errors = null;
-
-	    if (touched || active) {
-		    errors = error;
-	    }
+	    let errors = (touched || active)? error : null;
 
         return (
 			<TextField

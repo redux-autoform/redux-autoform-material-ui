@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { Dialog, FlatButton } from 'material-ui';
 
-export default class SubmitDialog extends Component {
+class SubmitDialog extends Component {
     static propTypes = {
         open: PropTypes.bool.isRequired,
         handleClose: PropTypes.func.isRequired,
@@ -38,3 +38,5 @@ export default class SubmitDialog extends Component {
         );
     }
 }
+
+export default SubmitDialog;

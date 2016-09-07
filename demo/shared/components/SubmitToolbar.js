@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { Toolbar, ToolbarGroup, RaisedButton } from 'material-ui';
 
-class Layout extends Component {
+class SubmitToolbar extends Component {
     render() {
         let { submitting } = this.props;
+        console.info("This are the props " + JSON.stringify(this.props, null, 2));
 
         return (
             <Toolbar style={{backgroundColor: "#ffffff"}}>
@@ -16,4 +17,4 @@ class Layout extends Component {
     }
 }
 
-export default Layout;
+export default SubmitToolbar;

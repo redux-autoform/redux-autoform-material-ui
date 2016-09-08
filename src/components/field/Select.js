@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { SelectField, MenuItem } from 'material-ui';
-import Utils from '../../util/FetchUtils';
+import callApi from '../../util/FetchUtils';
 
 class Select extends Component {
     static propTypes = {
@@ -17,7 +17,9 @@ class Select extends Component {
     };
 
 	state = {
-		value: []
+		value: [],
+        urlOptions: [],
+        urlErrors: null
 	};
 
 	onChange = (event, index, value) => {
@@ -30,30 +32,46 @@ class Select extends Component {
 	getItems = () => {
 		//TODO evaluate if options.url come and array comes too
 		let { options } = this.props;
-		let { url } = options;
+		let { url, labelKey, valueKey } = options;
+        let { urlOptions, urlErrors } = this.state;
 
 		if (Array.isArray(options)) {
-			return this.mapItems(options);
+			return options.map(({ value, text }, index) => (
+				<MenuItem
+                    key={`select-item-${index}-wrapper`}
+                    value={value}
+                    primaryText={text}
+                />
+			));
 		}
-		else if (url) {
-			let newOptions = Utils.fetch(url);
-
-			if (Array.isArray(newOptions)) {
-				return this.mapItems(newOptions);
-			}
-			else {
-				console.error(
-					`Select - You are trying to render this object ${JSON.stringify(newOptions, null, 2)}`
-				);
-			}
-		}
+		else if (url && labelKey && valueKey) {
+            if (Array.isArray(urlOptions)) {
+                return urlOptions.map((item, index) => (
+                    <MenuItem
+                        key={`select-item-${index}-wrapper`}
+                        value={item[valueKey]}
+                        primaryText={item[labelKey]}
+                    />
+                ));
+            }
+            else if (urlErrors) {
+                console.error(
+                    `Select - There was the following error when fetching from resource =>
+                    ${JSON.stringify(urlErrors, null, 2)}`
+                );
+            }
+        }
 	};
 
-	mapItems = (arr) => {
-		return arr.map(({ value, text }, index) => (
-			<MenuItem key={index} value={value} primaryText={text}/>
-		));
-	};
+	componentWillMount() {
+        let { options } = this.props;
+        let { url } = options;
+
+        if (url) {
+            callApi(url).then(response => response.json())
+                .then(response => this.setState({ urlOptions: response }));
+        }
+    }
 
     render() {
         let { displayName, placeholder, error, touched, active } = this.props;

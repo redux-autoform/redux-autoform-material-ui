@@ -57,6 +57,18 @@
                         { value: 'option2', text: 'Option 2' }
                     ],
                     help: 'This is some help'
+                },
+                {
+                    name: "Url",
+                    displayName: "Url",
+                    type: "string",
+                    component: "Select",
+                    help: "Lists the React project open-issues",
+                    options: {
+                        url: "https://api.github.com/repos/facebook/react/issues",
+                        valueKey: "id",
+                        labelKey: "title"
+                    }
                 }
             ]
         }

@@ -33,6 +33,8 @@ class Radio extends Component {
             nameBlock = <h4 style={{color: "#757575"}}>{displayName}</h4>;
         }
 
+        console.info("Radio - This are the props => " + JSON.stringify(Object.keys(this.props), null, 2));
+
         return (
             <FormGroup>
                 {nameBlock}

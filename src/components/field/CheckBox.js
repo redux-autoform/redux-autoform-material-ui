@@ -32,6 +32,8 @@ class CheckBox extends Component {
 		    value = true;
 	    }
 
+		console.info("CheckBox - This are the props => " + JSON.stringify(Object.keys(this.props), null, 2));
+
 		return (
 			<FormGroup>
 				<Checkbox

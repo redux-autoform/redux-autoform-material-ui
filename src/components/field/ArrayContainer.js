@@ -129,6 +129,8 @@ class ArrayContainer extends Component {
         let components = this.getAllComponents();
         let addBar = this.getAddBar();
 
+        console.info("ArrayContainer - This are the props => " + JSON.stringify(Object.keys(this.props), null, 2));
+
         return (
             <FormGroup>
                 <div className="array-container-content">

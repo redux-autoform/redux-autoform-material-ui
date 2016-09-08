@@ -19,6 +19,8 @@ class TextBox extends Component {
         let { value, error, displayName, name, onChange, placeholder, min, max, touched, active, onBlur } = this.props;
 	    let errors = (touched || active)? error : null;
 
+        console.info("TextBox - This are the props => " + JSON.stringify(Object.keys(this.props), null, 2));
+
         return (
             <FormGroup>
                 <TextField

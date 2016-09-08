@@ -18,6 +18,8 @@ class Email extends Component {
         let {value, error, displayName, name, onChange, placeholder, touched, active, onBlur } = this.props;
         let errors = (touched || active)? error : null;
 
+        console.info("Email - This are the props => " + JSON.stringify(Object.keys(this.props), null, 2));
+
         return (
             <FormGroup>
                 <TextField

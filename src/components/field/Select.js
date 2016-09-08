@@ -83,6 +83,8 @@ class Select extends Component {
             )
         }
 
+        console.info("Select - This are the props => " + JSON.stringify(Object.keys(this.props), null, 2));
+
         return (
             <div>
                 <SelectField

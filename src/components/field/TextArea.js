@@ -16,7 +16,7 @@ class TextArea extends Component {
     };
 
     render() {
-        let {value, error, displayName, name, onChange, rows, placeholder, touched, active} = this.props;
+        let {value, error, displayName, name, onChange, rows, placeholder, touched, active, onBlur} = this.props;
         let errors = (touched || active)? error : null;
 
         return (
@@ -30,6 +30,7 @@ class TextArea extends Component {
                     type="text"
                     rowsMax={rows}
                     onChange={onChange}
+                    onBlur={onBlur}
                     fullWidth
                     multiLine
                 />

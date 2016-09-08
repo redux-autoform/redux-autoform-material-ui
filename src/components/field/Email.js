@@ -15,9 +15,7 @@ class Email extends Component {
     };
 
     render() {
-        let {value, error, displayName, name, onChange, placeholder, touched, active} = this.props;
-        console.info("This is the redux form props " + JSON.stringify(this.props.reduxFormProps, null, 2));
-
+        let {value, error, displayName, name, onChange, placeholder, touched, active, onBlur } = this.props;
         let errors = (touched || active)? error : null;
 
         return (
@@ -30,6 +28,7 @@ class Email extends Component {
                     floatingLabelText={displayName}
                     type="email"
                     onChange={onChange}
+                    onBlur={onBlur}
                     fullWidth
                 />
             </FormGroup>

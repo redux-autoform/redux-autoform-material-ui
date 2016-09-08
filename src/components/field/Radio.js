@@ -15,12 +15,12 @@ class Radio extends Component {
         // let invariantRadioProps = { inline: fieldLayout == 'inline', name, onChange: this.onChange };
 
         return options.map(({text, value}, index) => (
-            <RadioButton key={index} label={text} value={value} onChange={this.onChange}/>
+            <RadioButton key={index} label={text} value={value}/>
         ))
     };
 
     render() {
-        let { error, touched, displayName, name, help, fieldLayout, innerSize, value } = this.props;
+        let { error, touched, displayName, name, help, fieldLayout, innerSize, value, onBlur } = this.props;
         // let formGroupProps = { error, touched, displayName, name, help, fieldLayout, innerSize };
         let helpBlock = null;
         let nameBlock = null;
@@ -36,7 +36,12 @@ class Radio extends Component {
         return (
             <FormGroup>
                 {nameBlock}
-                <RadioButtonGroup name={name} valueSelected={value}>
+                <RadioButtonGroup
+                    name={name}
+                    valueSelected={value}
+                    onChange={this.onChange}
+                    onBlur={onBlur}
+                >
                     {this.getOptions()}
                 </RadioButtonGroup>
                 {helpBlock}

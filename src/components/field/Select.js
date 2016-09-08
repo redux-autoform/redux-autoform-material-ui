@@ -70,7 +70,7 @@ class Select extends Component {
     }
 
     render() {
-        let { displayName, placeholder, error, touched, active, help } = this.props;
+        let { displayName, placeholder, error, touched, active, help, onBlur } = this.props;
 	    let errors = (touched || active)? error : null;
 	    let { value } = this.state;
         let helpBlock = null;
@@ -91,6 +91,7 @@ class Select extends Component {
                     value={value}
                     hintText={placeholder}
                     onChange={this.onChange}
+                    onBlur={onBlur}
                     floatingLabelFixed
                     fullWidth
                 >

@@ -82,7 +82,7 @@ class Lookup extends Component {
     };
 
     render() {
-        let { displayName, placeholder, error, touched, active, help } = this.props;
+        let { displayName, placeholder, error, touched, active, help, onBlur } = this.props;
         let errors = (touched || active)? error : null;
         let { source } = this.state;
         let helpBlock = null;
@@ -104,6 +104,7 @@ class Lookup extends Component {
                     dataSource={source}
                     hintText={placeholder}
                     onUpdateInput={this.onUpdateInput}
+                    onBlur={onBlur}
                     floatingLabelFixed
                     fullWidth
                     animated

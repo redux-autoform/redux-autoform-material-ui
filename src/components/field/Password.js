@@ -15,7 +15,7 @@ class Password extends Component {
     };
 
     render() {
-        let {value, error, displayName, name, onChange, placeholder, touched, active} = this.props;
+        let {value, error, displayName, name, onChange, placeholder, touched, active, onBlur} = this.props;
         let errors = (touched || active)? error : null;
 
         return (
@@ -28,6 +28,7 @@ class Password extends Component {
                     floatingLabelText={displayName}
                     type="password"
                     onChange={onChange}
+                    onBlur={onBlur}
                     fullWidth
                 />
             </FormGroup>

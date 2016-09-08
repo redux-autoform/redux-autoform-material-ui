@@ -16,7 +16,7 @@ class TextBox extends Component {
     };
 
     render() {
-        let { value, error, displayName, name, onChange, placeholder, min, max, touched, active } = this.props;
+        let { value, error, displayName, name, onChange, placeholder, min, max, touched, active, onBlur } = this.props;
 	    let errors = (touched || active)? error : null;
 
         return (
@@ -31,6 +31,7 @@ class TextBox extends Component {
                     min={min}
                     max={max}
                     onChange={onChange}
+                    onBlur={onBlur}
                     fullWidth
                 />
             </FormGroup>

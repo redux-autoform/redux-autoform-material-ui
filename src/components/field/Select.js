@@ -9,7 +9,8 @@ class Select extends Component {
         placeholder: PropTypes.string,
         displayName: PropTypes.string,
         name: PropTypes.string.isRequired,
-        error: PropTypes.string
+        error: PropTypes.string,
+        help: PropTypes.string
     };
 
     static childContextTypes = {
@@ -74,21 +75,33 @@ class Select extends Component {
     }
 
     render() {
-        let { displayName, placeholder, error, touched, active } = this.props;
+        let { displayName, placeholder, error, touched, active, help } = this.props;
 	    let errors = (touched || active)? error : null;
 	    let { value } = this.state;
+        let helpBlock = null;
+
+        if (help) {
+            helpBlock = (
+                <h5 style={{color: "#9e9e9e"}}>
+                    {help}
+                </h5>
+            )
+        }
 
         return (
-            <SelectField
-	            errorText={errors}
-	            floatingLabelText={displayName}
-	            value={value}
-	            hintText={placeholder}
-	            onChange={this.onChange}
-	            floatingLabelFixed
-	            fullWidth>
-	            {this.getItems()}
-            </SelectField>
+            <div>
+                <SelectField
+                    errorText={errors}
+                    floatingLabelText={displayName}
+                    value={value}
+                    hintText={placeholder}
+                    onChange={this.onChange}
+                    floatingLabelFixed
+                    fullWidth>
+                    {this.getItems()}
+                </SelectField>
+                {helpBlock}
+            </div>
         )
     }
 }

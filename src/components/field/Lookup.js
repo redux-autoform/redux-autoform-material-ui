@@ -9,15 +9,23 @@ class Lookup extends Component {
         source: []
     };
 
-    onChange = (event, index, value) => {
-        let { onChange } = this.props;
+    onChange = (chosenRequest, index) => {
+        let { onChange, options } = this.props;
+        let { valueKey } = options;
+        let { source } = this.state;
+        let value;
 
-        onChange(value);
-        this.setState({value});
+        if (valueKey && index !== -1) {
+            value = source[index][valueKey];
+            onChange(value);
+        }
+        else if (index !== -1) {
+            value = source[index]['value'];
+            onChange(value);
+        }
     };
 
-    //TODO evaluate if options.url come and array comes too
-    getItems = (value) => {
+    setDataSource = () => {
         let { options } = this.props;
         let { url, labelKey, valueKey, itemsKey } = options;
         let { urlOptions, urlErrors } = this.state;
@@ -31,8 +39,6 @@ class Lookup extends Component {
             this.setState({ source: dataSource });
         }
         else if (url && labelKey && valueKey && itemsKey) {
-            this.doFetch(value, itemsKey);
-
             if (Array.isArray(urlOptions)) {
                 let dataSource = urlOptions.map((item, index) => ({
                     text: item[labelKey],
@@ -50,25 +56,17 @@ class Lookup extends Component {
         }
     };
 
-    doFetch = (value, itemsKey) => {
-        let { options } = this.props;
-        let { url } = options;
-
-        if (url + value) {
-            callApi(url)
-                .then(response => response.json())
-                .then(response => this.setState({ urlOptions: response[itemsKey] }));
-        }
-    };
-
-    onUpdateInput = (value) => {
+    componentWillMount() {
         let { options } = this.props;
         let { url } = options;
 
         if (url) {
-            this.getItems(value);
+            callApi(url).then(response => response.json())
+                .then(response => this.setState({ urlOptions: response }));
         }
-    };
+
+        this.setDataSource();
+    }
 
     render() {
         let { displayName, placeholder, error, touched, active, help, onBlur } = this.props;
@@ -84,6 +82,7 @@ class Lookup extends Component {
             )
         }
 
+        console.info("This is the source array => " + JSON.stringify(source, null, 2));
         console.info("AutoComplete - This are the props => " + JSON.stringify(Object.keys(this.props), null, 2));
 
         return (
@@ -94,11 +93,12 @@ class Lookup extends Component {
                     floatingLabelText={displayName}
                     dataSource={source}
                     hintText={placeholder}
-                    onUpdateInput={this.onUpdateInput}
+                    onNewRequest={this.onChange}
                     onBlur={onBlur}
                     floatingLabelFixed
                     fullWidth
                     animated
+                    openOnFocus
                 />
                 {helpBlock}
             </div>

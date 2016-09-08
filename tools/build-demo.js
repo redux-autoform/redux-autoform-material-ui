@@ -1,10 +1,8 @@
 import fs from 'fs';
-import React from 'react';
 import path from 'path';
 import rimraf from 'rimraf-promise';
 import fsep from 'fs-extra-promise';
 import {exec} from 'child-process-promise';
-import {renderToString} from 'react-dom/server';
 import 'colors';
 
 require.extensions['.html'] = (module, filename) => {
@@ -40,8 +38,11 @@ rimraf(demoBuiltRoot)
         console.log('finish writing page files...');
 
         return fsep.writeFile(demoHtmlPath, wrap);
-
+    })
+    .then(() => {
+        console.log('running webpack on webpack.config.demo.prod.js...');
+        return exec(`webpack --config webpack.config.demo.prod.js`);
     })
     .then(() => fsep.copyAsync(licenseSrc, licenseDest))
     .then(() => console.log('demo built'.green))
-    .catch(e => console.log(e));
+    .catch(e=> console.log(e));

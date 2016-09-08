@@ -1,15 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 
 class DateTimePicker extends Component {
-    static propTypes = {
-        value: PropTypes.any,
-        onChange: PropTypes.func.isRequired,
-        displayName: PropTypes.string,
-        name: PropTypes.string.isRequired,
-        error: PropTypes.string,
-        format: PropTypes.string
-    };
-
     // /**
     //  * Returns the format prop for the given DateTimePicker props
     //  * @param format
@@ -96,5 +87,14 @@ class DateTimePicker extends Component {
     //     );
     // }
 }
+
+DateTimePicker.propTypes = {
+    value: PropTypes.any,
+    onChange: PropTypes.func.isRequired,
+    displayName: PropTypes.string,
+    name: PropTypes.string.isRequired,
+    error: PropTypes.string,
+    format: PropTypes.string
+};
 
 export default DateTimePicker;

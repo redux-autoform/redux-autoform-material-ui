@@ -4,10 +4,6 @@ import Item from '../common/ArrayContainerItem';
 import FormGroup from '../common/FormGroup';
 
 class ArrayContainer extends Component {
-    static propTypes = {
-        name: PropTypes.string.isRequired,
-        addText: PropTypes.string
-    };
 
     onClick = () => {
         let { reduxFormProps } = this.props;
@@ -141,5 +137,10 @@ class ArrayContainer extends Component {
         );
     }
 }
+
+ArrayContainer.propTypes = {
+    name: PropTypes.string.isRequired,
+    addText: PropTypes.string
+};
 
 export default ArrayContainer;

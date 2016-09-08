@@ -4,15 +4,6 @@ import FormGroup from '../common/FormGroup';
 
 //TODO JS we have to emulate the addonBefore and addonAfter
 class Password extends Component {
-    static propTypes = {
-        value: PropTypes.any,
-        onChange: PropTypes.func.isRequired,
-        placeholder: PropTypes.string,
-        displayName: PropTypes.string,
-        name: PropTypes.string.isRequired,
-        error: PropTypes.string,
-        fieldLayout: PropTypes.string
-    };
 
     render() {
         let {value, error, displayName, name, onChange, placeholder, touched, active, onBlur} = this.props;
@@ -37,5 +28,15 @@ class Password extends Component {
         );
     }
 }
+
+Password.propTypes = {
+    value: PropTypes.any,
+    onChange: PropTypes.func.isRequired,
+    placeholder: PropTypes.string,
+    displayName: PropTypes.string,
+    name: PropTypes.string.isRequired,
+    error: PropTypes.string,
+    fieldLayout: PropTypes.string
+};
 
 export default Password;

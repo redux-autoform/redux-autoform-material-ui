@@ -1,17 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 
 class FieldGroup extends Component {
-    static propTypes = {
-        value: React.PropTypes.any,
-        onChange: React.PropTypes.func.isRequired,
-        placeholder: React.PropTypes.string,
-        displayName: React.PropTypes.string,
-        name: React.PropTypes.string.isRequired,
-        error: React.PropTypes.string,
-        addonBefore: React.PropTypes.string,
-        addonAfter: React.PropTypes.string,
-        fieldLayout: React.PropTypes.string
-    };
 
     getGroupContent = () => {
         let { componentFactory, _extra: { layout, fields }, group: groupName } = this.props;
@@ -42,5 +31,17 @@ class FieldGroup extends Component {
         );
     }
 }
+
+FieldGroup.propTypes = {
+    value: React.PropTypes.any,
+    onChange: React.PropTypes.func.isRequired,
+    placeholder: React.PropTypes.string,
+    displayName: React.PropTypes.string,
+    name: React.PropTypes.string.isRequired,
+    error: React.PropTypes.string,
+    addonBefore: React.PropTypes.string,
+    addonAfter: React.PropTypes.string,
+    fieldLayout: React.PropTypes.string
+};
 
 export default FieldGroup;

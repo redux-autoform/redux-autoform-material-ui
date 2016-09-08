@@ -13,16 +13,6 @@ const styles = {
 };
 
 class CheckBox extends Component {
-	static propTypes = {
-		value: PropTypes.any,
-		onChange: PropTypes.func.isRequired,
-		placeholder: PropTypes.string,
-		displayName: PropTypes.string,
-		name: PropTypes.string.isRequired,
-		error: PropTypes.string,
-		fieldLayout: PropTypes.string,
-		defaultChecked: PropTypes.bool
-	};
 
     render() {
         let { value, name, displayName, onChange, onBlur, fieldLayout, defaultChecked, error, touched } = this.props;
@@ -47,5 +37,16 @@ class CheckBox extends Component {
 		);
     }
 }
+
+CheckBox.propTypes = {
+	value: PropTypes.any,
+	onChange: PropTypes.func.isRequired,
+	placeholder: PropTypes.string,
+	displayName: PropTypes.string,
+	name: PropTypes.string.isRequired,
+	error: PropTypes.string,
+	fieldLayout: PropTypes.string,
+	defaultChecked: PropTypes.bool
+};
 
 export default CheckBox;

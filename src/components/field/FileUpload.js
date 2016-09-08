@@ -1,11 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 
-export default class FileUpload extends Component {
-	static propTypes = {
-		onChange: PropTypes.func.isRequired,
-		url: PropTypes.string.isRequired
-	};
-
+class FileUpload extends Component {
 	// state = {
 	// 	files: [],
      //    disableUpload: true,
@@ -158,3 +153,10 @@ export default class FileUpload extends Component {
 	// 	);
 	// }
 }
+
+FileUpload.propTypes = {
+	onChange: PropTypes.func.isRequired,
+	url: PropTypes.string.isRequired
+};
+
+export default FileUpload;

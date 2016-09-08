@@ -3,16 +3,6 @@ import { SelectField, MenuItem } from 'material-ui';
 import callApi from '../../util/FetchUtils';
 
 class Select extends Component {
-    static propTypes = {
-        options: PropTypes.any.isRequired,
-        value: PropTypes.any,
-        onChange: PropTypes.func.isRequired,
-        placeholder: PropTypes.string,
-        displayName: PropTypes.string,
-        name: PropTypes.string.isRequired,
-        error: PropTypes.string,
-        help: PropTypes.string
-    };
 
 	state = {
 		value: {},
@@ -104,5 +94,16 @@ class Select extends Component {
         )
     }
 }
+
+Select.propTypes = {
+    options: PropTypes.any.isRequired,
+    value: PropTypes.any,
+    onChange: PropTypes.func.isRequired,
+    placeholder: PropTypes.string,
+    displayName: PropTypes.string,
+    name: PropTypes.string.isRequired,
+    error: PropTypes.string,
+    help: PropTypes.string
+};
 
 export default Select;

@@ -4,16 +4,6 @@ import FormGroup from '../common/FormGroup';
 
 //TODO JS we have to emulate the addonBefore and addonAfter
 class TextBox extends Component {
-    static propTypes = {
-        value: PropTypes.any,
-        onChange: PropTypes.func.isRequired,
-        placeholder: PropTypes.string, displayName: PropTypes.string,
-        name: PropTypes.string.isRequired,
-        error: PropTypes.string,
-        fieldLayout: PropTypes.string,
-        min: PropTypes.number,
-        max: PropTypes.number
-    };
 
     render() {
         let { value, error, displayName, name, onChange, placeholder, min, max, touched, active, onBlur } = this.props;
@@ -40,5 +30,16 @@ class TextBox extends Component {
 		);
     }
 }
+
+TextBox.propTypes = {
+    value: PropTypes.any,
+    onChange: PropTypes.func.isRequired,
+    placeholder: PropTypes.string, displayName: PropTypes.string,
+    name: PropTypes.string.isRequired,
+    error: PropTypes.string,
+    fieldLayout: PropTypes.string,
+    min: PropTypes.number,
+    max: PropTypes.number
+};
 
 export default TextBox;

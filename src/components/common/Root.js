@@ -3,23 +3,27 @@ import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
-const Root = ({children, handleSubmit}) => {
-    return (
-	    <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
-            <div className="container-fluid">
-                <div className="meta-form">
-                    <form onSubmit={handleSubmit}>
-                        {children}
-                    </form>
-                </div>
-            </div>
-	    </MuiThemeProvider>
-    );
-};
+class Root extends Component {
+    static propTypes = {
+        children: PropTypes.array.isRequired,
+        handleSubmit: PropTypes.func.isRequired
+    };
 
-Root.propTypes = {
-    children: PropTypes.array.isRequired,
-    handleSubmit: PropTypes.func.isRequired
-};
+    render() {
+        let { handleSubmit, children } = this.props;
+
+        return (
+            <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
+                <div className="container-fluid">
+                    <div className="meta-form">
+                        <form onSubmit={handleSubmit}>
+                            {children}
+                        </form>
+                    </div>
+                </div>
+            </MuiThemeProvider>
+        );
+    }
+}
 
 export default Root;

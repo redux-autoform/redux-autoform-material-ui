@@ -64,7 +64,7 @@ class ArrayContainer extends Component {
         let { fields } = this.props;
 
         return fields.map((field, index) => (
-            <Item key={index} index={index} onAction={this.handleItemClick}>
+            <Item key={`array-item-${index}-wrapper`} index={index} onAction={this.handleItemClick}>
                 { this.buildGroupComponent(field) }
             </Item>
         ));

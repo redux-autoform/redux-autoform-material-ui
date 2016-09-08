@@ -31,8 +31,8 @@ class Select extends Component {
 		this.setState({value});
 	};
 
+    //TODO evaluate if options.url come and array comes too
 	getItems = () => {
-		//TODO evaluate if options.url come and array comes too
 		let { options } = this.props;
 		let { url, labelKey, valueKey } = options;
         let { urlOptions, urlErrors } = this.state;

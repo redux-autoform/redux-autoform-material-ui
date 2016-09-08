@@ -4,6 +4,7 @@ import callApi from '../../util/FetchUtils';
 
 class Select extends Component {
     static propTypes = {
+        options: PropTypes.any.isRequired,
         value: PropTypes.any,
         onChange: PropTypes.func.isRequired,
         placeholder: PropTypes.string,

@@ -1,55 +1,109 @@
 import React, { Component, PropTypes } from 'react';
+import callApi from '../../util/FetchUtils';
 
 class Lookup extends Component {
-    // fetchItems = () => {
-    //     const {options} = this.props;
-    //
-    //     return fetch(options.url)
-    //         .then(response => response.json())
-    //         .then(json => {
-    //             return {options: json}
-    //         });
-    // };
-    //
-    // render() {
-    //     let {value, name, displayName, help, error, touched, onChange, onBlur, options, fieldLayout} = this.props;
-    //     let formGroupProps = {error, touched, displayName, name, help, fieldLayout};
-    //     let selectProps;
-    //
-    //     if (Array.isArray(options)) {
-    //         selectProps = {
-    //             options,
-    //             value,
-    //             name,
-    //             onChange,
-    //             onBlur: (event) => onBlur()
-    //         };
-    //
-    //         return (
-    //             <FormGroup {...formGroupProps}>
-    //                 <Select {...selectProps}/>
-    //             </FormGroup>
-    //         )
-    //
-    //     } else if (options.url) {
-    //         selectProps = {
-    //             value,
-    //             name,
-    //             onChange,
-    //             onBlur: (event) => onBlur(),
-    //             valueKey: options.valueKey || 'value',
-    //             labelKey: options.labelKey || 'label'
-    //         };
-    //
-    //         return (
-    //             <FormGroup {...formGroupProps}>
-    //                 <Select.Async {...selectProps} loadOptions={this.fetchItems}/>
-    //             </FormGroup>
-    //         )
-    //     }
-    //
-    //     return false;
-    // }
+    static propTypes = {
+        options: PropTypes.any.isRequired,
+        value: PropTypes.any,
+        onChange: PropTypes.func.isRequired,
+        placeholder: PropTypes.string,
+        displayName: PropTypes.string,
+        name: PropTypes.string.isRequired,
+        error: PropTypes.string,
+        help: PropTypes.string
+    };
+
+    static childContextTypes = {
+        muiTheme: PropTypes.object.isRequired
+    };
+
+    state = {
+        value: [],
+        urlOptions: [],
+        urlErrors: null
+    };
+
+    onChange = (event, index, value) => {
+        let { onChange } = this.props;
+
+        onChange(value);
+        this.setState({value});
+    };
+
+    getItems = () => {
+        //TODO evaluate if options.url come and array comes too
+        let { options } = this.props;
+        let { url, labelKey, valueKey } = options;
+        let { urlOptions, urlErrors } = this.state;
+
+        if (Array.isArray(options)) {
+            return options.map(({ value, text }, index) => (
+                <MenuItem
+                    key={`lookup-item-${index}-wrapper`}
+                    value={value}
+                    primaryText={text}
+                />
+            ));
+        }
+        else if (url && labelKey && valueKey) {
+            if (Array.isArray(urlOptions)) {
+                return urlOptions.map((item, index) => (
+                    <MenuItem
+                        key={`lookup-item-${index}-wrapper`}
+                        value={item[valueKey]}
+                        primaryText={item[labelKey]}
+                    />
+                ));
+            }
+            else if (urlErrors) {
+                console.error(
+                    `Select - There was the following error when fetching from resource =>
+                    ${JSON.stringify(urlErrors, null, 2)}`
+                );
+            }
+        }
+    };
+
+    componentWillMount() {
+        let { options } = this.props;
+        let { url } = options;
+
+        if (url) {
+            callApi(url).then(response => response.json())
+                .then(response => this.setState({ urlOptions: response }));
+        }
+    }
+
+    render() {
+        let { displayName, placeholder, error, touched, active, help } = this.props;
+        let errors = (touched || active)? error : null;
+        let { value } = this.state;
+        let helpBlock = null;
+
+        if (help) {
+            helpBlock = (
+                <h5 style={{color: "#9e9e9e"}}>
+                    {help}
+                </h5>
+            )
+        }
+
+        return (
+            <div>
+                <SelectField
+                    errorText={errors}
+                    floatingLabelText={displayName}
+                    value={value}
+                    hintText={placeholder}
+                    onChange={this.onChange}
+                    floatingLabelFixed
+                    fullWidth>
+                    {this.getItems()}
+                </SelectField>
+                {helpBlock}
+            </div>
+        )
+    }
 }
 
 export default Lookup;

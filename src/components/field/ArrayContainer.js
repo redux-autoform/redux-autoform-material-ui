@@ -9,12 +9,12 @@ class ArrayContainer extends Component {
         addText: PropTypes.string
     };
 
-    handleAdd = () => {
+    onClick = () => {
         let { reduxFormProps } = this.props;
         reduxFormProps.addField({});
     };
 
-    handleItemClick = (event, child, index) => {
+    onAction = (event, child, index) => {
         let { id, value, fields, onChange, reduxFormProps: { swapFields, removeField } } = this.props;
         let key = child.key;
 
@@ -65,7 +65,7 @@ class ArrayContainer extends Component {
         let { fields } = this.props;
 
         return fields.map((field, index) => (
-            <Item key={`array-item-${index}-wrapper`} index={index} onAction={this.handleItemClick}>
+            <Item key={`array-item-${index}-wrapper`} index={index} onAction={this.onAction}>
                 { this.buildGroupComponent(field) }
             </Item>
         ));
@@ -81,7 +81,7 @@ class ArrayContainer extends Component {
             return (
                 <div className="add-bar">
                     <span>
-                        <RaisedButton label={text} onClick={this.handleAdd} primary/>
+                        <RaisedButton label={text} onClick={this.onClick} primary/>
                     </span>
                 </div>
             );
@@ -117,7 +117,7 @@ class ArrayContainer extends Component {
         } else {
             return (
                 <div style={div}>
-                    <span style={span}>This array is empty </span><FlatButton label="Add new Item" backgroundColor="#ffe082" onClick={this.handleAdd} style={{float: "right"}}/>
+                    <span style={span}>This array is empty </span><FlatButton label="Add new Item" backgroundColor="#ffe082" onClick={this.onClick} style={{float: "right"}}/>
                 </div>
             );
         }

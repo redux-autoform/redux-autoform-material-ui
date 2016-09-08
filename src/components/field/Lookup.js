@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { SelectField, MenuItem } from 'material-ui';
+import { AutoComplete } from 'material-ui';
 import callApi from '../../util/FetchUtils';
 
 class Lookup extends Component {
@@ -19,9 +19,9 @@ class Lookup extends Component {
     };
 
     state = {
-        value: [],
         urlOptions: [],
-        urlErrors: null
+        urlErrors: null,
+        source: []
     };
 
     onChange = (event, index, value) => {
@@ -31,30 +31,30 @@ class Lookup extends Component {
         this.setState({value});
     };
 
-    getItems = () => {
-        //TODO evaluate if options.url come and array comes too
+    //TODO evaluate if options.url come and array comes too
+    getItems = (value) => {
         let { options } = this.props;
-        let { url, labelKey, valueKey } = options;
+        let { url, labelKey, valueKey, itemsKey } = options;
         let { urlOptions, urlErrors } = this.state;
 
         if (Array.isArray(options)) {
-            return options.map(({ value, label }, index) => (
-                <MenuItem
-                    key={`lookup-item-${index}-wrapper`}
-                    value={value}
-                    primaryText={label}
-                />
-            ));
+            let dataSource = options.map(({ value, label }, index) => ({
+                text: label,
+                value: value
+            }));
+
+            this.setState({ source: dataSource });
         }
-        else if (url && labelKey && valueKey) {
+        else if (url && labelKey && valueKey && itemsKey) {
+            this.doFetch(value, itemsKey);
+
             if (Array.isArray(urlOptions)) {
-                return urlOptions.map((item, index) => (
-                    <MenuItem
-                        key={`lookup-item-${index}-wrapper`}
-                        value={item[valueKey]}
-                        primaryText={item[labelKey]}
-                    />
-                ));
+                let dataSource = urlOptions.map((item, index) => ({
+                    text: item[labelKey],
+                    value: item[valueKey]
+                }));
+
+                this.setState({ source: dataSource });
             }
             else if (urlErrors) {
                 console.error(
@@ -65,20 +65,30 @@ class Lookup extends Component {
         }
     };
 
-    componentWillMount() {
+    doFetch = (value, itemsKey) => {
+        let { options } = this.props;
+        let { url } = options;
+
+        if (url + value) {
+            callApi(url)
+                .then(response => response.json())
+                .then(response => this.setState({ urlOptions: response[itemsKey] }));
+        }
+    };
+
+    onUpdateInput = (value) => {
         let { options } = this.props;
         let { url } = options;
 
         if (url) {
-            callApi(url).then(response => response.json())
-                .then(response => this.setState({ urlOptions: response }));
+            this.getItems(value);
         }
-    }
+    };
 
     render() {
         let { displayName, placeholder, error, touched, active, help } = this.props;
         let errors = (touched || active)? error : null;
-        let { value } = this.state;
+        let { source } = this.state;
         let helpBlock = null;
 
         if (help) {
@@ -91,17 +101,17 @@ class Lookup extends Component {
 
         return (
             <div>
-                <SelectField
+                <AutoComplete
+                    filter={AutoComplete.caseInsensitiveFilter}
                     errorText={errors}
                     floatingLabelText={displayName}
-                    value={value}
+                    dataSource={source}
                     hintText={placeholder}
-                    onChange={this.onChange}
+                    onUpdateInput={this.onUpdateInput}
                     floatingLabelFixed
                     fullWidth
-                >
-                    {this.getItems()}
-                </SelectField>
+                    animated
+                />
                 {helpBlock}
             </div>
         )

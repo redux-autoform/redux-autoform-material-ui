@@ -43,9 +43,10 @@
                     component: "Lookup",
                     help: "Lists the React project open-issues",
                     options: {
-                        url: "https://api.github.com/repos/facebook/react/issues",
+                        url: "https://api.github.com/search/repositories?q=",
                         valueKey: "id",
-                        labelKey: "title"
+                        labelKey: "title",
+                        itemsKey: "items"
                     }
                 }
             ]

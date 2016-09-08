@@ -19,7 +19,7 @@ class Select extends Component {
     };
 
 	state = {
-		value: [],
+		value: {},
         urlOptions: [],
         urlErrors: null
 	};

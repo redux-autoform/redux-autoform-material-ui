@@ -38,23 +38,11 @@ class Select extends Component {
         let { urlOptions, urlErrors } = this.state;
 
 		if (Array.isArray(options)) {
-			return options.map(({ value, text }, index) => (
-				<MenuItem
-                    key={`select-item-${index}-wrapper`}
-                    value={value}
-                    primaryText={text}
-                />
-			));
+			return this.renderItems(options);
 		}
 		else if (url && labelKey && valueKey) {
             if (Array.isArray(urlOptions)) {
-                return urlOptions.map((item, index) => (
-                    <MenuItem
-                        key={`select-item-${index}-wrapper`}
-                        value={item[valueKey]}
-                        primaryText={item[labelKey]}
-                    />
-                ));
+                return this.renderItems(urlOptions, valueKey, labelKey);
             }
             else if (urlErrors) {
                 console.error(
@@ -64,6 +52,16 @@ class Select extends Component {
             }
         }
 	};
+
+	renderItems = (arr, value = 'value', text = 'text') => {
+	    return arr.map((item, index) => (
+            <MenuItem
+                key={`select-item-${index}-wrapper`}
+                value={item[value]}
+                primaryText={item[text]}
+            />
+        ));
+    };
 
 	componentWillMount() {
         let { options } = this.props;

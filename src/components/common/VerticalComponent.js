@@ -7,7 +7,7 @@ class VerticalComponent extends Component {
 	};
 
 	render() {
-		let {children} = this.props;
+		let {children, size} = this.props;
 
 		return (
 			<div className="container-fluid">

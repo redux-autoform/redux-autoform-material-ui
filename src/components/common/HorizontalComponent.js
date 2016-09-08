@@ -7,7 +7,7 @@ class HorizontalComponent extends Component {
 	};
 
 	render() {
-		let {children} = this.props;
+		let {children, size} = this.props;
 
 		return (
 			<div className={`col-md-${size}`}>

@@ -44,7 +44,6 @@ class Group extends BaseGroup {
                 </div>
             </section>
         );
-
     }
 }
 

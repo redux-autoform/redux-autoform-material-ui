@@ -45,8 +45,7 @@
                     options: {
                         url: "https://api.github.com/repos/facebook/react/issues",
                         valueKey: "id",
-                        labelKey: "title",
-                        itemsKey: "items"
+                        labelKey: "title"
                     }
                 }
             ]

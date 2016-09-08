@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import { SelectField, MenuItem } from 'material-ui';
 import callApi from '../../util/FetchUtils';
 
 class Lookup extends Component {
@@ -37,11 +38,11 @@ class Lookup extends Component {
         let { urlOptions, urlErrors } = this.state;
 
         if (Array.isArray(options)) {
-            return options.map(({ value, text }, index) => (
+            return options.map(({ value, label }, index) => (
                 <MenuItem
                     key={`lookup-item-${index}-wrapper`}
                     value={value}
-                    primaryText={text}
+                    primaryText={label}
                 />
             ));
         }
@@ -97,7 +98,8 @@ class Lookup extends Component {
                     hintText={placeholder}
                     onChange={this.onChange}
                     floatingLabelFixed
-                    fullWidth>
+                    fullWidth
+                >
                     {this.getItems()}
                 </SelectField>
                 {helpBlock}

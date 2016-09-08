@@ -96,7 +96,8 @@ class Select extends Component {
                     hintText={placeholder}
                     onChange={this.onChange}
                     floatingLabelFixed
-                    fullWidth>
+                    fullWidth
+                >
                     {this.getItems()}
                 </SelectField>
                 {helpBlock}

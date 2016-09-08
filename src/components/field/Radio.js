@@ -1,8 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import { RadioButton, RadioButtonGroup } from 'material-ui';
+import FormGroup from '../common/FormGroup';
 
 class Radio extends Component {
-    handleChange = (event, value) => {
+    onChange = (event, value) => {
         let { onChange } = this.props;
         onChange(value);
     };
@@ -14,7 +15,7 @@ class Radio extends Component {
         // let invariantRadioProps = { inline: fieldLayout == 'inline', name, onChange: this.onChange };
 
         return options.map(({text, value}, index) => (
-            <RadioButton key={index} label={text} value={value} onChange={this.handleChange}/>
+            <RadioButton key={index} label={text} value={value} onChange={this.onChange}/>
         ))
     };
 
@@ -33,13 +34,13 @@ class Radio extends Component {
         }
 
         return (
-            <div>
+            <FormGroup>
                 {nameBlock}
                 <RadioButtonGroup name={name} valueSelected={value}>
                     {this.getOptions()}
                 </RadioButtonGroup>
                 {helpBlock}
-            </div>
+            </FormGroup>
         )
     }
 }

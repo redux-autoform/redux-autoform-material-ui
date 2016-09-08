@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { getDisplayName } from 'redux-autoform-utils';
 import Checkbox from 'material-ui/Checkbox';
+import FormGroup from '../common/FormGroup';
 
 //TODO JS: delete this and move to css
 const styles = {
@@ -23,10 +24,6 @@ class CheckBox extends Component {
 		defaultChecked: PropTypes.bool
 	};
 
-    static childContextTypes = {
-        muiTheme: PropTypes.object.isRequired
-    };
-
     render() {
         let { value, name, displayName, onChange, onBlur, fieldLayout, defaultChecked, error, touched } = this.props;
 	    // let validationState = error && touched ? 'error' : null;
@@ -35,34 +32,17 @@ class CheckBox extends Component {
 		    value = true;
 	    }
 
-        if (fieldLayout == 'inline') {
-            return (
-                <div>
-                    <div className="col-fixed-140">
-                        <label/>
-                    </div>
-                    <div className="col-xs-12 col-offset-140 no-padding-col">
-	                    <Checkbox
-		                    label={getDisplayName(displayName, name)}
-		                    defaultChecked={value}
-		                    onChange={onChange}
-		                    onBlur={onBlur}
-		                    style={styles.checkbox}
-	                    />
-                    </div>
-                </div>
-            );
-        } else {
-            return (
-	            <Checkbox
-		            label={getDisplayName(displayName, name)}
-		            defaultChecked={value}
-		            onChange={onChange}
-		            onBlur={onBlur}
-		            style={styles.checkbox}
-                />
-            );
-        }
+		return (
+			<FormGroup>
+				<Checkbox
+					label={getDisplayName(displayName, name)}
+					defaultChecked={value}
+					onChange={onChange}
+					onBlur={onBlur}
+					style={styles.checkbox}
+				/>
+			</FormGroup>
+		);
     }
 }
 

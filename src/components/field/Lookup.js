@@ -14,10 +14,6 @@ class Lookup extends Component {
         help: PropTypes.string
     };
 
-    static childContextTypes = {
-        muiTheme: PropTypes.object.isRequired
-    };
-
     state = {
         urlOptions: [],
         urlErrors: null,

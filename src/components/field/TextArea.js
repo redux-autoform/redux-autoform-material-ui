@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { TextField } from 'material-ui';
+import FormGroup from '../common/FormGroup';
 
 //TODO JS we have to emulate the addonBefore and addonAfter
 class TextArea extends Component {
@@ -14,27 +15,25 @@ class TextArea extends Component {
 	    rows: PropTypes.number
     };
 
-	static childContextTypes = {
-		muiTheme: PropTypes.object.isRequired
-	};
-
     render() {
         let {value, error, displayName, name, onChange, rows, placeholder, touched, active} = this.props;
         let errors = (touched || active)? error : null;
 
         return (
-            <TextField
-                name={name}
-                value={value}
-                errorText={errors}
-                hintText={placeholder}
-                floatingLabelText={displayName}
-                type="text"
-                rowsMax={rows}
-                onChange={onChange}
-                fullWidth
-                multiLine
-            />
+            <FormGroup>
+                <TextField
+                    name={name}
+                    value={value}
+                    errorText={errors}
+                    hintText={placeholder}
+                    floatingLabelText={displayName}
+                    type="text"
+                    rowsMax={rows}
+                    onChange={onChange}
+                    fullWidth
+                    multiLine
+                />
+            </FormGroup>
         );
     }
 }

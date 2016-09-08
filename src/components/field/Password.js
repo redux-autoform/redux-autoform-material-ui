@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { TextField } from 'material-ui';
+import FormGroup from '../common/FormGroup';
 
 //TODO JS we have to emulate the addonBefore and addonAfter
 class Password extends Component {
@@ -13,25 +14,23 @@ class Password extends Component {
         fieldLayout: PropTypes.string
     };
 
-    static childContextTypes = {
-        muiTheme: PropTypes.object.isRequired
-    };
-    
     render() {
         let {value, error, displayName, name, onChange, placeholder, touched, active} = this.props;
         let errors = (touched || active)? error : null;
 
         return (
-            <TextField
-                name={name}
-                value={value}
-                errorText={errors}
-                hintText={placeholder}
-                floatingLabelText={displayName}
-                type="password"
-                onChange={onChange}
-                fullWidth
-            />
+            <FormGroup>
+                <TextField
+                    name={name}
+                    value={value}
+                    errorText={errors}
+                    hintText={placeholder}
+                    floatingLabelText={displayName}
+                    type="password"
+                    onChange={onChange}
+                    fullWidth
+                />
+            </FormGroup>
         );
     }
 }

@@ -28,9 +28,9 @@
   "homepage": "https://github.com/redux-autoform/redux-autoform-material-ui#readme",
   "dependencies": {
     "isomorphic-fetch": "^2.2.1",
-    "material-ui": "^0.15.2",
-    "react": "^15.2.1",
-    "react-dom": "^15.2.1",
+    "material-ui": "^0.15.4",
+    "react": "^15.3.1",
+    "react-dom": "^15.3.1",
     "react-redux": "^4.4.5",
     "redux-autoform-utils": "^1.0.4-experimental"
   },

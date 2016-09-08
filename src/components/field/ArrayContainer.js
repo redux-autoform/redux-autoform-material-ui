@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { FlatButton, RaisedButton } from 'material-ui';
 import Item from '../common/ArrayContainerItem';
+import FormGroup from '../common/FormGroup';
 
 class ArrayContainer extends Component {
     static propTypes = {
@@ -129,12 +130,12 @@ class ArrayContainer extends Component {
         let addBar = this.getAddBar();
 
         return (
-            <div>
+            <FormGroup>
                 <div className="array-container-content">
                     {components}
                 </div>
                 {addBar}
-            </div>
+            </FormGroup>
         );
     }
 }

@@ -14,10 +14,6 @@ class Select extends Component {
         help: PropTypes.string
     };
 
-    static childContextTypes = {
-        muiTheme: PropTypes.object.isRequired
-    };
-
 	state = {
 		value: {},
         urlOptions: [],

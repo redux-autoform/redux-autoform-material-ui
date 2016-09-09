@@ -125,8 +125,6 @@ class ArrayContainer extends Component {
         let components = this.getAllComponents();
         let addBar = this.getAddBar();
 
-        console.info("ArrayContainer - This are the props => " + JSON.stringify(Object.keys(this.props), null, 2));
-
         return (
             <FormGroup>
                 <div className="array-container-content">
@@ -139,8 +137,28 @@ class ArrayContainer extends Component {
 }
 
 ArrayContainer.propTypes = {
+
+    //Number props
+    innerSize: PropTypes.number.isRequired,
+
+    //String props
     name: PropTypes.string.isRequired,
-    addText: PropTypes.string
+    addText: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
+    arrayType: PropTypes.string.isRequired,
+    entityType: PropTypes.string.isRequired,
+    layoutName: PropTypes.string.isRequired,
+    displayName: PropTypes.string.isRequired,
+    fieldLayout: PropTypes.string.isRequired,
+
+    //Array props
+    reduxFormProps: PropTypes.array.isRequired,
+    fields: PropTypes.array.isRequired,
+
+    //Object props
+    layout: PropTypes.object.isRequired,
+    componentFactory: PropTypes.object.isRequired,
+    _extra: PropTypes.object.isRequired
 };
 
 export default ArrayContainer;

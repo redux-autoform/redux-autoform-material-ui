@@ -30,25 +30,6 @@ class DateTimePicker extends Component {
         }
     };
 
-    setReactWidgetsProps = (props, type) => {
-        if (!props) {
-            throw Error('\'props\' should be truthy');
-        }
-
-        if (!type) {
-            throw Error('\'type\' should be truthy');
-        }
-
-        switch(type) {
-            case 'time':
-                props.calendar = false;
-                break;
-            case 'date':
-                props.time = false;
-                break;
-        }
-    };
-
     onChange = (date, dateAsString) => {
         let { onChange } = this.props;
         onChange(dateAsString);
@@ -70,8 +51,6 @@ class DateTimePicker extends Component {
 
         let reactWidgetsProps = { value, displayName, onChange: this.onChange, onBlur, format };
         let formGroupProps = { error, touched, displayName, name, help, fieldLayout };
-
-        this.setReactWidgetsProps(reactWidgetsProps, type);
 
         return (
             <FormGroup>

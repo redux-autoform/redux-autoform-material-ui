@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { getDateLocalizer } from 'redux-autoform-utils';
 import FormGroup from '../common/FormGroup';
-import { DatePicker, TimePicker, TextField } from 'material-ui';
+import { DatePicker, TimePicker } from 'material-ui';
 
 class DateTimePicker extends Component {
 
@@ -30,9 +30,9 @@ class DateTimePicker extends Component {
         }
     };
 
-    onChange = (date, dateAsString) => {
+    onChange = (event, date) => {
         let { onChange } = this.props;
-        onChange(dateAsString);
+        onChange(date);
     };
 
     render() {
@@ -48,17 +48,19 @@ class DateTimePicker extends Component {
                 value = localizer.parse(value, format);
             }
         }
-
-        let reactWidgetsProps = { value, displayName, onChange: this.onChange, onBlur, format };
-        let formGroupProps = { error, touched, displayName, name, help, fieldLayout };
+        //
+        // let reactWidgetsProps = { value, displayName, onChange: this.onChange, onBlur, format };
+        // let formGroupProps = { error, touched, displayName, name, help, fieldLayout };
 
 	    switch (type) {
 		    case 'date':
 			    return (
 				    <FormGroup>
-					    <TextField
+					    <DatePicker
 						    name={name}
 						    value={value}
+						    mode="landscape"
+						    container="inline"
 						    errorText={errors}
 						    hintText={placeholder}
 						    floatingLabelText={displayName}
@@ -73,7 +75,8 @@ class DateTimePicker extends Component {
 		    case 'time':
 			    return (
 				    <FormGroup>
-					    <TextField
+					    <TimePicker
+						    format="24hr"
 						    name={name}
 						    value={value}
 						    errorText={errors}

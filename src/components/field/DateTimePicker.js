@@ -52,21 +52,44 @@ class DateTimePicker extends Component {
         let reactWidgetsProps = { value, displayName, onChange: this.onChange, onBlur, format };
         let formGroupProps = { error, touched, displayName, name, help, fieldLayout };
 
-        return (
-            <FormGroup>
-                <TextField
-	                name={name}
-	                value={value}
-	                errorText={errors}
-	                hintText={placeholder}
-	                floatingLabelText={displayName}
-	                onChange={this.onChange}
-	                onBlur={onBlur}
-	                fullWidth
-	                type={type}
-                />
-            </FormGroup>
-        );
+	    switch (type) {
+		    case 'date':
+			    return (
+				    <FormGroup>
+					    <TextField
+						    name={name}
+						    value={value}
+						    errorText={errors}
+						    hintText={placeholder}
+						    floatingLabelText={displayName}
+						    onChange={this.onChange}
+						    onBlur={onBlur}
+						    fullWidth
+						    type={type}
+					    />
+				    </FormGroup>
+			    );
+
+		    case 'time':
+			    return (
+				    <FormGroup>
+					    <TextField
+						    name={name}
+						    value={value}
+						    errorText={errors}
+						    hintText={placeholder}
+						    floatingLabelText={displayName}
+						    onChange={this.onChange}
+						    onBlur={onBlur}
+						    fullWidth
+						    type={type}
+					    />
+				    </FormGroup>
+			    );
+
+		    default:
+			    return false;
+	    }
     }
 }
 

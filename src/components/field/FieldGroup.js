@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import FormGroup from '../common/FormGroup';
 
 class FieldGroup extends Component {
 
@@ -25,9 +26,9 @@ class FieldGroup extends Component {
         let formGroupProps = { error, touched, displayName, name, help, fieldLayout, innerSize };
 
         return (
-            <div>
+            <FormGroup>
                 {this.getGroupContent()}
-            </div>
+            </FormGroup>
         );
     }
 }

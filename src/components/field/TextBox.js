@@ -27,6 +27,7 @@ class TextBox extends Component {
 }
 
 TextBox.propTypes = {
+
 	//Any props
 	value: PropTypes.any,
 
@@ -40,6 +41,7 @@ TextBox.propTypes = {
 	touched: PropTypes.bool.isRequired,
 	visited: PropTypes.bool.isRequired,
 	autofilled: PropTypes.bool.isRequired,
+	required: PropTypes.bool.isRequired,
 
 	//String props
 	placeholder: PropTypes.string,
@@ -58,12 +60,11 @@ TextBox.propTypes = {
 	onFocus: PropTypes.func.isRequired,
 	onUpdate: PropTypes.func.isRequired,
 	onChange: PropTypes.func.isRequired,
-	required: PropTypes.bool.isRequired,
 
 	//Object props
 	componentFactory: PropTypes.object.isRequired,
 	reduxFormProps: PropTypes.object.isRequired,
-	_extra: PropTypes.object.isRequired,
+	_extra: PropTypes.object.isRequired
 };
 
 export default TextBox;

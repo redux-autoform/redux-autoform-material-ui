@@ -73,8 +73,6 @@ class Select extends Component {
             )
         }
 
-        console.info("Select - This are the props => " + JSON.stringify(Object.keys(this.props), null, 2));
-
         return (
             <div>
                 <SelectField
@@ -96,14 +94,50 @@ class Select extends Component {
 }
 
 Select.propTypes = {
-    options: PropTypes.any.isRequired,
+
+    //Number props
+    innerSize: PropTypes.number,
+
+    //Any props
     value: PropTypes.any,
-    onChange: PropTypes.func.isRequired,
+    options: PropTypes.any.isRequired,
+
+    //Bool props
+    checked: PropTypes.bool,
+    valid: PropTypes.bool.isRequired,
+    invalid: PropTypes.bool.isRequired,
+    dirty: PropTypes.bool.isRequired,
+    pristine: PropTypes.bool.isRequired,
+    active: PropTypes.bool.isRequired,
+    touched: PropTypes.bool.isRequired,
+    visited: PropTypes.bool.isRequired,
+    autofilled: PropTypes.bool.isRequired,
+    required: PropTypes.bool.isRequired,
+
+    //String props
+    component: PropTypes.string,
+    help: PropTypes.string,
     placeholder: PropTypes.string,
-    displayName: PropTypes.string,
     name: PropTypes.string.isRequired,
-    error: PropTypes.string,
-    help: PropTypes.string
+    error: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
+    displayName: PropTypes.string.isRequired,
+    initialValue: PropTypes.string.isRequired,
+    fieldLayout: PropTypes.string.isRequired,
+
+    //Function props
+    autofill: PropTypes.func.isRequired,
+    onBlur: PropTypes.func.isRequired,
+    onDragStart: PropTypes.func.isRequired,
+    onDrop: PropTypes.func.isRequired,
+    onFocus: PropTypes.func.isRequired,
+    onUpdate: PropTypes.func.isRequired,
+    onChange: PropTypes.func.isRequired,
+
+    //Object props
+    componentFactory: PropTypes.object.isRequired,
+    reduxFormProps: PropTypes.object.isRequired,
+    _extra: PropTypes.object.isRequired
 };
 
 export default Select;

@@ -27,6 +27,8 @@
   },
   "homepage": "https://github.com/redux-autoform/redux-autoform-material-ui#readme",
   "dependencies": {
+    "attr-accept": "^1.0.3",
+    "filesize": "^3.3.0",
     "isomorphic-fetch": "^2.2.1",
     "material-ui": "^0.15.4",
     "react": "^15.3.1",

@@ -100,44 +100,44 @@ Select.propTypes = {
 
     //Any props
     value: PropTypes.any,
-    options: PropTypes.any.isRequired,
+    options: PropTypes.any,
 
     //Bool props
     checked: PropTypes.bool,
-    valid: PropTypes.bool.isRequired,
-    invalid: PropTypes.bool.isRequired,
-    dirty: PropTypes.bool.isRequired,
-    pristine: PropTypes.bool.isRequired,
-    active: PropTypes.bool.isRequired,
-    touched: PropTypes.bool.isRequired,
-    visited: PropTypes.bool.isRequired,
-    autofilled: PropTypes.bool.isRequired,
-    required: PropTypes.bool.isRequired,
+    valid: PropTypes.bool,
+    invalid: PropTypes.bool,
+    dirty: PropTypes.bool,
+    pristine: PropTypes.bool,
+    active: PropTypes.bool,
+    touched: PropTypes.bool,
+    visited: PropTypes.bool,
+    autofilled: PropTypes.bool,
+    required: PropTypes.bool,
 
     //String props
     component: PropTypes.string,
     help: PropTypes.string,
     placeholder: PropTypes.string,
-    name: PropTypes.string.isRequired,
-    error: PropTypes.string.isRequired,
-    type: PropTypes.string.isRequired,
-    displayName: PropTypes.string.isRequired,
-    initialValue: PropTypes.string.isRequired,
-    fieldLayout: PropTypes.string.isRequired,
+    name: PropTypes.string,
+    error: PropTypes.string,
+    type: PropTypes.string,
+    displayName: PropTypes.string,
+    initialValue: PropTypes.string,
+    fieldLayout: PropTypes.string,
 
     //Function props
-    autofill: PropTypes.func.isRequired,
-    onBlur: PropTypes.func.isRequired,
-    onDragStart: PropTypes.func.isRequired,
-    onDrop: PropTypes.func.isRequired,
-    onFocus: PropTypes.func.isRequired,
-    onUpdate: PropTypes.func.isRequired,
-    onChange: PropTypes.func.isRequired,
+    autofill: PropTypes.func,
+    onBlur: PropTypes.func,
+    onDragStart: PropTypes.func,
+    onDrop: PropTypes.func,
+    onFocus: PropTypes.func,
+    onUpdate: PropTypes.func,
+    onChange: PropTypes.func,
 
     //Object props
-    componentFactory: PropTypes.object.isRequired,
-    reduxFormProps: PropTypes.object.isRequired,
-    _extra: PropTypes.object.isRequired
+    componentFactory: PropTypes.object,
+    reduxFormProps: PropTypes.object,
+    _extra: PropTypes.object
 };
 
 export default Select;

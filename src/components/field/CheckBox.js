@@ -22,8 +22,6 @@ class CheckBox extends Component {
 		    value = true;
 	    }
 
-		console.info("CheckBox - This are the props => " + JSON.stringify(Object.keys(this.props), null, 2));
-
 		return (
 			<FormGroup>
 				<Checkbox
@@ -39,14 +37,46 @@ class CheckBox extends Component {
 }
 
 CheckBox.propTypes = {
+
+	//Any props
 	value: PropTypes.any,
-	onChange: PropTypes.func.isRequired,
-	placeholder: PropTypes.string,
-	displayName: PropTypes.string,
-	name: PropTypes.string.isRequired,
+
+	//Bool props
+	checked: PropTypes.bool,
+	defaultChecked: PropTypes.bool,
+	valid: PropTypes.bool,
+	invalid: PropTypes.bool,
+	dirty: PropTypes.bool,
+	pristine: PropTypes.bool,
+	active: PropTypes.bool,
+	touched: PropTypes.bool,
+	visited: PropTypes.bool,
+	autofilled: PropTypes.bool,
+	required: PropTypes.bool,
+
+	//String props
 	error: PropTypes.string,
+	component: PropTypes.string,
+	placeholder: PropTypes.string,
+	name: PropTypes.string,
+	type: PropTypes.string,
+	displayName: PropTypes.string,
+	initialValue: PropTypes.string,
 	fieldLayout: PropTypes.string,
-	defaultChecked: PropTypes.bool
+
+	//Function props
+	autofill: PropTypes.func,
+	onBlur: PropTypes.func,
+	onDragStart: PropTypes.func,
+	onDrop: PropTypes.func,
+	onFocus: PropTypes.func,
+	onUpdate: PropTypes.func,
+	onChange: PropTypes.func,
+
+	//Object props
+	componentFactory: PropTypes.object,
+	reduxFormProps: PropTypes.object,
+	_extra: PropTypes.object
 };
 
 export default CheckBox;

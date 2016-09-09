@@ -94,6 +94,14 @@ export default [
 		schema: require('./base/components/Number.txt')
 	},
 	{
+		name: 'Email',
+		displayName: 'Components - Email',
+		entityName: 'contact',
+		layoutName: '',
+		formTitle: 'Edit contact',
+		schema: require('./base/components/Email.txt')
+	},
+	{
 		name: 'TextBoxInt',
 		displayName: 'Components - TextBox (int)',
 		entityName: 'contact',

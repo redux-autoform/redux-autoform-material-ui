@@ -139,26 +139,27 @@ class ArrayContainer extends Component {
 ArrayContainer.propTypes = {
 
     //Number props
-    innerSize: PropTypes.number.isRequired,
+    innerSize: PropTypes.number,
 
     //String props
-    name: PropTypes.string.isRequired,
-    addText: PropTypes.string.isRequired,
-    type: PropTypes.string.isRequired,
-    arrayType: PropTypes.string.isRequired,
-    entityType: PropTypes.string.isRequired,
-    layoutName: PropTypes.string.isRequired,
-    displayName: PropTypes.string.isRequired,
-    fieldLayout: PropTypes.string.isRequired,
+    component: PropTypes.string,
+    name: PropTypes.string,
+    addText: PropTypes.string,
+    type: PropTypes.string,
+    arrayType: PropTypes.string,
+    entityType: PropTypes.string,
+    layoutName: PropTypes.string,
+    displayName: PropTypes.string,
+    fieldLayout: PropTypes.string,
 
     //Array props
-    reduxFormProps: PropTypes.array.isRequired,
-    fields: PropTypes.array.isRequired,
+    reduxFormProps: PropTypes.array,
+    fields: PropTypes.array,
 
     //Object props
-    layout: PropTypes.object.isRequired,
-    componentFactory: PropTypes.object.isRequired,
-    _extra: PropTypes.object.isRequired
+    layout: PropTypes.object,
+    componentFactory: PropTypes.object,
+    _extra: PropTypes.object
 };
 
 export default ArrayContainer;

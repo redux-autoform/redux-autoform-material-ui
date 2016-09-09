@@ -1,28 +1,55 @@
 import fs from 'fs';
-import React from 'react';
-import Express from 'express';
+import Express, { Router } from 'express';
 import path from 'path';
-import webpackConfig from '../../webpack.config.demo.dev';
+import config from '../../webpack.config.demo.dev';
 import colors from 'colors';
 import webpackMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
 import webpack from 'webpack';
+import multer from 'multer';
 
 class Server {
-	static webpackCompiler = webpack(webpackConfig);
-	static isDevelopment = process.env.NODE_ENV !== 'production';
-	static app = Express();
-
-	static doInit() {
-		this.init(this.app, this.isDevelopment, this.webpackCompiler);
+	static isDevelopment() {
+		return process.env.NODE_ENV !== 'production';
 	}
 
-	static init(app, isDevelopment, webpackCompiler) {
+	static getStorage() {
+		const storage = multer.diskStorage({
+			destination: (request, file, callback) => {
+				callback(null, "./demo/uploads");
+			},
+			filename: (request, file, callback) => {
+				callback(null, file.originalname + '-' + Date.now())
+			}
+		});
+
+		return multer({storage});
+	}
+
+	static init() {
+		const webpackCompiler = webpack(config);
+		const app = new Express();
+		const router = new Router();
+		const upload = this.getStorage();
+
 		require.extensions['.html'] = (module, filename) => {
 			module.exports = fs.readFileSync(filename, 'utf8');
 		};
 
-		if (isDevelopment) {
+		router.post("/upload", (request, response) => {
+			upload.array("fileData")(request, response, (err) => {
+				if(err) {
+					response.json({status: false, message: "There was an error while uploading files."});
+					return;
+				}
+
+				response.json({status: true, message: "Files correctly uploaded."});
+			})
+		});
+
+		app.use(router);
+
+		if (this.isDevelopment()) {
 			app.use(webpackMiddleware(webpackCompiler));
 			app.use(webpackHotMiddleware(webpackCompiler));
 			app.use((request, response) => {

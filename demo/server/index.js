@@ -1,3 +1,3 @@
 import Server from './Server';
 
-Server.doInit();
+Server.init();

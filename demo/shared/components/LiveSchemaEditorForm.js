@@ -16,8 +16,31 @@ class LiveSchemaEditorForm extends Component {
         ));  
     };
 
+    getNewProps = (prop) => {
+        const {
+            initialValue,
+            autofill,
+            onUpdate,
+            valid,
+            invalid,
+            dirty,
+            pristine,
+            active,
+            touched,
+            visited,
+            autofilled,
+            ...rest
+        } = prop;
+
+        return rest;
+    };
+
+
     render() {
         const { fields: {entityName, layoutName, schema}, selectedPreset } = this.props;
+        const newLayout = this.getNewProps(layoutName);
+        const newEntity = this.getNewProps(entityName);
+        const newSchema = this.getNewProps(schema);
 
         return (
             <div className="container-fluid">
@@ -41,7 +64,7 @@ class LiveSchemaEditorForm extends Component {
 		                    value=""
 		                    hintText="Enter text"
 		                    fullWidth
-		                    {...entityName}
+		                    {...newEntity}
 	                    />
                     </div>
                     <div className="col-md-6">
@@ -51,7 +74,7 @@ class LiveSchemaEditorForm extends Component {
 		                    value=""
 		                    hintText="Enter text"
 		                    fullWidth
-		                    {...layoutName}
+		                    {...newLayout}
 	                    />
                     </div>
                 </div>
@@ -62,7 +85,7 @@ class LiveSchemaEditorForm extends Component {
                 </div>
 	            <div className="row">
 		            <div className="col-md-12">
-			            <CodeEditor {...schema}/>
+			            <CodeEditor {...newSchema}/>
 		            </div>
 	            </div>
             </div>

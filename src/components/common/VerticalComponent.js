@@ -1,10 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 
 class VerticalComponent extends Component {
-	static propTypes = {
-		children: PropTypes.object,
-		size: PropTypes.number
-	};
 
 	render() {
 		let {children, size} = this.props;
@@ -20,5 +16,10 @@ class VerticalComponent extends Component {
 		)
 	}
 }
+
+VerticalComponent.propTypes = {
+	children: PropTypes.object.isRequired,
+	size: PropTypes.number.isRequired
+};
 
 export default VerticalComponent;

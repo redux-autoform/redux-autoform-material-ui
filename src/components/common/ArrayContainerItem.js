@@ -3,11 +3,6 @@ import { IconMenu, MenuItem, IconButton } from 'material-ui';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 
 class ArrayContainerItem extends Component {
-    static propTypes = {
-        index: PropTypes.number.isRequired,
-        onAction: PropTypes.func.isRequired
-    };
-
     handleAction = (event, child) => {
         let { onAction, index } = this.props;
         onAction(event, child, index);
@@ -20,6 +15,8 @@ class ArrayContainerItem extends Component {
                 <MoreVertIcon/>
             </IconButton>
         );
+
+        console.info("ArrayContainerItem - This are the props => " + JSON.stringify(Object.keys(this.props), null, 2));
 
         return (
             <div className="array-container-item">
@@ -52,5 +49,10 @@ class ArrayContainerItem extends Component {
         );
     }
 }
+
+ArrayContainerItem.propTypes = {
+    index: PropTypes.number.isRequired,
+    onAction: PropTypes.func.isRequired
+};
 
 export default ArrayContainerItem;

@@ -4,10 +4,6 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 class Root extends Component {
-    static propTypes = {
-        children: PropTypes.array.isRequired,
-        handleSubmit: PropTypes.func.isRequired
-    };
 
     render() {
         let { handleSubmit, children } = this.props;
@@ -25,5 +21,10 @@ class Root extends Component {
         );
     }
 }
+
+Root.propTypes = {
+    children: PropTypes.array.isRequired,
+    handleSubmit: PropTypes.func.isRequired
+};
 
 export default Root;

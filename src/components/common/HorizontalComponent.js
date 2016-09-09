@@ -1,11 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 
 class HorizontalComponent extends Component {
-	static propTypes = {
-		children: PropTypes.object,
-		size: PropTypes.number
-	};
-
 	render() {
 		let {children, size} = this.props;
 
@@ -16,5 +11,10 @@ class HorizontalComponent extends Component {
 		)
 	}
 }
+
+HorizontalComponent.propTypes = {
+	children: PropTypes.object.isRequired,
+	size: PropTypes.number.isRequired
+};
 
 export default HorizontalComponent;

@@ -1,8 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import BaseGroup from './BaseGroup';
-import {RaisedButton, Toolbar, ToolbarGroup} from 'material-ui';
-
-const mergeJson = (arr) => arr.reduce((prev, actual) => ({...prev, ...actual}));
+import { RaisedButton, Toolbar, ToolbarGroup } from 'material-ui';
+import Arrays from '../../util/Arrays';
 
 class WizardGroup extends BaseGroup {
 
@@ -96,7 +95,7 @@ class WizardGroup extends BaseGroup {
         let { fields } = this.props;
 
         // Reads each field value of autoform and creates an object fieldName => fieldValue.
-        this.wizardContext.fields = mergeJson(fields.map(field => ({[field.name]: field.reduxFormProps.value})));
+        this.wizardContext.fields = Arrays.mergeJson(fields.map(field => ({[field.name]: field.reduxFormProps.value})));
     };
 
     getButtonSection = (steps) => {

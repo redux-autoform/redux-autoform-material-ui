@@ -1,9 +1,7 @@
 import React, { Component, PropTypes } from 'react';
+import Arrays from '../../util/Arrays';
 import BaseGroup from './BaseGroup';
 import { Tab, Tabs } from 'material-ui';
-
-const mergeJson = (arr) => arr.reduce((prev, actual) => ({...prev, ...actual}));
-const intersect = (a, b) => new Set([...a].filter(x => b.has(x)));
 
 class TabGroup extends BaseGroup {
 
@@ -68,7 +66,7 @@ class TabGroup extends BaseGroup {
 		let { fields } = this.props;
 
 		// Reads each field value of autoform and creates an object fieldName => error.
-		this.tabsContext.fields = Object.keys(mergeJson(fields.map(field => {
+		this.tabsContext.fields = Object.keys(Arrays.mergeJson(fields.map(field => {
 			if (field.reduxFormProps.touched) {
 				return (field.reduxFormProps.error)? {[field.name]: field.reduxFormProps.error} : null
 			}
@@ -85,7 +83,7 @@ class TabGroup extends BaseGroup {
 			tabNum[index] = tabNum[index].map(field => field.name);
 		});
 
-		return mergeJson(tabMap);
+		return Arrays.mergeJson(tabMap);
 	};
 
 	getStyle = (position) => {
@@ -97,7 +95,7 @@ class TabGroup extends BaseGroup {
 
 		let fieldsByTab = fieldsMap[position];
 
-		let hasErrors = intersect(new Set(fieldsByTab), new Set(this.tabsContext.fields)).size > 0;
+		let hasErrors = Arrays.intersect(fieldsByTab, this.tabsContext.fields).size > 0;
 
 		if(hasErrors)
 			style = {backgroundColor: "red"};

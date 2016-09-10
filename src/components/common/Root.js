@@ -2,7 +2,9 @@ import React, { Component, PropTypes } from 'react';
 import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import shouldComponentUpdate from '../../util/wrapUpdate';
 
+@shouldComponentUpdate
 class Root extends Component {
 
     render() {

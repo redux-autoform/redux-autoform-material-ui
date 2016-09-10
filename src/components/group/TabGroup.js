@@ -2,7 +2,9 @@ import React, { Component, PropTypes } from 'react';
 import Arrays from '../../util/Arrays';
 import BaseGroup from './BaseGroup';
 import { Tab, Tabs } from 'material-ui';
+import shouldComponentUpdate from '../../util/wrapUpdate';
 
+@shouldComponentUpdate
 class TabGroup extends BaseGroup {
 
 	tabsContext = {

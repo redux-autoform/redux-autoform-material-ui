@@ -1,7 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import { RadioButton, RadioButtonGroup } from 'material-ui';
 import FormGroup from '../common/FormGroup';
+import shouldComponentUpdate from '../../util/wrapUpdate';
 
+@shouldComponentUpdate
 class Radio extends Component {
     onChange = (event, value) => {
         let { onChange } = this.props;

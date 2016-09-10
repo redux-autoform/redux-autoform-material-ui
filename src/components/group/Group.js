@@ -1,6 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import BaseGroup from './BaseGroup';
+import shouldComponentUpdate from '../../util/wrapUpdate';
 
+@shouldComponentUpdate
 class Group extends BaseGroup {
 
     render() {

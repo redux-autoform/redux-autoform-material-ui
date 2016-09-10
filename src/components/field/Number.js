@@ -1,7 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import { TextField } from 'material-ui';
 import FormGroup from '../common/FormGroup';
+import shouldComponentUpdate from '../../util/wrapUpdate';
 
+@shouldComponentUpdate
 class Number extends Component {
 
     render() {

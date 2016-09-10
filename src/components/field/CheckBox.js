@@ -2,8 +2,8 @@ import React, { Component, PropTypes } from 'react';
 import { getDisplayName } from 'redux-autoform-utils';
 import Checkbox from 'material-ui/Checkbox';
 import FormGroup from '../common/FormGroup';
+import shouldComponentUpdate from '../../util/wrapUpdate';
 
-//TODO JS: delete this and move to css
 const styles = {
     checkbox: {
         marginTop: '0 !important',
@@ -12,6 +12,7 @@ const styles = {
     }
 };
 
+@shouldComponentUpdate
 class CheckBox extends Component {
 
     render() {

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import shouldComponentUpdate from '../../util/wrapUpdate';
 
+@shouldComponentUpdate
 class Static extends Component {
     // render() {
     //     let { value, name, displayName, help, error, touched, fieldLayout } = this.props;

@@ -2,7 +2,9 @@ import React, { Component, PropTypes } from 'react';
 import { RaisedButton } from 'material-ui';
 import DropZone from '../common/DropZone';
 import FileInfo from '../common/FileInfo';
+import shouldComponentUpdate from '../../util/wrapUpdate';
 
+@shouldComponentUpdate
 class FileUpload extends Component {
 	state = {
 		files: [],
@@ -68,7 +70,9 @@ class FileUpload extends Component {
 	};
 
 	openDropZone = () => {
-		this.refs.dropzone.open();
+		if (this.refs) {
+			this.refs.dropzone.open();
+		}
 	};
 
 	render() {

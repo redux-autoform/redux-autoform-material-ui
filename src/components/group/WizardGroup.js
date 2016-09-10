@@ -2,7 +2,9 @@ import React, { Component, PropTypes } from 'react';
 import BaseGroup from './BaseGroup';
 import { RaisedButton, Toolbar, ToolbarGroup } from 'material-ui';
 import Arrays from '../../util/Arrays';
+import shouldComponentUpdate from '../../util/wrapUpdate';
 
+@shouldComponentUpdate
 class WizardGroup extends BaseGroup {
 
     // Expose functions to the user in order to make the transitions, and the field values of the form

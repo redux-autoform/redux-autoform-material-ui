@@ -1,7 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import BaseGroup from './BaseGroup';
 import { Tab, Tabs, RaisedButton, Toolbar, ToolbarGroup } from 'material-ui';
+import shouldComponentUpdate from '../../util/wrapUpdate';
 
+@shouldComponentUpdate
 class WizardTabGroup extends BaseGroup {
 
 	state = {

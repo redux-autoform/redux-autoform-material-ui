@@ -1,41 +1,9 @@
 import accepts from 'attr-accept';
 import React, { Component, PropTypes } from 'react';
+import shouldComponentUpdate from '../../util/wrapUpdate';
 
-export default class DropZone extends Component {
-	static propTypes = {
-		// Overriding drop behavior
-		onDrop: PropTypes.func,
-		onDropAccepted: PropTypes.func,
-		onDropRejected: PropTypes.func,
-
-		// Overriding drag behavior
-		onDragStart: PropTypes.func,
-		onDragEnter: PropTypes.func,
-		onDragLeave: PropTypes.func,
-
-		children: PropTypes.node, // Contents of the dropzone
-		style: PropTypes.object, // CSS styles to apply
-		activeStyle: PropTypes.object, // CSS styles to apply when drop will be accepted
-		rejectStyle: PropTypes.object, // CSS styles to apply when drop will be rejected
-		className: PropTypes.string, // Optional className
-		activeClassName: PropTypes.string, // className for accepted state
-		rejectClassName: PropTypes.string, // className for rejected state
-
-		disablePreview: PropTypes.bool, // Enable/disable preview generation
-		disableClick: PropTypes.bool, // Disallow clicking on the dropzone container to open file dialog
-
-		inputProps: PropTypes.object, // Pass additional attributes to the <input type="file"/> tag
-		multiple: PropTypes.bool, // Allow dropping multiple files
-		accept: PropTypes.string, // Allow specific types of files. See https://github.com/okonet/attr-accept for more information
-		name: PropTypes.string // name attribute for the input tag
-	};
-
-
-	static defaultProps = {
-		disablePreview: false,
-		disableClick: false,
-		multiple: true
-	};
+@shouldComponentUpdate
+class DropZone extends Component {
 
 	state = {
 		isDragActive: false
@@ -264,3 +232,40 @@ export default class DropZone extends Component {
 		);
 	}
 }
+
+DropZone.propTypes = {
+	// Overriding drop behavior
+	onDrop: PropTypes.func,
+	onDropAccepted: PropTypes.func,
+	onDropRejected: PropTypes.func,
+
+	// Overriding drag behavior
+	onDragStart: PropTypes.func,
+	onDragEnter: PropTypes.func,
+	onDragLeave: PropTypes.func,
+
+	children: PropTypes.node, // Contents of the dropzone
+	style: PropTypes.object, // CSS styles to apply
+	activeStyle: PropTypes.object, // CSS styles to apply when drop will be accepted
+	rejectStyle: PropTypes.object, // CSS styles to apply when drop will be rejected
+	className: PropTypes.string, // Optional className
+	activeClassName: PropTypes.string, // className for accepted state
+	rejectClassName: PropTypes.string, // className for rejected state
+
+	disablePreview: PropTypes.bool, // Enable/disable preview generation
+	disableClick: PropTypes.bool, // Disallow clicking on the dropzone container to open file dialog
+
+	inputProps: PropTypes.object, // Pass additional attributes to the <input type="file"/> tag
+	multiple: PropTypes.bool, // Allow dropping multiple files
+	accept: PropTypes.string, // Allow specific types of files. See https://github.com/okonet/attr-accept for more information
+	name: PropTypes.string // name attribute for the input tag
+};
+
+
+DropZone.defaultProps = {
+	disablePreview: false,
+	disableClick: false,
+	multiple: true
+};
+
+export default DropZone;

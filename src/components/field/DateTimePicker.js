@@ -2,7 +2,9 @@ import React, { Component, PropTypes } from 'react';
 import { getDateLocalizer } from 'redux-autoform-utils';
 import FormGroup from '../common/FormGroup';
 import { DatePicker, TimePicker } from 'material-ui';
+import shouldComponentUpdate from '../../util/wrapUpdate';
 
+@shouldComponentUpdate
 class DateTimePicker extends Component {
 
     getFormat = (format, type, formats) => {

@@ -1,7 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import { AutoComplete } from 'material-ui';
 import callApi from '../../util/FetchUtils';
+import shouldComponentUpdate from '../../util/wrapUpdate';
 
+@shouldComponentUpdate
 class Lookup extends Component {
     state = {
         urlOptions: [],

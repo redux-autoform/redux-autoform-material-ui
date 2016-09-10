@@ -1,6 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import FormGroup from '../common/FormGroup';
+import shouldComponentUpdate from '../../util/wrapUpdate';
 
+@shouldComponentUpdate
 class FieldGroup extends Component {
 
     getGroupContent = () => {

@@ -2,7 +2,9 @@ import React, { Component, PropTypes } from 'react';
 import { FlatButton, RaisedButton } from 'material-ui';
 import Item from '../common/ArrayContainerItem';
 import FormGroup from '../common/FormGroup';
+import shouldComponentUpdate from '../../util/wrapUpdate';
 
+@shouldComponentUpdate
 class ArrayContainer extends Component {
 
     onClick = () => {

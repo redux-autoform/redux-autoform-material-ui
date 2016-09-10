@@ -1,8 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import { TextField } from 'material-ui';
 import FormGroup from '../common/FormGroup';
+import shouldComponentUpdate from '../../util/wrapUpdate';
 
-//TODO JS we have to emulate the addonBefore and addonAfter
+@shouldComponentUpdate
 class TextArea extends Component {
 
     render() {
@@ -18,11 +19,10 @@ class TextArea extends Component {
                     hintText={placeholder}
                     floatingLabelText={displayName}
                     type="text"
-                    rowsMax={rows}
+                    rows={rows}
                     onChange={onChange}
                     onBlur={onBlur}
                     fullWidth
-                    multiLine
                 />
             </FormGroup>
         );

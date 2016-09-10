@@ -21,7 +21,20 @@ export default {
 
     module: {
         loaders: [
-            {test: /\.js/, loaders: ['babel'], exclude: /node_modules/ },
+            {
+                test: /\.js$/,
+                exclude: /node_modules\/(?!(stardust))/,
+                loader: 'babel',
+                query: {
+                    cacheDirectory: true,
+                    plugins: [
+                        'transform-runtime',
+                        'add-module-exports',
+                        'transform-decorators-legacy',
+                    ],
+                    presets: ['es2015', 'react', 'stage-0'],
+                },
+            },
             {test: /\.jsx/, loaders: ['babel'], exclude: /node_modules/ },
             {test: /\.css/, loader: ExtractTextPlugin.extract("style-loader", "css-loader")},
             {test: /\.less$/, loader:  ExtractTextPlugin.extract("style-loader", "css-loader!less-loader")},

@@ -2,20 +2,10 @@ import React, { Component, PropTypes } from 'react';
 import { Dialog, FlatButton, FontIcon } from 'material-ui';
 import { cyan500 } from 'material-ui/styles/colors';
 import filesize from 'filesize';
+import shouldComponentUpdate from '../../util/wrapUpdate';
 
-export default class FileUploadItem extends Component {
-	static propTypes = {
-		onClick: PropTypes.func,
-		file: PropTypes.object.isRequired,
-		height: PropTypes.string,
-		width: PropTypes.string
-	};
-
-	static defaultProps = {
-		height: "150px",
-		width: "150px"
-	};
-
+@shouldComponentUpdate
+class FileInfo extends Component {
 	state = {
 		show: false
 	};
@@ -111,4 +101,18 @@ export default class FileUploadItem extends Component {
 			</div>
 		);
 	}
+}
+
+FileInfo.propTypes = {
+	onClick: PropTypes.func,
+	file: PropTypes.object.isRequired,
+	height: PropTypes.string,
+	width: PropTypes.string
 };
+
+FileInfo.defaultProps = {
+	height: "150px",
+	width: "150px"
+};
+
+export default FileInfo;

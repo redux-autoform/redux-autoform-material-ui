@@ -14,11 +14,6 @@
                     type: "date"
                 },
                 {
-                    name: "dateAndTime",
-                    displayName: "Date and time",
-                    type: "datetime"
-                },
-                {
                     name: "dateCustomFormat",
                     displayName: "Date with custom format",
                     type: "date",
@@ -38,13 +33,6 @@
                     error: function(m) {
                          return m.invalidIfBefore2016 && m.invalidIfBefore2016.getFullYear() < 2016 ? 'This date should be 2016 or after' : undefined;
                     }
-                },
-                {
-                    name: "textbox",
-                    displayName: "Using a TextBox",
-                    type: "date",
-                    component: "TextBox",
-                    help: function(m) { return m.textbox }
                 }
             ]
         }

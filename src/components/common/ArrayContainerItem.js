@@ -16,8 +16,6 @@ class ArrayContainerItem extends Component {
             </IconButton>
         );
 
-        console.info("ArrayContainerItem - This are the props => " + JSON.stringify(Object.keys(this.props), null, 2));
-
         return (
             <div className="array-container-item">
                 <div className="row">
@@ -52,7 +50,8 @@ class ArrayContainerItem extends Component {
 
 ArrayContainerItem.propTypes = {
     index: PropTypes.number.isRequired,
-    onAction: PropTypes.func.isRequired
+    onAction: PropTypes.func.isRequired,
+    children: PropTypes.node
 };
 
 export default ArrayContainerItem;

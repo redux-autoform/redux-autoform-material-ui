@@ -1,9 +1,7 @@
-import clone from 'clone';
-import _ from 'underscore';
 import presets from '../../../client/presets/presets';
 import FormActions from '../actions/FormOptionsActions';
 
-const defaultSchema = _.find(presets, p => p.name == 'default');
+const defaultSchema = presets.find(p => p.name == 'default');
 
 const initialState = {
     componentFactory: 'edit',
@@ -12,38 +10,36 @@ const initialState = {
 };
 
 const formOptionsReducer = (state = initialState, action) => {
-    let newState;
-    
     switch (action.type) {
         case FormActions.UPDATE_FORM:
-            newState = clone(state);
-            newState.schema = action.schema;
+            return {
+                ...state,
+                schema: action.schema
+            };
     
-            return newState;
+	    case FormActions.SET_STACKED_FIELD_LAYOUT:
+            return {
+	            ...state,
+	            fieldLayout: 'stacked'
+            };
     
-        case FormActions.SET_STACKED_FIELD_LAYOUT:
-            newState = clone(state);
-            newState.fieldLayout = 'stacked';
-    
-            return newState;
-    
-        case FormActions.SET_INLINE_FIELD_LAYOUT:
-            newState = clone(state);
-            newState.fieldLayout = 'inline';
-    
-            return newState;
+	    case FormActions.SET_INLINE_FIELD_LAYOUT:
+            return {
+	            ...state,
+	            fieldLayout: 'inline'
+            };
        
-        case FormActions.SET_EDIT_COMPONENT_FACTORY:
-            newState = clone(state);
-            newState.componentFactory = 'edit';
-            
-            return newState;
+	    case FormActions.SET_EDIT_COMPONENT_FACTORY:
+            return {
+	            ...state,
+	            componentFactory: 'edit'
+            };
        
-        case FormActions.SET_DETAILS_COMPONENT_FACTORY:
-            newState = clone(state);
-            newState.componentFactory = 'details';
-            
-            return newState;
+	    case FormActions.SET_DETAILS_COMPONENT_FACTORY:
+            return {
+	            ...state,
+	            componentFactory: 'details'
+            };
         
         default:
             return state;

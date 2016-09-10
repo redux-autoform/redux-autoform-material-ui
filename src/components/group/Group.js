@@ -3,23 +3,6 @@ import BaseGroup from './BaseGroup';
 
 class Group extends BaseGroup {
 
-    getHeader = () => {
-        let {layout} = this.props;
-        let header = null;
-
-        if (layout.title) {
-            header = (
-                <header className="metaform-group-header">
-                    <span className="metaform-group-title">
-                        {layout.title}
-                    </span>
-                </header>
-            );
-        }
-
-        return (!layout.headLess)? header : null;
-    };
-
     render() {
         let header = this.getHeader();
         let content = this.getContent();

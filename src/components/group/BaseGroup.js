@@ -3,12 +3,6 @@ import HorizontalComponent from '../common/HorizontalComponent';
 import VerticalComponent from '../common/VerticalComponent';
 
 class BaseGroup extends Component {
-    static propTypes = {
-        component: PropTypes.string,
-        fields: PropTypes.array.isRequired,
-        layout: PropTypes.object.isRequired,
-        componentFactory: PropTypes.object.isRequired
-    };
 
     getFieldMetadata = (field) => {
         let {layout, fields} = this.props;
@@ -98,5 +92,12 @@ class BaseGroup extends Component {
         });
     };
 }
+
+BaseGroup.propTypes = {
+    component: PropTypes.string,
+    fields: PropTypes.array.isRequired,
+    layout: PropTypes.object.isRequired,
+    componentFactory: PropTypes.object.isRequired
+};
 
 export default BaseGroup;

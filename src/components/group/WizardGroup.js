@@ -5,12 +5,6 @@ import {RaisedButton, Toolbar, ToolbarGroup} from 'material-ui';
 const mergeJson = (arr) => arr.reduce((prev, actual) => ({...prev, ...actual}));
 
 class WizardGroup extends BaseGroup {
-    static propTypes = {
-        component: PropTypes.string,
-        fields: PropTypes.array.isRequired,
-        layout: PropTypes.object.isRequired,
-        componentFactory: PropTypes.object.isRequired
-    };
 
     // Expose functions to the user in order to make the transitions, and the field values of the form
     wizardContext = {
@@ -174,5 +168,11 @@ class WizardGroup extends BaseGroup {
     }
 }
 
+WizardGroup.propTypes = {
+    component: PropTypes.string,
+    fields: PropTypes.array.isRequired,
+    layout: PropTypes.object.isRequired,
+    componentFactory: PropTypes.object.isRequired
+};
 
 export default WizardGroup;

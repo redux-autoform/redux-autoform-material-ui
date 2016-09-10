@@ -6,12 +6,6 @@ const mergeJson = (arr) => arr.reduce((prev, actual) => ({...prev, ...actual}));
 const intersect = (a, b) => new Set([...a].filter(x => b.has(x)));
 
 class TabGroup extends BaseGroup {
-	static propTypes = {
-		component: PropTypes.string,
-		fields: PropTypes.array.isRequired,
-		layout: PropTypes.object.isRequired,
-		componentFactory: PropTypes.object.isRequired
-	};
 
 	tabsContext = {
 		fields: []
@@ -147,5 +141,12 @@ class TabGroup extends BaseGroup {
 		);
 	}
 }
+
+TabGroup.propTypes = {
+	component: PropTypes.string,
+	fields: PropTypes.array.isRequired,
+	layout: PropTypes.object.isRequired,
+	componentFactory: PropTypes.object.isRequired
+};
 
 export default TabGroup;

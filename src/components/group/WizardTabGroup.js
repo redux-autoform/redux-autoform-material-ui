@@ -2,13 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import BaseGroup from './BaseGroup';
 import { Tab, Tabs, RaisedButton, Toolbar, ToolbarGroup } from 'material-ui';
 
-class TabGroup extends BaseGroup {
-	static propTypes = {
-		component: PropTypes.string,
-		fields: PropTypes.array.isRequired,
-		layout: PropTypes.object.isRequired,
-		componentFactory: PropTypes.object.isRequired
-	};
+class WizardTabGroup extends BaseGroup {
 
 	state = {
         totalSteps: this.props.layout.groups.length - 1,
@@ -138,4 +132,11 @@ class TabGroup extends BaseGroup {
 	}
 }
 
-export default TabGroup;
+WizardTabGroup.propTypes = {
+    component: PropTypes.string,
+    fields: PropTypes.array.isRequired,
+    layout: PropTypes.object.isRequired,
+    componentFactory: PropTypes.object.isRequired
+};
+
+export default WizardTabGroup;

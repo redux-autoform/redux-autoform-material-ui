@@ -30,6 +30,14 @@ export default [
 		schema: require('./base/group/Tabs.txt')
 	},
 	{
+		name: 'Questionnaire',
+		displayName: 'Layouts - Questionnaire (Experimental)',
+		entityName: 'contact',
+		layoutName: 'edit',
+		formTitle: 'Edit contact',
+		schema: require('./base/group/Questionnaire.txt')
+	},
+	{
 		name: 'WizardTabs',
 		displayName: 'Layouts - WizardTabs (Experimental)',
 		entityName: 'contact',

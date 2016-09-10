@@ -5,10 +5,12 @@ import { LinearProgress } from 'material-ui';
 class QuestionnaireGroup extends BaseGroup {
 
     state = {
-        completionPercent: 0
+        percentage: 10
     };
 
     render() {
+        let { percentage } = this.state;
+
         let header = this.getHeader();
         let content = this.getContent();
 
@@ -16,8 +18,8 @@ class QuestionnaireGroup extends BaseGroup {
             <section>
                 <div className="row">
                     <div className="container-fluid" style={{ marginTop: "10px" }}>
-                        <h5>Indeterminate Progress</h5>
-                        <LinearProgress mode="indeterminate" style={{ height: "10px" }}/>
+                        <h5>{`The currently progress is ${percentage} %`}</h5>
+                        <LinearProgress value={percentage} min={0} max={100} mode="determinate" style={{ height: "10px" }}/>
                     </div>
                     <div className="metaform-group">
                         <div className="col-md-12" style={{marginTop: "10px"}}>

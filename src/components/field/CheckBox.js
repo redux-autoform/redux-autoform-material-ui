@@ -15,19 +15,31 @@ const styles = {
 @shouldComponentUpdate
 class CheckBox extends Component {
 
-    render() {
-        let { value, name, displayName, onChange, onBlur, fieldLayout, defaultChecked, error, touched } = this.props;
-	    // let validationState = error && touched ? 'error' : null;
+	getValue = () => {
+		let { value } = this.props;
 
-	    if (defaultChecked === true || value === true) {
-		    value = true;
-	    }
+		if (typeof value === 'string') {
+			if (value === 'true') {
+				return true;
+			} else if (value === 'false') {
+				return false;
+			}
+
+			return false;
+		}
+
+		return value;
+	};
+
+    render() {
+        let { name, displayName, onChange, onBlur, fieldLayout, error, touched } = this.props;
+	    // let validationState = error && touched ? 'error' : null;
 
 		return (
 			<FormGroup>
 				<Checkbox
-					label={getDisplayName(displayName, name)}
-					defaultChecked={value}
+					label={displayName}
+					defaultChecked={this.getValue()}
 					onChange={onChange}
 					onBlur={onBlur}
 					style={styles.checkbox}

@@ -15,7 +15,7 @@ class HorizontalComponent extends Component {
 }
 
 HorizontalComponent.propTypes = {
-	children: PropTypes.object.isRequired,
+	children: PropTypes.object,
 	size: PropTypes.number.isRequired
 };
 

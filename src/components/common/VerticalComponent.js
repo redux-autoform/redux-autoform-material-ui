@@ -20,7 +20,7 @@ class VerticalComponent extends Component {
 }
 
 VerticalComponent.propTypes = {
-	children: PropTypes.object.isRequired,
+	children: PropTypes.object,
 	size: PropTypes.number.isRequired
 };
 

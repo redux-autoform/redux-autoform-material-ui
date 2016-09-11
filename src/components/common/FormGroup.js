@@ -16,7 +16,7 @@ class FormGroup extends Component {
 }
 
 FormGroup.propTypes = {
-    children: PropTypes.node.isRequired
+    children: PropTypes.node
 };
 
 export default FormGroup;

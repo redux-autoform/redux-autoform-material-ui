@@ -25,7 +25,7 @@ class Root extends Component {
 }
 
 Root.propTypes = {
-    children: PropTypes.array.isRequired,
+    children: PropTypes.array,
     handleSubmit: PropTypes.func.isRequired
 };
 

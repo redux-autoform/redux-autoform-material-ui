@@ -34,6 +34,9 @@
     "react-addons-shallow-compare": "^15.3.1",
     "redux-autoform-utils": "^1.0.4-experimental"
   },
+  "peerDependencies": {
+    "react": "^0.14.8 || ^15.0.0"
+  },
   "devDependencies": {
     "babel-cli": "^6.6.5",
     "babel-core": "^6.7.4",

@@ -14,22 +14,17 @@ class Lookup extends Component {
         let { inputValue } = this.state;
 
         if (inputValue && inputValue !== '') {
-            let { valueKey, labelKey, arrayKey } = this.props.options;
             let searchUrl = url + inputValue;
 
             callApi(searchUrl)
                 .then(response => response.json())
-                .then(json => {
-                    console.info("This is the json => " + JSON.stringify(json, null, 2));
-
-                    if (Array.isArray(json)) {
-                        this.fillDataSource(json, labelKey, valueKey);
-                    } else {
-                        this.fillDataSource(json[arrayKey], labelKey, valueKey);
-                    }
-                })
-                .catch(err => console.info(`There was an when fetching resources. The error was => ${err}`));
+                .then(json => this.fillRemoteDataSource(json))
+                .catch(err => this.showErrorInConsole(err));
         }
+    };
+
+    showErrorInConsole = (err) => {
+        console.error(`There was an when fetching resources. The error was => ${err}`);
     };
 
     fillDataSource = (arr, label = 'label', value = 'value') => {
@@ -48,6 +43,17 @@ class Lookup extends Component {
 
         if (Array.isArray(options)) {
             this.fillDataSource(options);
+        }
+    };
+
+    fillRemoteDataSource = (json) => {
+        let { options } = this.props;
+        let { valueKey, labelKey, arrayKey } = options;
+
+        if (Array.isArray(json)) {
+            this.fillDataSource(json, labelKey, valueKey);
+        } else {
+            this.fillDataSource(json[arrayKey], labelKey, valueKey);
         }
     };
 
@@ -70,8 +76,16 @@ class Lookup extends Component {
         onChange(text);
     };
 
-    componentDidMount() {
+    componentWillMount() {
         this.fillLocalDataSource();
+    }
+
+    componentWillUnmount() {
+        //Reset state when this component is unmounted
+        this.setState({
+            dataSource: [],
+            inputValue: ''
+        })
     }
 
     render() {

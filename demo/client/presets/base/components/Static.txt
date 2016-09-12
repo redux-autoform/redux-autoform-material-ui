@@ -1,0 +1,21 @@
+{
+    entities: [
+        {
+            name: "contact",
+            fields: [
+                {
+                    name: "Full Name",
+                    displayName: "Full Name",
+                    type: "string",
+                    component: "Static"
+                },
+                {
+                    name: "Birth Date",
+                    displayName: "Birth Date",
+                    type: "string",
+                    component: "Static"
+                }
+            ]
+        }
+    ]
+}

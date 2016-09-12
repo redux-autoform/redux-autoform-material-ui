@@ -86,6 +86,14 @@ export default [
 		schema: require('./base/components/DateTimePicker.txt')
 	},
 	{
+		name: 'Static',
+		displayName: 'Components - Static',
+		entityName: 'contact',
+		layoutName: '',
+		formTitle: 'Edit contact',
+		schema: require('./base/components/Static.txt')
+	},
+	{
 		name: 'TextBox',
 		displayName: 'Components - TextBox',
 		entityName: 'contact',

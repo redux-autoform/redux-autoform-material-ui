@@ -41,11 +41,12 @@
                     displayName: "Url",
                     type: "string",
                     component: "Lookup",
-                    help: "Lists the React project open-issues",
+                    help: "Search by Repo Name in Github",
                     options: {
-                        url: "https://api.github.com/repos/facebook/react/issues",
+                        url: "https://api.github.com/search/repositories?q=",
                         valueKey: "id",
-                        labelKey: "title"
+                        labelKey: "full_name",
+                        arrayKey: "items"
                     }
                 }
             ]

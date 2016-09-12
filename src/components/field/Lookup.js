@@ -6,90 +6,78 @@ import shouldComponentUpdate from '../../util/wrapUpdate';
 @shouldComponentUpdate
 class Lookup extends Component {
     state = {
-        urlOptions: [],
-        urlErrors: null,
-        source: []
+        dataSource: [],
+        inputValue: ''
     };
 
-    onNewRequest = (text, index) => {
-        let { onChange, options } = this.props;
-        let { valueKey } = options;
-        let { source } = this.state;
-        let item = null;
+    performNetworkSearch = (url) => {
+        let { inputValue } = this.state;
 
-        if (index !== -1) {
-            item = source[index][valueKey];
-        }
+        if (inputValue && inputValue !== '') {
+            let { valueKey, labelKey, arrayKey } = this.props.options;
+            let searchUrl = url + inputValue;
 
-        onChange(item);
-    };
+            callApi(searchUrl)
+                .then(response => response.json())
+                .then(json => {
+                    console.info("This is the json => " + JSON.stringify(json, null, 2));
 
-    onUpdateInput = (searchText, dataSource) => {
-        let { onChange, options } = this.props;
-        let { labelKey, valueKey } = options;
-
-        let item = dataSource.find(item => {
-            if (item[labelKey] === searchText) {
-                return item[valueKey];
-            }
-
-            return {};
-        });
-
-        onChange(item);
-    };
-
-    setDataSource = () => {
-        let { options } = this.props;
-        let { url, labelKey, valueKey } = options;
-        let { urlOptions, urlErrors } = this.state;
-
-        if (Array.isArray(options)) {
-            this.fillDataSource(options);
-        }
-        else if (url && labelKey && valueKey) {
-            if (Array.isArray(urlOptions)) {
-                this.fillDataSource(urlOptions, labelKey, valueKey);
-            }
-            else if (urlErrors) {
-                console.error(
-                    `Select - There was the following error when fetching from resource =>
-                    ${JSON.stringify(urlErrors, null, 2)}`
-                );
-            }
+                    if (Array.isArray(json)) {
+                        this.fillDataSource(json, labelKey, valueKey);
+                    } else {
+                        this.fillDataSource(json[arrayKey], labelKey, valueKey);
+                    }
+                })
+                .catch(err => console.info(`There was an when fetching resources. The error was => ${err}`));
         }
     };
 
     fillDataSource = (arr, label = 'label', value = 'value') => {
-        let source = arr.map(item => ({
+        let newDataSource = arr.map(item => ({
             text: item[label],
             value: item[value]
         }));
 
-        this.setState({source: source});
+        this.setState({
+            dataSource: newDataSource
+        });
     };
 
-    componentWillMount() {
+    fillLocalDataSource = () => {
         let { options } = this.props;
-        let { url } = options;
+
+        if (Array.isArray(options)) {
+            this.fillDataSource(options);
+        }
+    };
+
+    onUpdateInput = (searchText) => {
+        let { url } = this.props.options;
+        let newState = {
+            inputValue: searchText
+        };
 
         if (url) {
-            callApi(url)
-                .then(response => response.json())
-                .then(response => {
-                    this.setState({ urlOptions: response });
-                    this.setDataSource();
-                });
+            this.setState(newState, () => this.performNetworkSearch(url))
+        } else {
+            this.setState(newState, () => this.fillLocalDataSource());
         }
-        else {
-            this.setDataSource();
-        }
+    };
+
+    onNewRequest = (text) => {
+        let { onChange } = this.props;
+
+        onChange(text);
+    };
+
+    componentDidMount() {
+        this.fillLocalDataSource();
     }
 
     render() {
         let { displayName, placeholder, error, touched, active, help, onBlur } = this.props;
         let errors = (touched || active)? error : null;
-        let { source } = this.state;
+        let { dataSource } = this.state;
         let helpBlock = null;
 
         if (help) {
@@ -100,15 +88,13 @@ class Lookup extends Component {
             )
         }
 
-        console.info("AutoComplete - This are the props => " + JSON.stringify(Object.keys(this.props), null, 2));
-
         return (
             <div>
                 <AutoComplete
                     filter={AutoComplete.caseInsensitiveFilter}
                     errorText={errors}
                     floatingLabelText={displayName}
-                    dataSource={source}
+                    dataSource={dataSource}
                     hintText={placeholder}
                     onNewRequest={this.onNewRequest}
                     onUpdateInput={this.onUpdateInput}

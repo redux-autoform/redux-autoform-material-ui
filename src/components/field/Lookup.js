@@ -18,7 +18,7 @@ class Lookup extends Component {
 
             callApi(searchUrl)
                 .then(response => response.json())
-                .then(json => this.fillRemoteDataSource(json))
+                .then(json => this.fillDataSourceFromRemote(json))
                 .catch(err => this.showErrorInConsole(err));
         }
     };
@@ -38,7 +38,7 @@ class Lookup extends Component {
         });
     };
 
-    fillLocalDataSource = () => {
+    fillDataSourceFromLocal = () => {
         let { options } = this.props;
 
         if (Array.isArray(options)) {
@@ -46,7 +46,7 @@ class Lookup extends Component {
         }
     };
 
-    fillRemoteDataSource = (json) => {
+    fillDataSourceFromRemote = (json) => {
         let { options } = this.props;
         let { valueKey, labelKey, arrayKey } = options;
 
@@ -66,7 +66,7 @@ class Lookup extends Component {
         if (url) {
             this.setState(newState, () => this.performNetworkSearch(url))
         } else {
-            this.setState(newState, () => this.fillLocalDataSource());
+            this.setState(newState, () => this.fillDataSourceFromLocal());
         }
     };
 
@@ -77,7 +77,7 @@ class Lookup extends Component {
     };
 
     componentWillMount() {
-        this.fillLocalDataSource();
+        this.fillDataSourceFromLocal();
     }
 
     componentWillUnmount() {

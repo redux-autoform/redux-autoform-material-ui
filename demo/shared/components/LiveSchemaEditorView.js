@@ -136,7 +136,9 @@ class LiveSchemaEditor extends Component {
 	                        <div className="row">
 	                            <div className="col-md-12">
 	                                <div className="live-schema-editor-mount-node">
-	                                    {this.getAutoform()}
+		                                <div className="container-fluid">
+	                                        {this.getAutoform()}
+		                                </div>
 	                                </div>
 	                            </div>
 	                        </div>

@@ -12,12 +12,10 @@ class Root extends Component {
 
         return (
             <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
-                <div className="container-fluid">
-                    <div className="meta-form">
-                        <form onSubmit={handleSubmit}>
-                            {children}
-                        </form>
-                    </div>
+                <div className="meta-form">
+                    <form onSubmit={handleSubmit}>
+                        {children}
+                    </form>
                 </div>
             </MuiThemeProvider>
         );

@@ -11,13 +11,15 @@ class Group extends BaseGroup {
 
         return (
             <section>
-                <div className="row">
-                    <div className="metaform-group">
-                        <div className="col-md-12" style={{marginTop: "10px"}}>
-                            {header}
-                        </div>
-                        <div className="metaform-group-content">
-                            {content}
+                <div className="container-fluid">
+                    <div className="row">
+                        <div className="metaform-group">
+                            <div className="col-md-12" style={{marginTop: "10px"}}>
+                                {header}
+                            </div>
+                            <div className="metaform-group-content">
+                                {content}
+                            </div>
                         </div>
                     </div>
                 </div>

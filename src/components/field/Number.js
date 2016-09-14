@@ -9,12 +9,13 @@ class Number extends Component {
     render() {
         let { value, error, displayName, name, onChange, placeholder, min, max, touched, active, onBlur } = this.props;
 	    let errors = (touched || active)? error : null;
+		let intValue = (value)? value : min; 
 
         return (
             <FormGroup>
                 <TextField
                     name={name}
-                    value={min || value}
+                    value={intValue}
                     errorText={errors}
                     hintText={placeholder}
                     floatingLabelText={displayName}
@@ -32,10 +33,6 @@ class Number extends Component {
 
 Number.propTypes = {
 
-    //Number props
-    min: PropTypes.number,
-    max: PropTypes.number,
-
     //Any props
     value: PropTypes.any,
 
@@ -52,6 +49,8 @@ Number.propTypes = {
     required: PropTypes.bool,
 
     //String props
+    min: PropTypes.string,
+    max: PropTypes.string,
     component: PropTypes.string,
     placeholder: PropTypes.string,
     name: PropTypes.string,

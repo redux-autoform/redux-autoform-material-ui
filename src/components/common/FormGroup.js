@@ -92,7 +92,7 @@ class FormGroup extends Component {
     render() {
         return (
             <div style={{ marginTop: "10px", marginBottom: "10px" }}>
-                <div className="col-md-12">
+                <div>
 	                {this.getTitleBlock()}
                 </div>
                 <div>

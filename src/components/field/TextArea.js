@@ -7,17 +7,23 @@ import shouldComponentUpdate from '../../util/wrapUpdate';
 class TextArea extends Component {
 
     render() {
-        let {value, error, displayName, name, onChange, rows, placeholder, touched, active, onBlur} = this.props;
+        let {value, error, displayName, name, onChange, rows, placeholder, touched, active, onBlur, help, addonAfter, addonBefore} = this.props;
         let errors = (touched || active)? error : null;
+        let props = {
+            displayName,
+            name,
+            help,
+            addonAfter,
+            addonBefore
+        };
 
         return (
-            <FormGroup>
+            <FormGroup {...props}>
                 <TextField
                     name={name}
                     value={value}
                     errorText={errors}
                     hintText={placeholder}
-                    floatingLabelText={displayName}
                     type="text"
                     rows={rows}
                     onChange={onChange}

@@ -23,12 +23,17 @@ class FieldGroup extends Component {
     };
 
     render() {
-        // let { value, placeholder, addonBefore, addonAfter, onChange, onBlur, componentClass, children, rows, // textarea only,};
-        let { name, displayName, help, error, touched, fieldLayout, innerSize } = this.props;
-        let formGroupProps = { error, touched, displayName, name, help, fieldLayout, innerSize };
+        let { name, displayName, help, error, touched, fieldLayout, innerSize, addonAfter, addonBefore } = this.props;
+        let props = {
+        	displayName,
+	        name,
+	        help,
+	        addonAfter,
+	        addonBefore
+        };
 
         return (
-            <FormGroup>
+            <FormGroup {...props}>
                 {this.getGroupContent()}
             </FormGroup>
         );

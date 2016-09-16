@@ -32,11 +32,18 @@ class CheckBox extends Component {
 	};
 
     render() {
-        let { name, displayName, onChange, onBlur, fieldLayout, error, touched } = this.props;
+        let { name, displayName, onChange, onBlur, fieldLayout, error, touched, help, addonAfter, addonBefore } = this.props;
 	    // let validationState = error && touched ? 'error' : null;
+	    let props = {
+			name,
+		    displayName,
+		    help,
+		    addonAfter,
+		    addonBefore
+	    };
 
 		return (
-			<FormGroup>
+			<FormGroup {...props}>
 				<Checkbox
 					label={displayName}
 					defaultChecked={this.getValue()}
@@ -68,6 +75,9 @@ CheckBox.propTypes = {
 	required: PropTypes.bool,
 
 	//String props
+	addonBefore: PropTypes.string,
+	addonAfter: PropTypes.string,
+	help: PropTypes.string,
 	error: PropTypes.string,
 	component: PropTypes.string,
 	placeholder: PropTypes.string,

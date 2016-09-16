@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { FlatButton, RaisedButton } from 'material-ui';
+import { RaisedButton, Toolbar, ToolbarGroup, ToolbarTitle } from 'material-ui';
 import Item from '../common/ArrayContainerItem';
 import FormGroup from '../common/FormGroup';
 import shouldComponentUpdate from '../../util/wrapUpdate';
@@ -76,63 +76,76 @@ class ArrayContainer extends Component {
         let components = this.getComponents();
 
         if (components.length) {
-            return (
-                <div className="add-bar">
-                    <span>
-                        <RaisedButton label={text} onClick={this.onClick} primary/>
-                    </span>
-                </div>
-            );
-
-        } else {
-            return null;
+	        return (
+		        <Toolbar className="add-bar">
+			        <ToolbarGroup firstChild/>
+			        <ToolbarGroup lastChild>
+				        <RaisedButton
+					        label={text}
+					        onClick={this.onClick}
+					        primary
+				        />
+			        </ToolbarGroup>
+		        </Toolbar>
+	        );
         }
+
+        return null;
     };
 
     getAllComponents = () => {
         let components = this.getComponents();
 
-        const div = {
-            width: "100%",
-            display: "table",
-            marginTop: "5px",
-            marginBottom: "5px",
-            padding: "5px",
-            backgroundColor: "#ffecb3",
-            border: "1px solid #ffe082",
+        const toolbar = {
+            border: "1px solid #616161",
             borderRadius: "2px",
-            justifyContent: "center"
+	        marginTop: "10px"
         };
 
-        const span = {
-            float: "left",
-            marginTop: "7px",
-            marginRight: "5px"
+        const title = {
+	        fontSize: "14px",
+	        marginLeft: "10px"
         };
 
         if (components.length) {
             return components;
         } else {
             return (
-                <div style={div}>
-                    <span style={span}>This array is empty </span><FlatButton label="Add new Item" backgroundColor="#ffe082" onClick={this.onClick} style={{float: "right"}}/>
-                </div>
+                <Toolbar style={toolbar}>
+	                <ToolbarGroup firstChild>
+	                    <ToolbarTitle
+		                    text="This array is empty"
+		                    style={title}
+	                    />
+	                </ToolbarGroup>
+                    <ToolbarGroup>
+	                    <RaisedButton
+		                    label="Add new Item"
+		                    onClick={this.onClick}
+	                        primary
+	                    />
+                    </ToolbarGroup>
+                </Toolbar>
             );
         }
     };
 
     render() {
-        let { displayName, fieldLayout, innerSize, name } = this.props;
-        let formGroupProps = { displayName, name, fieldLayout, innerSize };
-        let components = this.getAllComponents();
-        let addBar = this.getAddBar();
+        let { displayName, fieldLayout, innerSize, name, addonAfter, help, addonBefore } = this.props;
+        let props = {
+        	displayName,
+	        name,
+	        fieldLayout,
+	        innerSize,
+	        addonAfter,
+	        addonBefore,
+	        help
+        };
 
         return (
-            <FormGroup>
-                <div className="array-container-content">
-                    {components}
-                </div>
-                {addBar}
+            <FormGroup {...props}>
+	            {this.getAllComponents()}
+                {this.getAddBar()}
             </FormGroup>
         );
     }
@@ -144,6 +157,9 @@ ArrayContainer.propTypes = {
     innerSize: PropTypes.number,
 
     //String props
+	addonBefore: PropTypes.string,
+	addonAfter: PropTypes.string,
+	help: PropTypes.string,
     component: PropTypes.string,
     name: PropTypes.string,
     addText: PropTypes.string,

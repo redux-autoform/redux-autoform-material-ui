@@ -86,7 +86,7 @@
                     orientation: "horizontal",
                     fields: [
                         {
-                            displayName: null,
+                            displayName: "Type",
                             name: "emailType",
                             size: 4,
                             component: 'Select',
@@ -98,7 +98,7 @@
                             ]
                         },
                         {
-                            displayName: null,
+                            displayName: "Address",
                             name: "address",
                             required: true,
                             placeholder: 'E-mail adress',
@@ -127,13 +127,13 @@
                     orientation: "horizontal",
                     fields: [
                         {
-                            displayName: null,
+                            displayName: "Code",
                             name: "longDistanceCode",
                             size: 4,
                             placeholder: 'Region code'
                         },
                         {
-                            displayName: null,
+                            displayName: "Number",
                             name: "number",
                             required: true,
                             size: 8,

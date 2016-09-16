@@ -22,24 +22,17 @@ class Radio extends Component {
     };
 
     render() {
-        let { error, touched, displayName, name, help, fieldLayout, innerSize, value, onBlur } = this.props;
-        // let formGroupProps = { error, touched, displayName, name, help, fieldLayout, innerSize };
-        let helpBlock = null;
-        let nameBlock = null;
-
-        if (help) {
-            helpBlock = <h5 style={{color: "#9e9e9e"}}>{help}</h5>;
-        }
-
-        if (displayName) {
-            nameBlock = <h4 style={{color: "#757575"}}>{displayName}</h4>;
-        }
-
-        console.info("Radio - This are the props => " + JSON.stringify(Object.keys(this.props), null, 2));
+        let {error, touched, displayName, name, help, fieldLayout, innerSize, value, onBlur, addonAfter, addonBefore} = this.props;
+        let props = {
+        	displayName,
+	        name,
+	        help,
+	        addonAfter,
+	        addonBefore
+        };
 
         return (
-            <FormGroup>
-                {nameBlock}
+            <FormGroup {...props}>
                 <RadioButtonGroup
                     name={name}
                     valueSelected={value}
@@ -48,7 +41,6 @@ class Radio extends Component {
                 >
                     {this.getOptions()}
                 </RadioButtonGroup>
-                {helpBlock}
             </FormGroup>
         )
     }
@@ -72,6 +64,9 @@ Radio.propTypes = {
     required: PropTypes.bool,
 
     //String props
+	help: PropTypes.string,
+	addonAfter: PropTypes.string,
+	addonBefore: PropTypes.string,
     component: PropTypes.string,
     placeholder: PropTypes.string,
     name: PropTypes.string,

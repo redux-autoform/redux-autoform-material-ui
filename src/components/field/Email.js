@@ -7,17 +7,23 @@ import shouldComponentUpdate from '../../util/wrapUpdate';
 class Email extends Component {
 
     render() {
-        let {value, error, displayName, name, onChange, placeholder, touched, active, onBlur } = this.props;
+        let {value, error, displayName, name, onChange, placeholder, touched, active, onBlur, addonBefore, addonAfter, help} = this.props;
         let errors = (touched || active)? error : null;
+        let props = {
+            displayName,
+            name,
+            help,
+            addonAfter,
+            addonBefore
+        };
 
         return (
-            <FormGroup>
+            <FormGroup {...props}>
                 <TextField
                     name={name}
                     value={value}
                     errorText={errors}
                     hintText={placeholder}
-                    floatingLabelText={displayName}
                     type="email"
                     onChange={onChange}
                     onBlur={onBlur}

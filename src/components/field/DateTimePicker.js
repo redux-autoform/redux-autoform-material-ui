@@ -66,15 +66,21 @@ class DateTimePicker extends Component {
 	};
 
     render() {
-        let { name, displayName, help, error, active, touched, onBlur, type, fieldLayout, placeholder } = this.props;
+        let { name, displayName, help, error, active, touched, onBlur, type, fieldLayout, placeholder, addonAfter, addonBefore } = this.props;
 	    let errors = (touched || active)? error : null;
 
-        let formGroupProps = { error, touched, displayName, name, help, fieldLayout };
+        let props = {
+        	displayName,
+	        name,
+	        help,
+	        addonAfter,
+	        addonBefore
+        };
 
 	    switch (type) {
 		    case 'date':
 			    return (
-				    <FormGroup>
+				    <FormGroup {...props}>
 					    <DatePicker
 						    name={name}
 						    value={this.parseString()}
@@ -82,7 +88,6 @@ class DateTimePicker extends Component {
 						    container="inline"
 						    errorText={errors}
 						    hintText={placeholder}
-						    floatingLabelText={displayName}
 						    onChange={this.onChange}
 						    formatDate={this.formatDate}
 						    onBlur={onBlur}
@@ -94,14 +99,13 @@ class DateTimePicker extends Component {
 
 		    case 'time':
 			    return (
-				    <FormGroup>
+				    <FormGroup {...props}>
 					    <TimePicker
 						    format="24hr"
 						    name={name}
 						    value={this.parseString()}
 						    errorText={errors}
 						    hintText={placeholder}
-						    floatingLabelText={displayName}
 						    onChange={this.onChange}
 						    onBlur={onBlur}
 						    type={type}
@@ -134,6 +138,8 @@ DateTimePicker.propTypes = {
 	required: PropTypes.bool,
 
 	//String props
+	addonAfter: PropTypes.string,
+	addonBefore: PropTypes.string,
 	component: PropTypes.string,
 	placeholder: PropTypes.string,
 	name: PropTypes.string,

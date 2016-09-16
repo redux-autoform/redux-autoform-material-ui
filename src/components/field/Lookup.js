@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { AutoComplete } from 'material-ui';
 import callApi from '../../util/FetchUtils';
 import shouldComponentUpdate from '../../util/wrapUpdate';
+import FormGroup from '../common/FormGroup';
 
 @shouldComponentUpdate
 class Lookup extends Component {
@@ -89,37 +90,33 @@ class Lookup extends Component {
     }
 
     render() {
-        let { displayName, placeholder, error, touched, active, help, onBlur } = this.props;
+        let { displayName, name, addonAfter, addonBefore, placeholder, error, touched, active, help, onBlur } = this.props;
         let errors = (touched || active)? error : null;
         let { dataSource } = this.state;
-        let helpBlock = null;
 
-        if (help) {
-            helpBlock = (
-                <h5 style={{color: "#9e9e9e"}}>
-                    {help}
-                </h5>
-            )
-        }
+	    let props = {
+	    	displayName,
+		    name,
+		    help,
+		    addonAfter,
+		    addonBefore
+	    };
 
         return (
-            <div>
+            <FormGroup {...props}>
                 <AutoComplete
                     filter={AutoComplete.caseInsensitiveFilter}
                     errorText={errors}
-                    floatingLabelText={displayName}
                     dataSource={dataSource}
                     hintText={placeholder}
                     onNewRequest={this.onNewRequest}
                     onUpdateInput={this.onUpdateInput}
                     onBlur={onBlur}
-                    floatingLabelFixed
                     fullWidth
                     animated
                     openOnFocus
                 />
-                {helpBlock}
-            </div>
+            </FormGroup>
         )
     }
 }
@@ -146,6 +143,8 @@ Lookup.propTypes = {
     required: PropTypes.bool,
 
     //String props
+	addonAfter: PropTypes.string,
+	addonBefore: PropTypes.string,
     component: PropTypes.string,
     help: PropTypes.string,
     placeholder: PropTypes.string,

@@ -7,20 +7,28 @@ import shouldComponentUpdate from '../../util/wrapUpdate';
 class TextBox extends Component {
 
     render() {
-        let { value, error, displayName, name, onChange, placeholder, touched, active, onBlur } = this.props;
+        let { value, error, displayName, name, onChange, placeholder, touched, active, onBlur, help, addonAfter, addonBefore } = this.props;
 	    let errors = (touched || active)? error : null;
 
+	    let props = {
+		    displayName,
+		    name,
+		    help,
+		    addonAfter,
+		    addonBefore
+	    };
+
 	    return (
-	    	<FormGroup>
+	    	<FormGroup {...props}>
 				<TextField
+					id={`textField-${name}`}
 					name={name}
 					value={value}
 					errorText={errors}
 					hintText={placeholder}
-					floatingLabelText={displayName}
-					type="text"
 					onChange={onChange}
 					onBlur={onBlur}
+					type="text"
 					fullWidth
 				/>
 			</FormGroup>
@@ -46,6 +54,9 @@ TextBox.propTypes = {
 	required: PropTypes.bool,
 
 	//String props
+	addonAfter: PropTypes.string,
+	addonBefore: PropTypes.string,
+	help: PropTypes.string,
 	component: PropTypes.string,
 	placeholder: PropTypes.string,
 	name: PropTypes.string,

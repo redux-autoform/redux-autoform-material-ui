@@ -7,17 +7,24 @@ import shouldComponentUpdate from '../../util/wrapUpdate';
 class Password extends Component {
 
     render() {
-        let {value, error, displayName, name, onChange, placeholder, touched, active, onBlur} = this.props;
+        let {value, error, displayName, name, onChange, placeholder, touched, active, onBlur, help, addonAfter, addonBefore} = this.props;
         let errors = (touched || active)? error : null;
 
+        let props = {
+            displayName,
+            name,
+            help,
+            addonAfter,
+            addonBefore
+        };
+
         return (
-            <FormGroup>
+            <FormGroup {...props}>
                 <TextField
                     name={name}
                     value={value}
                     errorText={errors}
                     hintText={placeholder}
-                    floatingLabelText={displayName}
                     type="password"
                     onChange={onChange}
                     onBlur={onBlur}
@@ -46,6 +53,9 @@ Password.propTypes = {
     required: PropTypes.bool,
 
     //String props
+    help: PropTypes.string,
+    addonAfter: PropTypes.string,
+    addonBefore: PropTypes.string,
     component: PropTypes.string,
     placeholder: PropTypes.string,
     name: PropTypes.string,

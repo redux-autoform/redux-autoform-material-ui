@@ -7,16 +7,22 @@ import shouldComponentUpdate from '../../util/wrapUpdate';
 class Static extends Component {
 
     render() {
-        let { value, name, displayName, help, error, touched, active } = this.props;
+        let { value, name, displayName, help, error, touched, active, addonBefore, addonAfter } = this.props;
         let errors = (touched || active)? error : null;
+        let props = {
+            displayName,
+            name,
+            help,
+            addonAfter,
+            addonBefore
+        };
 
         return (
-            <FormGroup>
+            <FormGroup {...props}>
                 <TextField
                     name={name}
                     value={value}
                     errorText={errors}
-                    floatingLabelText={displayName}
                     type="text"
                     fullWidth
                     disabled
@@ -44,6 +50,8 @@ Static.propTypes = {
     required: PropTypes.bool,
 
     //String props
+    addonAfter: PropTypes.string,
+    addonBefore: PropTypes.string,
     component: PropTypes.string,
     placeholder: PropTypes.string,
     name: PropTypes.string,

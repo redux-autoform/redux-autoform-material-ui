@@ -9,6 +9,7 @@ class FormGroup extends Component {
 
 		switch (component) {
 			case "Checkbox":
+				return null;
 			case "Radio":
 				return null;
 		}

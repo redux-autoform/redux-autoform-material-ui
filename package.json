@@ -1,6 +1,6 @@
 {
   "name": "redux-autoform-material-ui",
-  "version": "1.1.1-experimental",
+  "version": "1.1.2-experimental",
   "description": "Material-UI integration for redux-autoform",
   "main": "index.js",
   "scripts": {

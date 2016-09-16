@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { SelectField, MenuItem } from 'material-ui';
 import callApi from '../../util/FetchUtils';
 import shouldComponentUpdate from '../../util/wrapUpdate';
+import FormGroup from '../common/FormGroup';
 
 @shouldComponentUpdate
 class Select extends Component {
@@ -62,35 +63,31 @@ class Select extends Component {
     }
 
     render() {
-        let { displayName, placeholder, error, touched, active, help, onBlur } = this.props;
+        let { addonBefore, addonAfter, displayName, name, placeholder, error, touched, active, help, onBlur } = this.props;
 	    let errors = (touched || active)? error : null;
 	    let { value } = this.state;
-        let helpBlock = null;
 
-        if (help) {
-            helpBlock = (
-                <h5 style={{color: "#9e9e9e"}}>
-                    {help}
-                </h5>
-            )
-        }
+	    let props = {
+		    displayName,
+		    name,
+		    help,
+		    addonBefore,
+		    addonAfter
+	    };
 
         return (
-            <div>
+            <FormGroup {...props}>
                 <SelectField
                     errorText={errors}
-                    floatingLabelText={displayName}
                     value={value}
                     hintText={placeholder}
                     onChange={this.onChange}
                     onBlur={onBlur}
-                    floatingLabelFixed
                     fullWidth
                 >
                     {this.getItems()}
                 </SelectField>
-                {helpBlock}
-            </div>
+            </FormGroup>
         )
     }
 }
@@ -117,6 +114,8 @@ Select.propTypes = {
     required: PropTypes.bool,
 
     //String props
+	addonAfter: PropTypes.string,
+	addonBefore: PropTypes.string,
     component: PropTypes.string,
     help: PropTypes.string,
     placeholder: PropTypes.string,

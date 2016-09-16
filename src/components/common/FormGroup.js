@@ -4,15 +4,15 @@ import shouldComponentUpdate from '../../util/wrapUpdate';
 @shouldComponentUpdate
 class FormGroup extends Component {
 
-    getTitle = () => {
-        let { displayName, name } = this.props;
-        let isDisplayName = (displayName !== undefined && displayName !== null && displayName !== '');
+	getTitle = () => {
+		let {displayName, name} = this.props;
+		let isDisplayName = (displayName !== undefined && displayName !== null && displayName !== '');
 
-        return (isDisplayName)? displayName : name;
-    };
+		return (isDisplayName) ? displayName : name;
+	};
 
 	getHelpBlock = () => {
-		let { help } = this.props;
+		let {help} = this.props;
 
 		if (help) {
 			return (
@@ -25,28 +25,12 @@ class FormGroup extends Component {
 		return null;
 	};
 
-	getAddonAfterBlock = () => {
-		let { addonAfter } = this.props;
-
-		if (addonAfter) {
-			return (
-				<div className="pull-right">
-					<p style={{ margin: "0px" }}>
-						{addonAfter}
-					</p>
-				</div>
-			)
-		}
-
-		return null;
-	};
-
 	getAddonBeforeBlock = () => {
-		let { addonBefore } = this.props;
+		let {addonBefore} = this.props;
 
 		if (addonBefore) {
 			return (
-				<div className="pull-left">
+				<div className="col-md-3 pull-left" style={{ textAlign: "left", marginTop: "15px", padding: "0px" }}>
 					<p style={{ margin: "0px" }}>
 						{addonBefore}
 					</p>
@@ -57,9 +41,37 @@ class FormGroup extends Component {
 		return null;
 	};
 
-    render() {
-        let { children } = this.props;
+	getAddonAfterBlock = () => {
+		let {addonAfter} = this.props;
 
+		if (addonAfter) {
+			return (
+				<div className="col-md-3 pull-right" style={{ textAlign: "right", marginTop: "15px", padding: "0px" }}>
+					<p style={{ margin: "0px" }}>
+						{addonAfter}
+					</p>
+				</div>
+			)
+		}
+
+		return null;
+	};
+
+	getChildrenBlock = () => {
+		let { children, addonAfter, addonBefore } = this.props;
+
+		if (addonAfter || addonBefore) {
+			return (
+				<div className="col-md-9" style={{ margin: "0px", padding: "0px" }}>
+					{children}
+				</div>			
+			);
+		}
+		
+		return children;
+	};
+
+    render() {
         return (
             <div style={{ marginTop: "10px", marginBottom: "10px" }}>
                 <div>
@@ -69,7 +81,7 @@ class FormGroup extends Component {
                 </div>
                 <div>
 	                {this.getAddonBeforeBlock()}
-	                {children}
+	                {this.getChildrenBlock()}
 	                {this.getAddonAfterBlock()}
                 </div>
 	            {this.getHelpBlock()}

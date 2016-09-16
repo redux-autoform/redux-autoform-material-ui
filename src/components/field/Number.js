@@ -7,21 +7,28 @@ import shouldComponentUpdate from '../../util/wrapUpdate';
 class Number extends Component {
 
     render() {
-        let { value, error, displayName, name, onChange, placeholder, min, max, touched, active, onBlur } = this.props;
+        let { value, error, addonAfter, addonBefore, displayName, help, name, onChange, placeholder, min, max, touched, active, onBlur } = this.props;
 	    let errors = (touched || active)? error : null;
-		let intValue = (value)? value : min; 
+		let intValue = (value)? value : min;
+
+        let props = {
+            displayName,
+            name,
+            help,
+	        addonAfter,
+	        addonBefore
+        };
 
         return (
-            <FormGroup>
+            <FormGroup {...props}>
                 <TextField
                     name={name}
                     value={intValue}
                     errorText={errors}
                     hintText={placeholder}
-                    floatingLabelText={displayName}
                     type="number"
-                    min={min}
-                    max={max}
+                    min={parseInt(min)}
+                    max={parseInt(max)}
                     onChange={onChange}
                     onBlur={onBlur}
                     fullWidth
@@ -32,6 +39,10 @@ class Number extends Component {
 }
 
 Number.propTypes = {
+
+    //Number props
+    min: PropTypes.number,
+    max: PropTypes.number,
 
     //Any props
     value: PropTypes.any,
@@ -49,8 +60,8 @@ Number.propTypes = {
     required: PropTypes.bool,
 
     //String props
-    min: PropTypes.string,
-    max: PropTypes.string,
+    addonAfter: PropTypes.string,
+    addonBefore: PropTypes.string,
     component: PropTypes.string,
     placeholder: PropTypes.string,
     name: PropTypes.string,

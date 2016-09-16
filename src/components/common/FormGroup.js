@@ -25,6 +25,38 @@ class FormGroup extends Component {
 		return null;
 	};
 
+	getAddonAfterBlock = () => {
+		let { addonAfter } = this.props;
+
+		if (addonAfter) {
+			return (
+				<div className="pull-right">
+					<p style={{ margin: "0px" }}>
+						{addonAfter}
+					</p>
+				</div>
+			)
+		}
+
+		return null;
+	};
+
+	getAddonBeforeBlock = () => {
+		let { addonBefore } = this.props;
+
+		if (addonBefore) {
+			return (
+				<div className="pull-left">
+					<p style={{ margin: "0px" }}>
+						{addonBefore}
+					</p>
+				</div>
+			)
+		}
+
+		return null;
+	};
+
     render() {
         let { children } = this.props;
 
@@ -36,7 +68,9 @@ class FormGroup extends Component {
                     </h4>
                 </div>
                 <div>
-                    {children}
+	                {this.getAddonBeforeBlock()}
+	                {children}
+	                {this.getAddonAfterBlock()}
                 </div>
 	            {this.getHelpBlock()}
             </div>

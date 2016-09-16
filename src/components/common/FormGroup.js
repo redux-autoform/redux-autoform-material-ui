@@ -4,11 +4,28 @@ import shouldComponentUpdate from '../../util/wrapUpdate';
 @shouldComponentUpdate
 class FormGroup extends Component {
 
-	getTitle = () => {
-		let {displayName, name} = this.props;
-		let isDisplayName = (displayName !== undefined && displayName !== null && displayName !== '');
+	getTitleBlock = () => {
+		let {displayName, name, component } = this.props;
 
-		return (isDisplayName) ? displayName : name;
+		switch (component) {
+			case "Checkbox":
+			case "Radio":
+				return null;
+		}
+
+		if (displayName !== undefined && displayName !== null && displayName !== '') {
+			return (
+				<h5 style={{ margin: "0px" }}>
+					{displayName}
+				</h5>
+			)
+		} else {
+			return (
+				<h5 style={{ margin: "0px" }}>
+					{name}
+				</h5>
+			)
+		}
 	};
 
 	getHelpBlock = () => {
@@ -75,9 +92,7 @@ class FormGroup extends Component {
         return (
             <div style={{ marginTop: "10px", marginBottom: "10px" }}>
                 <div>
-                    <h4 style={{ margin: "0px" }}>
-                        {this.getTitle()}
-                    </h4>
+	                {this.getTitleBlock()}
                 </div>
                 <div>
 	                {this.getAddonBeforeBlock()}
@@ -91,7 +106,12 @@ class FormGroup extends Component {
 }
 
 FormGroup.propTypes = {
-    children: PropTypes.node,
+
+	//Node props
+	children: PropTypes.node,
+
+	//String props
+	component: PropTypes.string,
     displayName: PropTypes.string,
     name: PropTypes.string,
 	help: PropTypes.string,

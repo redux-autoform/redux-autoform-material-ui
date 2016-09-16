@@ -22,13 +22,14 @@ class Radio extends Component {
     };
 
     render() {
-        let {error, touched, displayName, name, help, fieldLayout, innerSize, value, onBlur, addonAfter, addonBefore} = this.props;
+        let {error, touched, displayName, name, help, fieldLayout, innerSize, value, onBlur, addonAfter, addonBefore, component} = this.props;
         let props = {
         	displayName,
 	        name,
 	        help,
 	        addonAfter,
-	        addonBefore
+	        addonBefore,
+	        component
         };
 
         return (

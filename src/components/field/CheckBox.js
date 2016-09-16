@@ -32,14 +32,15 @@ class CheckBox extends Component {
 	};
 
     render() {
-        let { name, displayName, onChange, onBlur, fieldLayout, error, touched, help, addonAfter, addonBefore } = this.props;
+        let { name, displayName, onChange, onBlur, fieldLayout, error, touched, help, addonAfter, addonBefore, component } = this.props;
 	    // let validationState = error && touched ? 'error' : null;
 	    let props = {
 			name,
 		    displayName,
 		    help,
 		    addonAfter,
-		    addonBefore
+		    addonBefore,
+		    component
 	    };
 
 		return (

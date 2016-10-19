@@ -1,10 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import { AutoComplete } from 'material-ui';
 import callApi from '../../util/FetchUtils';
-import shouldComponentUpdate from '../../util/wrapUpdate';
 import FormGroup from '../common/FormGroup';
 
-@shouldComponentUpdate
 class Lookup extends Component {
     state = {
         dataSource: [],
@@ -90,7 +88,7 @@ class Lookup extends Component {
     }
 
     render() {
-        let { displayName, name, addonAfter, addonBefore, placeholder, error, touched, active, help, onBlur } = this.props;
+        let { required, displayName, name, addonAfter, addonBefore, placeholder, error, touched, active, help, onBlur } = this.props;
         let errors = (touched || active)? error : null;
         let { dataSource } = this.state;
 
@@ -99,7 +97,8 @@ class Lookup extends Component {
 		    name,
 		    help,
 		    addonAfter,
-		    addonBefore
+		    addonBefore,
+		    required
 	    };
 
         return (

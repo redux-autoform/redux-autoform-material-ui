@@ -1,13 +1,11 @@
 import React, { Component, PropTypes } from 'react';
 import { TextField } from 'material-ui';
 import FormGroup from '../common/FormGroup';
-import shouldComponentUpdate from '../../util/wrapUpdate';
 
-@shouldComponentUpdate
 class TextBox extends Component {
 
     render() {
-        let { value, error, displayName, name, onChange, placeholder, touched, active, onBlur, help, addonAfter, addonBefore } = this.props;
+        let { required, value, error, displayName, name, onChange, placeholder, touched, active, onBlur, help, addonAfter, addonBefore } = this.props;
 	    let errors = (touched || active)? error : null;
 
 	    let props = {
@@ -15,7 +13,8 @@ class TextBox extends Component {
 		    name,
 		    help,
 		    addonAfter,
-		    addonBefore
+		    addonBefore,
+		    required
 	    };
 
 	    return (

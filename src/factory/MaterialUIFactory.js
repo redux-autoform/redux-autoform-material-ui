@@ -8,6 +8,7 @@ import WizardGroup from '../components/group/WizardGroup';
 import WizardTabGroup from '../components/group/WizardTabGroup';
 import QuestionnaireGroup from '../components/group/QuestionnaireGroup';
 
+import ChipBox from '../components/field/ChipBox';
 import Number from '../components/field/Number';
 import TextBox from '../components/field/TextBox';
 import Password from '../components/field/Password';
@@ -32,6 +33,7 @@ class MaterialUIFactory extends ComponentFactory {
     
     setBaseComponents = () => {
 	    this.registerFieldComponent('TextBox', ['string', 'int', 'float', 'datetime', 'date', 'time'], TextBox);
+	    this.registerFieldComponent('ChipBox', ['string', 'int', 'float', 'datetime', 'date', 'time'], ChipBox);
 	    this.registerFieldComponent('Password', ['string'], Password);
 	    this.registerFieldComponent('Number', ['string'], Number);
         this.registerFieldComponent('Email', ['string'], Email);

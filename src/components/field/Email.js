@@ -1,20 +1,19 @@
 import React, { Component, PropTypes } from 'react';
 import { TextField } from 'material-ui';
 import FormGroup from '../common/FormGroup';
-import shouldComponentUpdate from '../../util/wrapUpdate';
 
-@shouldComponentUpdate
 class Email extends Component {
 
     render() {
-        let {value, error, displayName, name, onChange, placeholder, touched, active, onBlur, addonBefore, addonAfter, help} = this.props;
+        let {required, value, error, displayName, name, onChange, placeholder, touched, active, onBlur, addonBefore, addonAfter, help} = this.props;
         let errors = (touched || active)? error : null;
         let props = {
             displayName,
             name,
             help,
             addonAfter,
-            addonBefore
+            addonBefore,
+	        required
         };
 
         return (

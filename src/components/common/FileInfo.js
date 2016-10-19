@@ -2,9 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { Dialog, FlatButton, FontIcon } from 'material-ui';
 import { cyan500 } from 'material-ui/styles/colors';
 import filesize from 'filesize';
-import shouldComponentUpdate from '../../util/wrapUpdate';
 
-@shouldComponentUpdate
 class FileInfo extends Component {
 	state = {
 		show: false

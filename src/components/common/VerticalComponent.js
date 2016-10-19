@@ -1,7 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import shouldComponentUpdate from '../../util/wrapUpdate';
 
-@shouldComponentUpdate
 class VerticalComponent extends Component {
 
 	render() {

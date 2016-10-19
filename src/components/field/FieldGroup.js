@@ -1,8 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import FormGroup from '../common/FormGroup';
-import shouldComponentUpdate from '../../util/wrapUpdate';
 
-@shouldComponentUpdate
 class FieldGroup extends Component {
 
     getGroupContent = () => {
@@ -23,13 +21,15 @@ class FieldGroup extends Component {
     };
 
     render() {
-        let { name, displayName, help, error, touched, fieldLayout, innerSize, addonAfter, addonBefore } = this.props;
+        let { required, name, displayName, help, addonAfter, addonBefore } = this.props;
+
         let props = {
         	displayName,
 	        name,
 	        help,
 	        addonAfter,
-	        addonBefore
+	        addonBefore,
+	        required
         };
 
         return (

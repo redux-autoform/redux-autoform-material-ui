@@ -1,9 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import FormGroup from '../common/FormGroup';
 import { TextField } from 'material-ui';
-import shouldComponentUpdate from '../../util/wrapUpdate';
 
-@shouldComponentUpdate
 class Static extends Component {
 
     render() {

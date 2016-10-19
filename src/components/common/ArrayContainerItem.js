@@ -1,9 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { IconMenu, MenuItem, IconButton } from 'material-ui';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
-import shouldComponentUpdate from '../../util/wrapUpdate';
 
-@shouldComponentUpdate
 class ArrayContainerItem extends Component {
     handleAction = (event, child) => {
         let { onAction, index } = this.props;

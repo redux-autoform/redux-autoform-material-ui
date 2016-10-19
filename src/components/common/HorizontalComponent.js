@@ -1,7 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import shouldComponentUpdate from '../../util/wrapUpdate';
 
-@shouldComponentUpdate
 class HorizontalComponent extends Component {
 	render() {
 		let {children, size} = this.props;

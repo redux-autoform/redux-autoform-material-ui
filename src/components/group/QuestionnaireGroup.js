@@ -2,9 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import BaseGroup from './BaseGroup';
 import { LinearProgress } from 'material-ui';
 import Arrays from '../../util/Arrays';
-import shouldComponentUpdate from '../../util/wrapUpdate';
 
-@shouldComponentUpdate
 class QuestionnaireGroup extends BaseGroup {
 
     state = {

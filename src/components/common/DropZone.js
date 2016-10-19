@@ -1,8 +1,6 @@
 import accepts from 'attr-accept';
 import React, { Component, PropTypes } from 'react';
-import shouldComponentUpdate from '../../util/wrapUpdate';
 
-@shouldComponentUpdate
 class DropZone extends Component {
 
 	state = {

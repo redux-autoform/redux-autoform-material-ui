@@ -2,9 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { getDateLocalizer } from 'redux-autoform-utils';
 import FormGroup from '../common/FormGroup';
 import { DatePicker, TimePicker } from 'material-ui';
-import shouldComponentUpdate from '../../util/wrapUpdate';
 
-@shouldComponentUpdate
 class DateTimePicker extends Component {
 
     getFormat = (format, type, formats) => {
@@ -66,7 +64,7 @@ class DateTimePicker extends Component {
 	};
 
     render() {
-        let { name, displayName, help, error, active, touched, onBlur, type, fieldLayout, placeholder, addonAfter, addonBefore } = this.props;
+        let { name, displayName, help, error, active, touched, onBlur, type, required, placeholder, addonAfter, addonBefore } = this.props;
 	    let errors = (touched || active)? error : null;
 
         let props = {
@@ -74,7 +72,8 @@ class DateTimePicker extends Component {
 	        name,
 	        help,
 	        addonAfter,
-	        addonBefore
+	        addonBefore,
+	        required
         };
 
 	    switch (type) {

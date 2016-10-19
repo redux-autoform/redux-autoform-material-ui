@@ -1,66 +1,36 @@
 import React, { Component, PropTypes } from 'react';
-import { getDisplayName } from 'redux-autoform-utils';
-import Checkbox from 'material-ui/Checkbox';
+import { Chip } from 'material-ui';
 import FormGroup from '../common/FormGroup';
 
-const styles = {
-    checkbox: {
-        marginTop: '0 !important',
-        paddingTop: '0 !important',
-        marginBottom: '10px !important'
-    }
-};
-
-class CheckBox extends Component {
-
-	getValue = () => {
-		let { value } = this.props;
-
-		if (typeof value === 'string') {
-			if (value === 'true') {
-				return true;
-			} else if (value === 'false') {
-				return false;
-			}
-
-			return false;
-		}
-
-		return value;
-	};
-
+class ChipBox extends Component {
     render() {
-        let { name, displayName, onChange, help, addonAfter, addonBefore, component } = this.props;
+        let { value, error, displayName, name, touched, active, help, addonAfter, addonBefore } = this.props;
+
 	    let props = {
-			name,
 		    displayName,
+		    name,
 		    help,
 		    addonAfter,
-		    addonBefore,
-		    component
+		    addonBefore
 	    };
 
-		return (
-			<FormGroup {...props}>
-				<Checkbox
-					label={displayName}
-					defaultChecked={this.getValue()}
-					onCheck={onChange}
-					style={styles.checkbox}
-				/>
+	    return (
+	    	<FormGroup {...props}>
+				<Chip>
+					{value}
+				</Chip>
 			</FormGroup>
-		);
-    }
+	    );
+	}
 }
 
-CheckBox.propTypes = {
+ChipBox.propTypes = {
 
 	//Any props
 	value: PropTypes.any,
 
 	//Bool props
 	checked: PropTypes.bool,
-	defaultChecked: PropTypes.bool,
 	valid: PropTypes.bool,
 	invalid: PropTypes.bool,
 	dirty: PropTypes.bool,
@@ -72,13 +42,13 @@ CheckBox.propTypes = {
 	required: PropTypes.bool,
 
 	//String props
-	addonBefore: PropTypes.string,
 	addonAfter: PropTypes.string,
+	addonBefore: PropTypes.string,
 	help: PropTypes.string,
-	error: PropTypes.string,
 	component: PropTypes.string,
 	placeholder: PropTypes.string,
 	name: PropTypes.string,
+	error: PropTypes.string,
 	type: PropTypes.string,
 	displayName: PropTypes.string,
 	initialValue: PropTypes.string,
@@ -99,4 +69,4 @@ CheckBox.propTypes = {
 	_extra: PropTypes.object
 };
 
-export default CheckBox;
+export default ChipBox;

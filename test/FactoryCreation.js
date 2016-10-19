@@ -6,13 +6,13 @@ describe("Factory creation", function() {
     it("User requests an edit factory", function(done) {
 
         let correctConfig = {
-            'string': 'TextBox',
+            'string': 'ChipBox',
             'array': 'ArrayContainer',
             'datetime': 'DateTimePicker',
             'time': 'DateTimePicker',
             'date': 'DateTimePicker',
-            'int' : 'TextBox',
-            'float': 'TextBox',
+            'int' : 'ChipBox',
+            'float': 'ChipBox',
             'bool': 'Checkbox',
             'group': 'FieldGroup'
         };

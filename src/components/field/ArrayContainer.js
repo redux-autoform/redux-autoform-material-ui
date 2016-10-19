@@ -2,9 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { RaisedButton, Toolbar, ToolbarGroup, ToolbarTitle } from 'material-ui';
 import Item from '../common/ArrayContainerItem';
 import FormGroup from '../common/FormGroup';
-import shouldComponentUpdate from '../../util/wrapUpdate';
 
-@shouldComponentUpdate
 class ArrayContainer extends Component {
 
     onClick = () => {
@@ -131,15 +129,17 @@ class ArrayContainer extends Component {
     };
 
     render() {
-        let { displayName, fieldLayout, innerSize, name, addonAfter, help, addonBefore } = this.props;
-        let props = {
+        let { displayName, fieldLayout, innerSize, name, addonAfter, help, addonBefore, required } = this.props;
+
+	    let props = {
         	displayName,
 	        name,
 	        fieldLayout,
 	        innerSize,
 	        addonAfter,
 	        addonBefore,
-	        help
+	        help,
+		    required
         };
 
         return (

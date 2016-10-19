@@ -1,20 +1,19 @@
 import React, { Component, PropTypes } from 'react';
 import { TextField } from 'material-ui';
 import FormGroup from '../common/FormGroup';
-import shouldComponentUpdate from '../../util/wrapUpdate';
 
-@shouldComponentUpdate
 class TextArea extends Component {
 
     render() {
-        let {value, error, displayName, name, onChange, rows, placeholder, touched, active, onBlur, help, addonAfter, addonBefore} = this.props;
+        let {value, required, error, displayName, name, onChange, rows, placeholder, touched, active, onBlur, help, addonAfter, addonBefore} = this.props;
         let errors = (touched || active)? error : null;
         let props = {
             displayName,
             name,
             help,
             addonAfter,
-            addonBefore
+            addonBefore,
+	        required
         };
 
         return (

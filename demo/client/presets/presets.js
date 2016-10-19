@@ -94,8 +94,8 @@ export default [
 		schema: require('./base/components/Static.txt')
 	},
 	{
-		name: 'TextBox',
-		displayName: 'Components - TextBox',
+		name: 'ChipBox',
+		displayName: 'Components - ChipBox',
 		entityName: 'contact',
 		layoutName: '',
 		formTitle: 'Edit contact',
@@ -119,7 +119,7 @@ export default [
 	},
 	{
 		name: 'TextBoxInt',
-		displayName: 'Components - TextBox (int)',
+		displayName: 'Components - ChipBox (int)',
 		entityName: 'contact',
 		layoutName: '',
 		formTitle: 'Edit contact',
@@ -127,7 +127,7 @@ export default [
 	},
 	{
 		name: 'TextBoxFloat',
-		displayName: 'Components - TextBox (float)',
+		displayName: 'Components - ChipBox (float)',
 		entityName: 'contact',
 		layoutName: '',
 		formTitle: 'Edit contact',

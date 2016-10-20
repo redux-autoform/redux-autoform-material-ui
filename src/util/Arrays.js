@@ -1,9 +1,5 @@
 class Arrays {
     static mergeJson(array) {
-        if (array == []) {
-            return array;
-        }
-
         return array.reduce((prev, actual) => ({...prev, ...actual}));
     }
 

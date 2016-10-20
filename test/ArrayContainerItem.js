@@ -2,7 +2,6 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { expect } from 'chai';
 import ArrayContainerItem from '../src/components/common/ArrayContainerItem';
-// import wrapUpdate from '../src/util/wrapUpdate';
 
 describe("<ArrayContainerItem/> Component", () => {
     it("ArrayContainerItem instance is not null", () => {

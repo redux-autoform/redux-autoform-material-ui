@@ -2,7 +2,6 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { expect } from 'chai';
 import VerticalComponent from '../src/components/common/VerticalComponent';
-// import wrapUpdate from '../src/util/wrapUpdate';
 
 describe("<VerticalComponent/> Component", () => {
     it("VerticalComponent instance is not null", () => {

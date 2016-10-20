@@ -2,7 +2,6 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { expect } from 'chai';
 import HorizontalComponent from '../src/components/common/HorizontalComponent';
-// import wrapUpdate from '../src/util/wrapUpdate';
 
 describe("<HorizontalComponent/> Component", () => {
     it("HorizontalComponent instance is not null", () => {

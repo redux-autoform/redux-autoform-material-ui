@@ -6,7 +6,7 @@ import ArrayContainer from '../src/components/field/ArrayContainer';
 
 describe("<ArrayContainer/> Component", () => {
     it("ArrayContainer instance is not null", () => {
-        const wrapper = shallow(<ArrayContainer />);
+        const wrapper = shallow(<ArrayContainer fields={[]}/>);
         expect(wrapper).to.not.equal('null')
     });
 });

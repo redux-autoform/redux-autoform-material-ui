@@ -5,35 +5,37 @@ import { DatePicker, TimePicker } from 'material-ui';
 
 class DateTimePicker extends Component {
 
-    getFormat = (format, type, formats) => {
-        if (!type) {
-            throw Error('\'type\' should be truthy');
-        }
+	getFormat = (format, type, formats) => {
+		if (!type) {
+			throw Error('\'type\' should be truthy');
+		}
 
-        if (!formats) {
-            throw Error('\'localizer\' should be truthy');
-        }
+		if (!formats) {
+			throw Error('\'localizer\' should be truthy');
+		}
 
-        if (format) {
-            return format;
-        }
+		if (format) {
+			return format;
+		}
 
-        switch(type) {
-            case 'datetime':
-                return formats.default;
-            case 'date':
-                return formats.date;
-            case 'time':
-                return formats.time;
-            default:
-                throw new Error(`Invalid type. Type: ${type}`);
-        }
-    };
+		switch(type) {
+			case 'datetime':
+				return formats.default;
+			case 'date':
+				return formats.date;
+			case 'time':
+				return formats.time;
+			default:
+				throw new Error(`Invalid type. Type: ${type}`);
+		}
+	};
 
-    onChange = (event, date) => {
-        let { onChange } = this.props;
-        onChange(date);
-    };
+	onChange = (event, date) => {
+		let { onChange } = this.props;
+		let dateString = this.formatDate(date);
+
+		onChange(dateString);
+	};
 
 	formatDate = (date) => {
 		let { format, type } = this.props;
@@ -57,66 +59,64 @@ class DateTimePicker extends Component {
 		let { value } = this.props;
 
 		if (typeof value === 'string') {
-			return (value === '')? null : this.asDate(value);
+			return (value !== '')? this.asDate(value) : null;
 		} else {
 			return value;
 		}
 	};
 
-    render() {
-        let { name, displayName, help, error, active, touched, onBlur, type, required, placeholder, addonAfter, addonBefore } = this.props;
-	    let errors = (touched || active)? error : null;
+	render() {
+		let { name, displayName, help, error, active, touched, onBlur, type, placeholder, addonBefore, addonAfter } = this.props;
+		let errors = (touched || active)? error : null;
 
-        let props = {
-        	displayName,
-	        name,
-	        help,
-	        addonAfter,
-	        addonBefore,
-	        required
-        };
+		let props = {
+			displayName,
+			name,
+			help,
+			addonBefore,
+			addonAfter
+		};
 
-	    switch (type) {
-		    case 'date':
-			    return (
-				    <FormGroup {...props}>
-					    <DatePicker
-						    name={name}
-						    value={this.parseString()}
-						    mode="landscape"
-						    container="inline"
-						    errorText={errors}
-						    hintText={placeholder}
-						    onChange={this.onChange}
-						    formatDate={this.formatDate}
-						    onBlur={onBlur}
-						    type={type}
-						    fullWidth
-					    />
-				    </FormGroup>
-			    );
+		switch (type) {
+			case 'date':
+				return (
+					<FormGroup {...props}>
+						<DatePicker
+							name={name}
+							value={this.parseString()}
+							mode="landscape"
+							container="inline"
+							errorText={errors}
+							hintText={placeholder}
+							onChange={this.onChange}
+							formatDate={this.formatDate}
+							onBlur={onBlur}
+							fullWidth
+							locale="en-US"
+						/>
+					</FormGroup>
+				);
 
-		    case 'time':
-			    return (
-				    <FormGroup {...props}>
-					    <TimePicker
-						    format="24hr"
-						    name={name}
-						    value={this.parseString()}
-						    errorText={errors}
-						    hintText={placeholder}
-						    onChange={this.onChange}
-						    onBlur={onBlur}
-						    type={type}
-						    fullWidth
-					    />
-				    </FormGroup>
-			    );
+			case 'time':
+				return (
+					<FormGroup {...props}>
+						<TimePicker
+							format="24hr"
+							name={name}
+							value={this.parseString()}
+							errorText={errors}
+							hintText={placeholder}
+							onChange={this.onChange}
+							onBlur={onBlur}
+							fullWidth
+						/>
+					</FormGroup>
+				);
 
-		    default:
-			    return false;
-	    }
-    }
+			default:
+				return false;
+		}
+	}
 }
 
 DateTimePicker.propTypes = {
@@ -137,8 +137,6 @@ DateTimePicker.propTypes = {
 	required: PropTypes.bool,
 
 	//String props
-	addonAfter: PropTypes.string,
-	addonBefore: PropTypes.string,
 	component: PropTypes.string,
 	placeholder: PropTypes.string,
 	name: PropTypes.string,

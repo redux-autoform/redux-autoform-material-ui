@@ -75,7 +75,7 @@ class ArrayContainer extends Component {
 
         if (components.length) {
 	        return (
-		        <Toolbar className="add-bar">
+		        <Toolbar>
 			        <ToolbarGroup firstChild/>
 			        <ToolbarGroup lastChild>
 				        <RaisedButton
@@ -94,12 +94,6 @@ class ArrayContainer extends Component {
     getAllComponents = () => {
         let components = this.getComponents();
 
-        const toolbar = {
-            border: "1px solid #616161",
-            borderRadius: "2px",
-	        marginTop: "10px"
-        };
-
         const title = {
 	        fontSize: "14px",
 	        marginLeft: "10px"
@@ -109,7 +103,7 @@ class ArrayContainer extends Component {
             return components;
         } else {
             return (
-                <Toolbar style={toolbar}>
+                <Toolbar>
 	                <ToolbarGroup firstChild>
 	                    <ToolbarTitle
 		                    text="This array is empty"

@@ -66,7 +66,7 @@ class DateTimePicker extends Component {
 	};
 
 	render() {
-		let { name, displayName, help, error, active, touched, onBlur, type, placeholder, addonBefore, addonAfter } = this.props;
+		let { name, displayName, help, error, active, touched, onBlur, type, placeholder, addonBefore, addonAfter, required } = this.props;
 		let errors = (touched || active)? error : null;
 
 		let props = {
@@ -74,7 +74,8 @@ class DateTimePicker extends Component {
 			name,
 			help,
 			addonBefore,
-			addonAfter
+			addonAfter,
+			required
 		};
 
 		switch (type) {

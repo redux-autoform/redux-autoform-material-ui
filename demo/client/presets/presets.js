@@ -196,5 +196,12 @@ export default [
 		layoutName: 'edit',
 		formTitle: 'Edit contact',
 		schema: require('./base/components/FileUpload.txt')
+	},
+	{
+		name: 'EntityContainer',
+		displayName: 'Components - EntityContainer',
+		entityName: 'contact',
+		formTitle: 'Edit contact',
+		schema: require('./base/components/EntityContainer.txt')
 	}
 ]

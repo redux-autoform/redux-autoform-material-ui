@@ -8,7 +8,8 @@ export default {
         int : 'TextBox',
         float: 'TextBox',
         bool: 'Checkbox',
-        group: 'FieldGroup'
+        group: 'FieldGroup',
+        entity: 'EntityContainer'
     },
     details: {
         string: 'Static',
@@ -19,6 +20,7 @@ export default {
         int: 'Static',
         float: 'Static',
         bool: 'Static',
-        group: 'FieldGroup'
+        group: 'FieldGroup',
+        entity: 'EntityContainer'
     }
 }

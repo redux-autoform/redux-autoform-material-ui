@@ -1,0 +1,36 @@
+{
+    entities: [
+        {
+            name: "contact",
+            fields: [
+                {
+                    name: "name",
+                    displayName: "Name",
+                    type: "string",
+                    required: true,
+                },
+                {
+                    name: "email",
+                    displayName: "E-mail",
+                    type: "entity",
+                    entityName: 'email'
+                }
+            ]
+        },
+        {
+            name: "email",
+            fields: [
+                {
+                    name: "emailType",
+                    displayName: "Type",
+                    type: "string"
+                },
+                {
+                    name: "address",
+                    displayName: "Address",
+                    type: "string"
+                }
+            ]
+        }
+    ]
+}

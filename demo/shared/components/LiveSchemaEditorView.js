@@ -111,40 +111,42 @@ class LiveSchemaEditor extends Component {
 			            </ToolbarGroup>
 	                </Toolbar>
 	            </Paper>
-	            <div className='row'>
-		            <div className="col-md-5">
-	                    <Card>
-	                        <LiveSchemaEditorForm
-		                        formOptionActions={formOptionsActions}
-		                        reduxFormActions={reduxFormActions}
-		                        selectedPreset={preset}
-		                        initialValues={this.getInitialValues()}
-	                        />
-	                    </Card>
+	            <div className="container-fluid">
+		            <div className='row'>
+			            <div className="col-md-5">
+				            <Card>
+					            <LiveSchemaEditorForm
+						            formOptionActions={formOptionsActions}
+						            reduxFormActions={reduxFormActions}
+						            selectedPreset={preset}
+						            initialValues={this.getInitialValues()}
+					            />
+				            </Card>
+			            </div>
+			            <div className="col-md-7">
+				            <Card>
+					            <div className="row">
+						            <div className="col-md-12">
+							            <FormOptions
+								            editorSchema={metaForm ? metaForm.schema.value : ''}
+								            {...formOptions}
+								            {...formOptionsActions}
+							            />
+						            </div>
+					            </div>
+					            <div className="row">
+						            <div className="col-md-12">
+							            <div className="live-schema-editor-mount-node">
+								            <div className="container-fluid">
+									            {this.getAutoform()}
+								            </div>
+							            </div>
+						            </div>
+					            </div>
+				            </Card>
+			            </div>
 		            </div>
-		            <div className="col-md-7">
-	                    <Card>
-	                        <div className="row">
-	                            <div className="col-md-12">
-	                                <FormOptions
-		                                editorSchema={metaForm ? metaForm.schema.value : ''}
-		                                {...formOptions}
-		                                {...formOptionsActions}
-	                                />
-	                            </div>
-	                        </div>
-	                        <div className="row">
-	                            <div className="col-md-12">
-	                                <div className="live-schema-editor-mount-node">
-		                                <div className="container-fluid">
-	                                        {this.getAutoform()}
-		                                </div>
-	                                </div>
-	                            </div>
-	                        </div>
-	                    </Card>
-		            </div>
-                </div>
+	            </div>
             </div>
         )
     }

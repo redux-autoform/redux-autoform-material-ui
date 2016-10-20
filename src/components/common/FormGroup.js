@@ -18,16 +18,21 @@ class FormGroup extends Component {
 			requiredStar = '*';
 		}
 
+		const style = {
+			padding: "0px",
+			margin: "0px"
+		};
+
 		if (displayName !== undefined && displayName !== null && displayName !== '') {
 			return (
 				<div>
-					<h5>{`${displayName} `}<b style={{ color: 'red' }}>{requiredStar}</b></h5>
+					<h5 style={style}>{`${displayName} `}<b style={{ color: 'red' }}>{requiredStar}</b></h5>
 				</div>
 			)
 		} else {
 			return (
 				<div>
-					<h5>{`${name} `}<b style={{ color: 'red' }}>{requiredStar}</b></h5>
+					<h5 style={style}>{`${name} `}<b style={{ color: 'red' }}>{requiredStar}</b></h5>
 				</div>
 			)
 		}

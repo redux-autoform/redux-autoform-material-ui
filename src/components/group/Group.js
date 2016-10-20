@@ -2,21 +2,17 @@ import React, { Component, PropTypes } from 'react';
 import BaseGroup from './BaseGroup';
 
 class Group extends BaseGroup {
-
     render() {
-        let header = this.getHeader();
-        let content = this.getContent();
-
         return (
             <section>
                 <div className="container-fluid">
                     <div className="row">
                         <div className="metaform-group">
                             <div className="col-md-12" style={{marginTop: "10px"}}>
-                                {header}
+                                {this.getHeader()}
                             </div>
                             <div className="metaform-group-content">
-                                {content}
+                                {this.getContent()}
                             </div>
                         </div>
                     </div>

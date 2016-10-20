@@ -6,32 +6,24 @@ import Arrays from '../../util/Arrays';
 class QuestionnaireGroup extends BaseGroup {
 
     state = {
-        size: this.props.fields.length,
         percentage: 0
     };
 
     filterValues = (fields) => {
         let arr = Arrays.mergeJson(fields.map(field => {
-            let { value, touched, name } = field.reduxFormProps;
-
-            if (touched) {
-                return (value && !(value === ''))? {[name]: value} : null
-            }
-
-            return null;
+            let { value, name } = field.reduxFormProps;
+            return (value && value !== '')? {[name]: value} : null;
         }));
 
         return Object.keys(arr);
     };
 
     calculatePercentage = (fields) => {
-        let { size } = this.state;
-
+	    let { length } = this.props.fields;
         let filteredValues = this.filterValues(fields);
-        let completedFields = filteredValues.length;
 
         this.setState({
-            percentage: ((completedFields * 100) / size)
+            percentage: ((filteredValues.length * 100) / length)
         });
     };
 
@@ -52,11 +44,6 @@ class QuestionnaireGroup extends BaseGroup {
     render() {
         let { percentage } = this.state;
 
-        let header = this.getHeader();
-        let content = this.getContent();
-
-        console.info("This is the current percentage => " + percentage);
-
         return (
             <section>
                 <div className="row">
@@ -66,10 +53,10 @@ class QuestionnaireGroup extends BaseGroup {
                     </div>
                     <div className="metaform-group">
                         <div className="col-md-12" style={{marginTop: "10px"}}>
-                            {header}
+                            {this.getHeader()}
                         </div>
                         <div className="metaform-group-content">
-                            {content}
+                            {this.getContent()}
                         </div>
                     </div>
                 </div>

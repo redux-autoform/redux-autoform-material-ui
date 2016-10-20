@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+ import React, { Component } from 'react';
 import LiveSchemaEditorContainer from './LiveSchemaEditor';
 
 class Demo extends Component {

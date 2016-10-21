@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 
 class EntityContainer extends Component {
 
-    _renderHeader = () => {
+    getHeader = () => {
         let { displayName } = this.props;
 
         if (displayName) {
@@ -18,7 +18,7 @@ class EntityContainer extends Component {
         return null;
     };
 
-    _renderComponents = () => {
+    getComponents = () => {
         let { componentFactory, layout, fields } = this.props;
 
         return componentFactory.buildGroupComponent({
@@ -32,9 +32,9 @@ class EntityContainer extends Component {
     render() {
         return (
             <div className="entity-container">
-                {this._renderHeader()}
+                {this.getHeader()}
                 <div className="entity-container-content">
-                    {this._renderComponents()}
+                    {this.getComponents()}
                 </div>
             </div>
         );

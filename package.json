@@ -11,8 +11,8 @@
     "coverage": "babel-node ./node_modules/.bin/isparta cover _mocha"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/redux-autoform/redux-autoform-material-ui.git"
+    "url": "git+https://github.com/redux-autoform/redux-autoform-material-ui.git",
+    "type": "git"
   },
   "keywords": [
     "autoform",

@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import BaseGroup from './BaseGroup';
 import { RaisedButton, Toolbar, ToolbarGroup } from 'material-ui';
 import Arrays from '../../util/Arrays';
+import propTypes from '../../util/GroupPropTypes';
 
 class WizardGroup extends BaseGroup {
 
@@ -167,11 +168,6 @@ class WizardGroup extends BaseGroup {
     }
 }
 
-WizardGroup.propTypes = {
-    component: PropTypes.string,
-    fields: PropTypes.array.isRequired,
-    layout: PropTypes.object.isRequired,
-    componentFactory: PropTypes.any.isRequired
-};
+WizardGroup.propTypes = propTypes;
 
 export default WizardGroup;

@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { RaisedButton, Toolbar, ToolbarGroup, ToolbarTitle } from 'material-ui';
 import Item from '../common/ArrayContainerItem';
 import FormGroup from '../common/FormGroup';
+import propTypes from '../../util/FieldPropTypes';
 
 class ArrayContainer extends Component {
 
@@ -145,33 +146,6 @@ class ArrayContainer extends Component {
     }
 }
 
-ArrayContainer.propTypes = {
-
-    //Number props
-    innerSize: PropTypes.number,
-
-    //String props
-	addonBefore: PropTypes.string,
-	addonAfter: PropTypes.string,
-	help: PropTypes.string,
-    component: PropTypes.string,
-    name: PropTypes.string,
-    addText: PropTypes.string,
-    type: PropTypes.string,
-    arrayType: PropTypes.string,
-    entityType: PropTypes.string,
-    layoutName: PropTypes.string,
-    displayName: PropTypes.string,
-    fieldLayout: PropTypes.string,
-
-    //Array props
-    reduxFormProps: PropTypes.array,
-    fields: PropTypes.array,
-
-    //Object props
-    layout: PropTypes.object,
-    componentFactory: PropTypes.object,
-    _extra: PropTypes.object
-};
+ArrayContainer.propTypes = propTypes;
 
 export default ArrayContainer;

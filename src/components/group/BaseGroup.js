@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import HorizontalComponent from '../common/HorizontalComponent';
 import VerticalComponent from '../common/VerticalComponent';
+import propTypes from '../../util/GroupPropTypes';
 
 class BaseGroup extends Component {
 
@@ -93,11 +94,10 @@ class BaseGroup extends Component {
     };
 
     getHeader = () => {
-        let {layout} = this.props;
-        let header = null;
+        let { layout } = this.props;
 
-        if (layout.title) {
-            header = (
+        if (layout.title && !layout.headLess) {
+            return (
                 <header className="metaform-group-header">
                     <span className="metaform-group-title">
                         {layout.title}
@@ -106,15 +106,10 @@ class BaseGroup extends Component {
             );
         }
 
-        return (!layout.headLess)? header : null;
+        return null;
     };
 }
 
-BaseGroup.propTypes = {
-    component: PropTypes.string,
-    fields: PropTypes.array.isRequired,
-    layout: PropTypes.object.isRequired,
-    componentFactory: PropTypes.object.isRequired
-};
+BaseGroup.propTypes = propTypes;
 
 export default BaseGroup;

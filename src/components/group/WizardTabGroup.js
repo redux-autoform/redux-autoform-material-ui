@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import BaseGroup from './BaseGroup';
 import { Tab, Tabs, RaisedButton, Toolbar, ToolbarGroup } from 'material-ui';
+import propTypes from '../../util/GroupPropTypes';
 
 class WizardTabGroup extends BaseGroup {
 
@@ -132,11 +133,6 @@ class WizardTabGroup extends BaseGroup {
 	}
 }
 
-WizardTabGroup.propTypes = {
-    component: PropTypes.string,
-    fields: PropTypes.array.isRequired,
-    layout: PropTypes.object.isRequired,
-    componentFactory: PropTypes.object.isRequired
-};
+WizardTabGroup.propTypes = propTypes;
 
 export default WizardTabGroup;

@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import BaseGroup from './BaseGroup';
 import { LinearProgress } from 'material-ui';
 import Arrays from '../../util/Arrays';
+import propTypes from '../../util/GroupPropTypes';
 
 class QuestionnaireGroup extends BaseGroup {
 

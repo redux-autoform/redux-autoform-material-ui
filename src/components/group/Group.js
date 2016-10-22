@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import BaseGroup from './BaseGroup';
+import propTypes from '../../util/GroupPropTypes';
 
 class Group extends BaseGroup {
     render() {
@@ -22,11 +23,6 @@ class Group extends BaseGroup {
     }
 }
 
-Group.propTypes = {
-    component: PropTypes.string,
-    fields: PropTypes.array.isRequired,
-    layout: PropTypes.object.isRequired,
-    componentFactory: PropTypes.object.isRequired
-};
+Group.propTypes = propTypes;
 
 export default Group;

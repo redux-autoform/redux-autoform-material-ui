@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import Arrays from '../../util/Arrays';
 import BaseGroup from './BaseGroup';
 import { Tab, Tabs } from 'material-ui';
+import propTypes from '../../util/GroupPropTypes';
 
 class TabGroup extends BaseGroup {
 
@@ -140,11 +141,6 @@ class TabGroup extends BaseGroup {
 	}
 }
 
-TabGroup.propTypes = {
-	component: PropTypes.string,
-	fields: PropTypes.array.isRequired,
-	layout: PropTypes.object.isRequired,
-	componentFactory: PropTypes.object.isRequired
-};
+TabGroup.propTypes = propTypes;
 
 export default TabGroup;

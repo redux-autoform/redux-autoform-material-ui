@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import FormGroup from '../common/FormGroup';
+import propTypes from '../../util/FieldPropTypes';
 
 class FieldGroup extends Component {
 
@@ -40,54 +41,6 @@ class FieldGroup extends Component {
     }
 }
 
-FieldGroup.propTypes = {
-
-	//Number props
-	innerSize: PropTypes.number,
-
-	//Any props
-	value: PropTypes.any,
-	options: PropTypes.any,
-
-	//Bool props
-	checked: PropTypes.bool,
-	valid: PropTypes.bool,
-	invalid: PropTypes.bool,
-	dirty: PropTypes.bool,
-	pristine: PropTypes.bool,
-	active: PropTypes.bool,
-	touched: PropTypes.bool,
-	visited: PropTypes.bool,
-	autofilled: PropTypes.bool,
-	required: PropTypes.bool,
-
-	//String props
-	group: PropTypes.string,
-	addonBefore: PropTypes.string,
-	addonAfter: PropTypes.string,
-	component: PropTypes.string,
-	help: PropTypes.string,
-	placeholder: PropTypes.string,
-	name: PropTypes.string,
-	error: PropTypes.string,
-	type: PropTypes.string,
-	displayName: PropTypes.string,
-	initialValue: PropTypes.string,
-	fieldLayout: PropTypes.string,
-
-	//Function props
-	autofill: PropTypes.func,
-	onBlur: PropTypes.func,
-	onDragStart: PropTypes.func,
-	onDrop: PropTypes.func,
-	onFocus: PropTypes.func,
-	onUpdate: PropTypes.func,
-	onChange: PropTypes.func,
-
-	//Object props
-	componentFactory: PropTypes.object,
-	reduxFormProps: PropTypes.object,
-	_extra: PropTypes.object
-};
+FieldGroup.propTypes = propTypes;
 
 export default FieldGroup;

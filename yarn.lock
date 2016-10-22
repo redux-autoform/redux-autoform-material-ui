@@ -3357,7 +3357,7 @@ npm-user-validate@~0.1.5:
   version "0.1.5"
   resolved "https://registry.yarnpkg.com/npm-user-validate/-/npm-user-validate-0.1.5.tgz#52465d50c2d20294a57125b996baedbf56c5004b"
 
-npm@^3.3.4:
+npm@^3.10.9:
   version "3.10.9"
   resolved "https://registry.yarnpkg.com/npm/-/npm-3.10.9.tgz#6b5cba2c765cb7d7febb0492f2a8cefaee86a2e3"
   dependencies:

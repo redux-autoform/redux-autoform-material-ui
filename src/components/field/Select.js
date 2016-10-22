@@ -62,7 +62,7 @@ class Select extends Component {
     }
 
     render() {
-        let { addonBefore, addonAfter, displayName, name, placeholder, error, touched, active, help, onBlur } = this.props;
+        let { addonBefore, addonAfter, displayName, name, placeholder, error, touched, active, help, onBlur, required } = this.props;
 	    let errors = (touched || active)? error : null;
 	    let { value } = this.state;
 
@@ -71,7 +71,8 @@ class Select extends Component {
 		    name,
 		    help,
 		    addonBefore,
-		    addonAfter
+		    addonAfter,
+            required
 	    };
 
         return (

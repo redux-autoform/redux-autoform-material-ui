@@ -6,7 +6,7 @@ import propTypes from '../../util/FieldPropTypes';
 class TextBox extends Component {
 
     render() {
-        let { required, value, error, displayName, name, onChange, placeholder, touched, active, onBlur, help, addonAfter, addonBefore } = this.props;
+        let { required, value, error, displayName, name, onChange, placeholder, touched, active, onBlur, help, addonAfter, addonBefore, maxLength } = this.props;
 	    let errors = (touched || active)? error : null;
 
 	    let props = {
@@ -25,6 +25,7 @@ class TextBox extends Component {
 					name={name}
 					value={value}
 					errorText={errors}
+					maxLength={maxLength}
 					hintText={placeholder}
 					onChange={onChange}
 					onBlur={onBlur}

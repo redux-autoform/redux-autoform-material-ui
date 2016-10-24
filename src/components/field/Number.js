@@ -5,7 +5,7 @@ import propTypes from '../../util/FieldPropTypes';
 
 class Number extends Component {
     render() {
-        let { required, value, error, addonAfter, addonBefore, displayName, help, name, onChange, placeholder, min, max, touched, active, onBlur } = this.props;
+        let { required, value, error, addonAfter, addonBefore, displayName, help, name, onChange, placeholder, min, max, touched, active, onBlur, maxLength } = this.props;
 	    let errors = (touched || active)? error : null;
 		let intValue = (value)? value : min;
 
@@ -25,6 +25,7 @@ class Number extends Component {
                     value={intValue}
                     errorText={errors}
                     hintText={placeholder}
+                    maxLength={maxLength}
                     type="number"
                     min={parseInt(min)}
                     max={parseInt(max)}

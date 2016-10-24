@@ -6,7 +6,7 @@ import propTypes from '../../util/FieldPropTypes';
 class Email extends Component {
 
     render() {
-        let {required, value, error, displayName, name, onChange, placeholder, touched, active, onBlur, addonBefore, addonAfter, help} = this.props;
+        let {required, value, error, displayName, name, onChange, placeholder, touched, active, onBlur, addonBefore, addonAfter, help, maxLength} = this.props;
         let errors = (touched || active)? error : null;
         let props = {
             displayName,
@@ -24,6 +24,7 @@ class Email extends Component {
                     value={value}
                     errorText={errors}
                     hintText={placeholder}
+                    maxLength={maxLength}
                     type="email"
                     onChange={onChange}
                     onBlur={onBlur}

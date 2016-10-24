@@ -5,7 +5,7 @@ import propTypes from '../../util/FieldPropTypes';
 
 class Password extends Component {
     render() {
-        let {value, required, error, displayName, name, onChange, placeholder, touched, active, onBlur, help, addonAfter, addonBefore} = this.props;
+        let {value, required, error, displayName, name, onChange, placeholder, touched, active, onBlur, help, addonAfter, addonBefore, maxLength} = this.props;
         let errors = (touched || active)? error : null;
 
         let props = {
@@ -24,6 +24,7 @@ class Password extends Component {
                     value={value}
                     errorText={errors}
                     hintText={placeholder}
+                    maxLength={maxLength}
                     type="password"
                     onChange={onChange}
                     onBlur={onBlur}

@@ -91,7 +91,9 @@ class TabGroup extends BaseGroup {
 
 	getTabMap = (group, idx) => {
 		if (group.groups) {
-			return Arrays.mergeJson(group.groups.map(g => this.getTabMap(g, idx)));
+			return {
+				[idx]: group.groups.map(g => this.getTabMap(g, idx))
+			}
 		} else if (group.fields) {
 			return {
 				[idx]: group.fields

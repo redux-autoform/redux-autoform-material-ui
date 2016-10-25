@@ -60,12 +60,10 @@ class TabGroup extends BaseGroup {
     };
 
 	onTabSelected = (position) => {
-		this.setState({position: position});
+		this.setState({ position });
 	};
 
-	updateTabContext = () => {
-		let { fields } = this.props;
-
+	updateTabContext = ({ fields }) => {
 		// Reads each field value of autoform and creates an object fieldName => error.
 		this.tabsContext.fields = Object.keys(Arrays.mergeJson(fields.map(field => {
 			if (field.reduxFormProps.touched) {
@@ -80,6 +78,35 @@ class TabGroup extends BaseGroup {
 		let { layout } = this.props;
 
 		let tabMap = layout.groups.map((group, index) => ({[index]: group.fields}));
+		tabMap.forEach((tabNum, index) => {
+			tabNum[index] = tabNum[index].map(field => field.name);
+		});
+
+		return Arrays.mergeJson(tabMap);
+	};
+
+	getAllTabs = (groups) => {
+		return groups.map((group, index) => this.getTabMap(group, index));
+	};
+
+	getTabMap = (group, idx) => {
+		if (group.groups) {
+			return Arrays.mergeJson(group.groups.map(g => this.getTabMap(g, idx)));
+		} else if (group.fields) {
+			return {
+				[idx]: group.fields
+			};
+		}
+	};
+
+	getFieldsByTabArray2 = () => {
+		let { layout } = this.props;
+
+		//TODO review it
+		let tabMap = this.getAllTabs(layout.groups);
+
+		console.info(`This is TabMap -> ${JSON.stringify(tabMap, null, 2)}`);
+
 		tabMap.forEach((tabNum, index) => {
 			tabNum[index] = tabNum[index].map(field => field.name);
 		});
@@ -108,16 +135,22 @@ class TabGroup extends BaseGroup {
 
 	componentDidMount() {
 		this.setState({
-			fieldsMap: this.getFieldsByTabArray()
+			fieldsMap: this.getFieldsByTabArray2()
 		});
+
+		this.updateTabContext(this.props);
+	}
+
+	componentWillReceiveProps(nextProps) {
+		if (!Object.is(this.props, nextProps)) {
+			this.updateTabContext(nextProps);
+		}
 	}
 
 	render() {
 		let { layout } = this.props;
 		let { position } = this.state;
 		let content = this.getContent();
-
-		this.updateTabContext();
 
 		return (
 			<section>

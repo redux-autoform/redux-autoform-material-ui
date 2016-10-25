@@ -19,14 +19,22 @@
                     groups: [
                         {
                             title: 'First',
-                            fields: [
+                            groups: [
                                 {
-                                    name: 'f1',
-                                    required: true
+                                    fields: [
+                                        {
+                                            name: 'f1',
+                                            required: true
+                                        }
+                                    ]
                                 },
                                 {
-                                    name: 'f2',
-                                    size: 8
+                                    fields: [
+                                        {
+                                            name: 'f2',
+                                            size: 8
+                                        }
+                                    ]
                                 }
                             ]
                         },

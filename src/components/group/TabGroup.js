@@ -72,17 +72,6 @@ class TabGroup extends BaseGroup {
 
 			return null;
 		})));
-	}; 
-
-	getFieldsByTabArray = () => {
-		let { layout } = this.props;
-
-		let tabMap = layout.groups.map((group, index) => ({[index]: group.fields}));
-		tabMap.forEach((tabNum, index) => {
-			tabNum[index] = tabNum[index].map(field => field.name);
-		});
-
-		return Arrays.mergeJson(tabMap);
 	};
 
 	getAllTabs = (groups) => {
@@ -90,29 +79,35 @@ class TabGroup extends BaseGroup {
 	};
 
 	getTabMap = (group, idx) => {
+		let data = null;
+
 		if (group.groups) {
-			return {
-				[idx]: group.groups.map(g => this.getTabMap(g, idx))
-			}
+			data = group.groups.map(g => this.getTabMap(g, idx));
 		} else if (group.fields) {
-			return {
-				[idx]: group.fields
-			};
+			data = group.fields;
+		}
+
+		return {
+			[idx]: data
 		}
 	};
 
 	getFieldsByTabArray2 = () => {
 		let { layout } = this.props;
 
-		//TODO review it
 		let tabMap = this.getAllTabs(layout.groups);
 
-		console.info(`This is TabMap -> ${JSON.stringify(tabMap, null, 2)}`);
-
 		tabMap.forEach((tabNum, index) => {
-			tabNum[index] = tabNum[index].map(field => field.name);
+			tabNum[index] = tabNum[index].map(field => {
+				if (Array.isArray(field[index])) {
+					return Arrays.mergeJson(field[index].map(f => f.name));
+				}
+
+				return field.name;
+			});
 		});
 
+		console.info(`This is TabMap -> ${JSON.stringify(tabMap, null, 2)}`);
 		return Arrays.mergeJson(tabMap);
 	};
 

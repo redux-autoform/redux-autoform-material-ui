@@ -41,13 +41,21 @@
                         {
                             title: 'Second',
                             orientation: 'horizontal',
-                            fields: [
+                            groups: [
                                 {
-                                    name: 'f3'
+                                    fields: [
+                                        {
+                                            name: 'f3'
+                                        }
+                                    ]
                                 },
                                 {
-                                    name: 'f4',
-                                    required: true
+                                    fields: [
+                                        {
+                                            name: 'f4',
+                                            required: true
+                                        }
+                                    ]
                                 }
                             ]
                         },

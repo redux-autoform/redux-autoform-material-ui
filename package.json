@@ -1,6 +1,6 @@
 {
   "name": "redux-autoform-material-ui",
-  "version": "1.1.7-experimental",
+  "version": "1.1.8-experimental",
   "description": "Material-UI integration for redux-autoform",
   "main": "index.js",
   "scripts": {
@@ -29,7 +29,7 @@
   "dependencies": {
     "attr-accept": "^1.1.0",
     "filesize": "^3.3.0",
-    "redux-autoform-utils": "^1.0.4-experimental"
+    "redux-autoform-utils": "1.0.6-experimental"
   },
   "peerDependencies": {
     "react": "^0.14.8 || ^15.0.0"

@@ -50,7 +50,7 @@
     "child-process-promise": "^2.2.0",
     "colors": "^1.1.2",
     "coveralls": "^2.11.15",
-    "cross-env": "^3.1.1",
+    "cross-env": "^3.2.4",
     "css-loader": "^0.26.1",
     "enzyme": "^2.7.0",
     "express": "^4.14.0",

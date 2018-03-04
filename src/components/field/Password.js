@@ -12,7 +12,7 @@ export default class Password extends React.Component {
         let { value, required, error, displayName, name, onChange, placeholder, touched, active, onBlur, help, addonAfter, addonBefore, maxLength } = this.props;
         let errors = (touched || active) ? error : null;
 
-        let props = {
+        let formGroupProps = {
             displayName,
             name,
             help,
@@ -22,7 +22,7 @@ export default class Password extends React.Component {
         };
 
         return (
-            <FormGroup {...props}>
+            <FormGroup {...formGroupProps}>
                 <TextField
                     name={name}
                     value={value}

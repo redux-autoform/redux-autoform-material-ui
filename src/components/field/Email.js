@@ -11,7 +11,7 @@ export default class Email extends React.Component {
     render() {
         let { required, value, error, displayName, name, onChange, placeholder, touched, active, onBlur, addonBefore, addonAfter, help, maxLength } = this.props;
         let errors = (touched || active) ? error : null;
-        let props = {
+        let formGroupProps = {
             displayName,
             name,
             help,
@@ -21,7 +21,7 @@ export default class Email extends React.Component {
         };
 
         return (
-            <FormGroup {...props}>
+            <FormGroup {...formGroupProps}>
                 <TextField
                     name={name}
                     value={value}

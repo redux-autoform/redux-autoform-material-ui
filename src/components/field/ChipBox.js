@@ -11,7 +11,7 @@ export default class ChipBox extends React.Component {
 	render() {
 		let { value, displayName, name, help, addonAfter, addonBefore } = this.props;
 
-		let props = {
+		let formGroupProps = {
 			displayName,
 			name,
 			help,
@@ -20,7 +20,7 @@ export default class ChipBox extends React.Component {
 		};
 
 		return (
-			<FormGroup {...props}>
+			<FormGroup {...formGroupProps}>
 				<Chip>
 					{value}
 				</Chip>

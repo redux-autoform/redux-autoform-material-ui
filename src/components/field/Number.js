@@ -13,7 +13,7 @@ export default class Number extends React.Component {
         let errors = (touched || active) ? error : null;
         let intValue = (value) ? value : min;
 
-        let props = {
+        let formGroupProps = {
             displayName,
             name,
             help,
@@ -23,7 +23,7 @@ export default class Number extends React.Component {
         };
 
         return (
-            <FormGroup {...props}>
+            <FormGroup {...formGroupProps}>
                 <TextField
                     name={name}
                     value={intValue}

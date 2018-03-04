@@ -11,7 +11,7 @@ export default class Static extends React.Component {
     render() {
         let { value, name, displayName, help, error, touched, active, addonBefore, addonAfter } = this.props;
         let errors = (touched || active) ? error : null;
-        let props = {
+        let formGroupProps = {
             displayName,
             name,
             help,
@@ -20,7 +20,7 @@ export default class Static extends React.Component {
         };
 
         return (
-            <FormGroup {...props}>
+            <FormGroup {...formGroupProps}>
                 <TextField
                     name={name}
                     value={value}

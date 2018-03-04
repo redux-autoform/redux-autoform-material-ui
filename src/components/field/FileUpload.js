@@ -1,12 +1,19 @@
-import React, { Component, PropTypes } from 'react';
-import { RaisedButton } from 'material-ui';
+import React from 'react';
+import PropTypes from 'prop-types';
+import RaisedButton from 'material-ui/RaisedButton/RaisedButton';
+
 import DropZone from '../common/DropZone';
 import FileInfo from '../common/FileInfo';
 
-class FileUpload extends Component {
+export default class FileUpload extends React.Component {
+	static propTypes = {
+		onChange: PropTypes.func.isRequired,
+		url: PropTypes.string.isRequired
+	};
+
 	state = {
 		files: [],
-        disableUpload: true,
+		disableUpload: true,
 		status: null,
 		message: null,
 		alertVisible: false
@@ -17,13 +24,13 @@ class FileUpload extends Component {
 		let fileArray = [...files, ...this.state.files];
 
 		this.syncFields(fileArray);
-		this.setState({files: fileArray, disableUpload: false});
+		this.setState({ files: fileArray, disableUpload: false });
 	};
 
 	onClick = () => {
 		// TODO Handle response status for upload service
-		const {files} = this.state;
-		const {url} = this.props;
+		const { files } = this.state;
+		const { url } = this.props;
 
 		let fileData = new FormData();
 
@@ -35,18 +42,18 @@ class FileUpload extends Component {
 			method: "POST",
 			body: fileData
 		})
-		.then(response => response.json())
-        .then(({status, message}) => this.setState({
-	        status: status,
-	        message: message,
-	        alertVisible: true
-        }));
+			.then(response => response.json())
+			.then(({ status, message }) => this.setState({
+				status: status,
+				message: message,
+				alertVisible: true
+			}));
 
 		setTimeout(() => this.dismissAlert(), 4000);
 	};
 
 	dismissAlert = () => {
-		this.setState({alertVisible: false});
+		this.setState({ alertVisible: false });
 	};
 
 	deleteItem = (position) => {
@@ -54,11 +61,11 @@ class FileUpload extends Component {
 		files.splice(position, 1);
 
 		this.syncFields(files);
-		this.setState({files: files, disableUpload: files.length == 0});
+		this.setState({ files: files, disableUpload: files.length == 0 });
 	};
 
 	syncFields = (files) => {
-		let {onChange} = this.props;
+		let { onChange } = this.props;
 
 		let fileNames = files.map((file) => {
 			return file.name;
@@ -118,7 +125,7 @@ class FileUpload extends Component {
 							<div style={rowStyle}>
 								<div className="row">{
 									files.map((file, index) => (
-										<FileInfo key={index} file={file} onClick={() => this.deleteItem(index)}/>
+										<FileInfo key={index} file={file} onClick={() => this.deleteItem(index)} />
 									))
 								}
 								</div>
@@ -127,16 +134,9 @@ class FileUpload extends Component {
 					</div>
 				</div>
 				<div className="col-md-12">
-					<RaisedButton disabled={disableUpload} type="submit" label="Upload" onClick={this.onClick} primary/>
+					<RaisedButton disabled={disableUpload} type="submit" label="Upload" onClick={this.onClick} primary />
 				</div>
 			</div>
 		);
 	}
 }
-
-FileUpload.propTypes = {
-	onChange: PropTypes.func.isRequired,
-	url: PropTypes.string.isRequired
-};
-
-export default FileUpload;

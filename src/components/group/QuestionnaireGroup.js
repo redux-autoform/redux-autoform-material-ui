@@ -1,10 +1,19 @@
-import React, { Component, PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
+import LinearProgress from 'material-ui/LinearProgress/LinearProgress';
+
 import BaseGroup from './BaseGroup';
-import { LinearProgress } from 'material-ui';
 import Arrays from '../../util/Arrays';
 import propTypes from '../../util/GroupPropTypes';
 
-class QuestionnaireGroup extends BaseGroup {
+export default class QuestionnaireGroup extends BaseGroup {
+    static propTypes = {
+        ...propTypes,
+        component: PropTypes.string,
+        fields: PropTypes.array.isRequired,
+        layout: PropTypes.object.isRequired,
+        componentFactory: PropTypes.object.isRequired
+    };;
 
     state = {
         percentage: 0
@@ -13,14 +22,14 @@ class QuestionnaireGroup extends BaseGroup {
     filterValues = (fields) => {
         let arr = Arrays.mergeJson(fields.map(field => {
             let { value, name } = field.reduxFormProps;
-            return (value && value !== '')? {[name]: value} : null;
+            return (value && value !== '') ? { [name]: value } : null;
         }));
 
         return Object.keys(arr);
     };
 
     calculatePercentage = (fields) => {
-	    let { length } = this.props.fields;
+        let { length } = this.props.fields;
         let filteredValues = this.filterValues(fields);
 
         this.setState({
@@ -50,10 +59,10 @@ class QuestionnaireGroup extends BaseGroup {
                 <div className="row">
                     <div className="container-fluid" style={{ marginTop: "10px" }}>
                         <h5>{`The currently progress is ${percentage} %`}</h5>
-                        <LinearProgress value={percentage} min={0} max={100} mode="determinate" style={{ height: "10px" }}/>
+                        <LinearProgress value={percentage} min={0} max={100} mode="determinate" style={{ height: "10px" }} />
                     </div>
                     <div className="metaform-group">
-                        <div className="col-md-12" style={{marginTop: "10px"}}>
+                        <div className="col-md-12" style={{ marginTop: "10px" }}>
                             {this.getHeader()}
                         </div>
                         <div className="metaform-group-content">
@@ -65,12 +74,3 @@ class QuestionnaireGroup extends BaseGroup {
         );
     }
 }
-
-QuestionnaireGroup.propTypes = {
-    component: PropTypes.string,
-    fields: PropTypes.array.isRequired,
-    layout: PropTypes.object.isRequired,
-    componentFactory: PropTypes.object.isRequired
-};
-
-export default QuestionnaireGroup;

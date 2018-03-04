@@ -1,9 +1,24 @@
-import React, { Component, PropTypes } from 'react';
-import { Dialog, FlatButton, FontIcon } from 'material-ui';
-import { cyan500 } from 'material-ui/styles/colors';
+import React from 'react';
 import filesize from 'filesize';
+import PropTypes from 'prop-types';
+import Dialog from 'material-ui/Dialog/Dialog';
+import { cyan500 } from 'material-ui/styles/colors';
+import FontIcon from 'material-ui/FontIcon/FontIcon';
+import FlatButton from 'material-ui/FlatButton/FlatButton';
 
-class FileInfo extends Component {
+export default class FileInfo extends React.Component {
+	static propTypes = {
+		onClick: PropTypes.func,
+		file: PropTypes.object.isRequired,
+		height: PropTypes.string,
+		width: PropTypes.string
+	};
+
+	static defaultProps = {
+		height: "150px",
+		width: "150px"
+	};
+
 	state = {
 		show: false
 	};
@@ -57,13 +72,13 @@ class FileInfo extends Component {
 			color: "#212121"
 		};
 
-		let image = (file.type.match(/image/))? file.preview : "http://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/file-text-icon.png";
-		let filename = (file.name.length <= 21)? file.name : file.name.substring(0, 20);
+		let image = (file.type.match(/image/)) ? file.preview : "http://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/file-text-icon.png";
+		let filename = (file.name.length <= 21) ? file.name : file.name.substring(0, 20);
 
 		const actions = [
 			<FlatButton
 				label="Delete"
-				onTouchTap={() => { onClick(); this.showModal(false)}}
+				onTouchTap={() => { onClick(); this.showModal(false) }}
 			/>
 		];
 
@@ -81,7 +96,7 @@ class FileInfo extends Component {
 					</div>
 				</Dialog>
 				<div style={containerStyle}>
-					<img height={height} width={width} src={image} style={imgStyle}/>
+					<img height={height} width={width} src={image} style={imgStyle} />
 					<div style={textContainerStyle}>
 						<p style={fileNameStyle}>{filename}</p>
 						<div>
@@ -100,17 +115,3 @@ class FileInfo extends Component {
 		);
 	}
 }
-
-FileInfo.propTypes = {
-	onClick: PropTypes.func,
-	file: PropTypes.object.isRequired,
-	height: PropTypes.string,
-	width: PropTypes.string
-};
-
-FileInfo.defaultProps = {
-	height: "150px",
-	width: "150px"
-};
-
-export default FileInfo;

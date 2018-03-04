@@ -1,10 +1,15 @@
-import React, { Component, PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
+import Toolbar from 'material-ui/Toolbar/Toolbar';
+import ToolbarGroup from 'material-ui/Toolbar/ToolbarGroup';
+import RaisedButton from 'material-ui/RaisedButton/RaisedButton';
+
 import BaseGroup from './BaseGroup';
-import { RaisedButton, Toolbar, ToolbarGroup } from 'material-ui';
 import Arrays from '../../util/Arrays';
 import propTypes from '../../util/GroupPropTypes';
 
-class WizardGroup extends BaseGroup {
+export default class WizardGroup extends BaseGroup {
+    static propTypes = propTypes;
 
     // Expose functions to the user in order to make the transitions, and the field values of the form
     wizardContext = {
@@ -24,21 +29,21 @@ class WizardGroup extends BaseGroup {
         let steps = this.getSteps();
         let foundStep = steps.find((step) => step.name === stepName);
 
-        if(foundStep) {
+        if (foundStep) {
             this.trackStepFlow(foundStep.position);
-            this.setState({position: foundStep.position})
+            this.setState({ position: foundStep.position })
         }
         else {
             console.error(`Step ${stepName} does not exists`);
         }
     };
 
-    toPosition =  (position) => {
-        let {totalSteps} = this.state;
+    toPosition = (position) => {
+        let { totalSteps } = this.state;
 
         if (position >= 0 && position <= totalSteps) {
             this.trackStepFlow(position);
-            this.setState({position});
+            this.setState({ position });
         }
         else {
             console.error(`Position ${position} does not exists`);
@@ -54,7 +59,7 @@ class WizardGroup extends BaseGroup {
             position
         });
 
-        this.setState({stepFlow});
+        this.setState({ stepFlow });
 
         console.log(JSON.stringify(stepFlow));
     };
@@ -83,20 +88,20 @@ class WizardGroup extends BaseGroup {
     nextStep = () => {
         let { position } = this.state;
 
-        this.setState({position : position + 1})
+        this.setState({ position: position + 1 })
     };
 
     backStep = () => {
         let { position } = this.state;
 
-        this.setState({position : position - 1})
+        this.setState({ position: position - 1 })
     };
 
     updateWizardContext = () => {
         let { fields } = this.props;
 
         // Reads each field value of autoform and creates an object fieldName => fieldValue.
-        this.wizardContext.fields = Arrays.mergeJson(fields.map(field => ({[field.name]: field.reduxFormProps.value})));
+        this.wizardContext.fields = Arrays.mergeJson(fields.map(field => ({ [field.name]: field.reduxFormProps.value })));
     };
 
     getButtonSection = (steps) => {
@@ -109,21 +114,21 @@ class WizardGroup extends BaseGroup {
 
         if (position != 0) {
             backButton = (
-                <RaisedButton label="Back" onClick={this.isFlowInMyPosition()? this.backToFlow : this.backStep} primary/>
+                <RaisedButton label="Back" onClick={this.isFlowInMyPosition() ? this.backToFlow : this.backStep} primary />
             );
         }
 
         if (position != totalSteps) {
             nextButton = (
-                <RaisedButton label="Next" onClick={transition? () => transition(this.wizardContext) : this.nextStep} primary/>
+                <RaisedButton label="Next" onClick={transition ? () => transition(this.wizardContext) : this.nextStep} primary />
             );
         }
 
         return (
             <div className="row">
                 <div className="col-md-12">
-                    <Toolbar style={{backgroundColor: "#ffffff"}}>
-                        <ToolbarGroup firstChild/>
+                    <Toolbar style={{ backgroundColor: "#ffffff" }}>
+                        <ToolbarGroup firstChild />
                         <ToolbarGroup lastChild>
                             {backButton}
                             {nextButton}
@@ -167,7 +172,3 @@ class WizardGroup extends BaseGroup {
         );
     }
 }
-
-WizardGroup.propTypes = propTypes;
-
-export default WizardGroup;

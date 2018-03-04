@@ -1,18 +1,21 @@
-import React, { Component, PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
+import Checkbox from 'material-ui/Checkbox/Checkbox';
 import { getDisplayName } from 'redux-autoform-utils';
-import Checkbox from 'material-ui/Checkbox';
+
 import FormGroup from '../common/FormGroup';
 import propTypes from '../../util/FieldPropTypes';
 
 const styles = {
-    checkbox: {
-        marginTop: '0 !important',
-        paddingTop: '0 !important',
-        marginBottom: '10px !important'
-    }
+	checkbox: {
+		marginTop: '0 !important',
+		paddingTop: '0 !important',
+		marginBottom: '10px !important'
+	}
 };
 
-class CheckBox extends Component {
+export default class CheckBox extends React.Component {
+	static propTypes = propTypes;
 
 	getValue = () => {
 		let { value } = this.props;
@@ -30,16 +33,16 @@ class CheckBox extends Component {
 		return value;
 	};
 
-    render() {
-        let { name, displayName, onChange, help, addonAfter, addonBefore, component } = this.props;
-	    let props = {
+	render() {
+		let { name, displayName, onChange, help, addonAfter, addonBefore, component } = this.props;
+		let props = {
 			name,
-		    displayName,
-		    help,
-		    addonAfter,
-		    addonBefore,
-		    component
-	    };
+			displayName,
+			help,
+			addonAfter,
+			addonBefore,
+			component
+		};
 
 		return (
 			<FormGroup {...props}>
@@ -51,9 +54,5 @@ class CheckBox extends Component {
 				/>
 			</FormGroup>
 		);
-    }
+	}
 }
-
-CheckBox.propTypes = propTypes;
-
-export default CheckBox;

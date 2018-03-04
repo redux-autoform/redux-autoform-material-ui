@@ -1,14 +1,21 @@
-import React, { Component, PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
+import Tab from 'material-ui/Tabs/Tab';
+import Tabs from 'material-ui/Tabs/Tabs';
+import Toolbar from 'material-ui/Toolbar/Toolbar';
+import ToolbarGroup from 'material-ui/Toolbar/ToolbarGroup';
+import RaisedButton from 'material-ui/RaisedButton/RaisedButton';
+
 import BaseGroup from './BaseGroup';
-import { Tab, Tabs, RaisedButton, Toolbar, ToolbarGroup } from 'material-ui';
 import propTypes from '../../util/GroupPropTypes';
 
-class WizardTabGroup extends BaseGroup {
+export default class WizardTabGroup extends BaseGroup {
+    static propTypes = propTypes;
 
-	state = {
+    state = {
         totalSteps: this.props.layout.groups.length - 1,
-		position: 0
-	};
+        position: 0
+    };
 
     getComponents = () => {
         let { layout, componentFactory, fields } = this.props;
@@ -25,7 +32,7 @@ class WizardTabGroup extends BaseGroup {
 
                 // in case the field is going to render layouts internally, it's going to need information about the
                 // layout and field. I'm not sure if this is the best way to do it, probably not. TODO: Review it.
-                fieldMetadata._extra = {layout, fields};
+                fieldMetadata._extra = { layout, fields };
 
                 return {
                     data: fieldMetadata,
@@ -36,7 +43,7 @@ class WizardTabGroup extends BaseGroup {
 
         } else if (layout.groups) {
             components = layout.groups.map(group => {
-                group = {...group, headLess: true};
+                group = { ...group, headLess: true };
 
                 return {
                     data: group,
@@ -57,14 +64,14 @@ class WizardTabGroup extends BaseGroup {
     nextStep = () => {
         let { position } = this.state;
 
-        this.setState({position : position + 1});
+        this.setState({ position: position + 1 });
         this.onTabSelected(position + 1);
     };
 
     backStep = () => {
         let { position } = this.state;
 
-        this.setState({position : position - 1});
+        this.setState({ position: position - 1 });
         this.onTabSelected(position - 1);
     };
 
@@ -76,21 +83,21 @@ class WizardTabGroup extends BaseGroup {
 
         if (position != 0) {
             backButton = (
-                <RaisedButton label="Back" onClick={this.backStep} primary/>
+                <RaisedButton label="Back" onClick={this.backStep} primary />
             );
         }
 
         if (position != totalSteps) {
             nextButton = (
-                <RaisedButton label="Next" onClick={this.nextStep} primary/>
+                <RaisedButton label="Next" onClick={this.nextStep} primary />
             );
         }
 
         return (
             <div className="row">
                 <div className="col-md-12">
-                    <Toolbar style={{backgroundColor: "#ffffff"}}>
-                        <ToolbarGroup firstChild/>
+                    <Toolbar style={{ backgroundColor: "#ffffff" }}>
+                        <ToolbarGroup firstChild />
                         <ToolbarGroup lastChild>
                             {backButton}
                             {nextButton}
@@ -102,23 +109,23 @@ class WizardTabGroup extends BaseGroup {
     };
 
 
-	onTabSelected = (position) => {
-		this.setState({position: position});
-	};
+    onTabSelected = (position) => {
+        this.setState({ position: position });
+    };
 
-	render() {
-		let {layout} = this.props;
-		let {position} = this.state;
-		let content = this.getContent();
+    render() {
+        let { layout } = this.props;
+        let { position } = this.state;
+        let content = this.getContent();
         let buttonSection = this.getButtonSection();
 
-		return (
-			<section>
+        return (
+            <section>
                 <div className="container-fluid">
                     <div className="row">
                         <div className="metaform-group">
                             <Tabs initialSelectedIndex={position} value={position} onChange={this.onTabSelected}>{
-                                layout.groups.map(({ title }, index) => <Tab key={index} label={title} value={index}/>)
+                                layout.groups.map(({ title }, index) => <Tab key={index} label={title} value={index} />)
                             }
                             </Tabs>
                             <div className="metaform-group-content">
@@ -128,11 +135,7 @@ class WizardTabGroup extends BaseGroup {
                         {buttonSection}
                     </div>
                 </div>
-			</section>
-		);
-	}
+            </section>
+        );
+    }
 }
-
-WizardTabGroup.propTypes = propTypes;
-
-export default WizardTabGroup;

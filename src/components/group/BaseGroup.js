@@ -1,12 +1,15 @@
-import React, { Component, PropTypes } from 'react';
-import HorizontalComponent from '../common/HorizontalComponent';
-import VerticalComponent from '../common/VerticalComponent';
-import propTypes from '../../util/GroupPropTypes';
+import React from 'react';
+import PropTypes from 'prop-types';
 
-class BaseGroup extends Component {
+import propTypes from '../../util/GroupPropTypes';
+import VerticalComponent from '../common/VerticalComponent';
+import HorizontalComponent from '../common/HorizontalComponent';
+
+export default class BaseGroup extends React.Component {
+    static propTypes = propTypes;
 
     getFieldMetadata = (field) => {
-        let {layout, fields} = this.props;
+        let { layout, fields } = this.props;
 
         let fieldMetadata = fields.find(cp => cp.name === field.name);
 
@@ -16,13 +19,13 @@ class BaseGroup extends Component {
 
         // in case the field is going to render layouts internally, it's going to need information about the
         // layout and field. I'm not sure if this is the best way to do it, probably not. TODO: Review it.
-        fieldMetadata._extra = {layout, fields};
+        fieldMetadata._extra = { layout, fields };
 
         return fieldMetadata;
     };
 
     getComponents = () => {
-        let {layout, componentFactory, fields} = this.props;
+        let { layout, componentFactory, fields } = this.props;
         let components;
 
         if (layout.fields) {
@@ -50,7 +53,7 @@ class BaseGroup extends Component {
     };
 
     getSize = (component) => {
-        let defaultSize = (this.isHorizontal()) ? Math.floor(12/component.length) : 12;
+        let defaultSize = (this.isHorizontal()) ? Math.floor(12 / component.length) : 12;
         return component.data.size || defaultSize;
     };
 
@@ -109,7 +112,3 @@ class BaseGroup extends Component {
         return null;
     };
 }
-
-BaseGroup.propTypes = propTypes;
-
-export default BaseGroup;

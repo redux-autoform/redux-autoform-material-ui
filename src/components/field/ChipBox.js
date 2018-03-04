@@ -1,30 +1,30 @@
-import React, { Component, PropTypes } from 'react';
-import { Chip } from 'material-ui';
+import React from 'react';
+import PropTypes from 'prop-types';
+import Chip from 'material-ui/Chip/Chip';
+
 import FormGroup from '../common/FormGroup';
 import propTypes from '../../util/FieldPropTypes';
 
-class ChipBox extends Component {
-    render() {
-        let { value, displayName, name, help, addonAfter, addonBefore } = this.props;
+export default class ChipBox extends React.Component {
+	static propTypes = propTypes;
 
-	    let props = {
-		    displayName,
-		    name,
-		    help,
-		    addonAfter,
-		    addonBefore
-	    };
+	render() {
+		let { value, displayName, name, help, addonAfter, addonBefore } = this.props;
 
-	    return (
-	    	<FormGroup {...props}>
+		let props = {
+			displayName,
+			name,
+			help,
+			addonAfter,
+			addonBefore
+		};
+
+		return (
+			<FormGroup {...props}>
 				<Chip>
 					{value}
 				</Chip>
 			</FormGroup>
-	    );
+		);
 	}
 }
-
-ChipBox.propTypes = propTypes;
-
-export default ChipBox;

@@ -1,34 +1,38 @@
-import React, { Component, PropTypes } from 'react';
-import { SelectField, MenuItem } from 'material-ui';
+import React from 'react';
+import PropTypes from 'prop-types';
+import MenuItem from 'material-ui/MenuItem/MenuItem';
+import SelectField from 'material-ui/SelectField/SelectField';
+
 import callApi from '../../util/FetchUtils';
 import FormGroup from '../common/FormGroup';
 import propTypes from '../../util/FieldPropTypes';
 
-class Select extends Component {
+export default class Select extends React.Component {
+    static propTypes = propTypes;
 
-	state = {
-		value: {},
+    state = {
+        value: {},
         urlOptions: [],
         urlErrors: null
-	};
+    };
 
-	onChange = (event, index, value) => {
-		let { onChange } = this.props;
+    onChange = (event, index, value) => {
+        let { onChange } = this.props;
 
-		onChange(value);
-		this.setState({value});
-	};
+        onChange(value);
+        this.setState({ value });
+    };
 
     //TODO evaluate if options.url come and array comes too
-	getItems = () => {
-		let { options } = this.props;
-		let { url, labelKey, valueKey } = options;
+    getItems = () => {
+        let { options } = this.props;
+        let { url, labelKey, valueKey } = options;
         let { urlOptions, urlErrors } = this.state;
 
-		if (Array.isArray(options)) {
-			return this.renderItems(options);
-		}
-		else if (url && labelKey && valueKey) {
+        if (Array.isArray(options)) {
+            return this.renderItems(options);
+        }
+        else if (url && labelKey && valueKey) {
             if (Array.isArray(urlOptions)) {
                 return this.renderItems(urlOptions, valueKey, labelKey);
             }
@@ -39,10 +43,10 @@ class Select extends Component {
                 );
             }
         }
-	};
+    };
 
-	renderItems = (arr, value = 'value', text = 'text') => {
-	    return arr.map((item, index) => (
+    renderItems = (arr, value = 'value', text = 'text') => {
+        return arr.map((item, index) => (
             <MenuItem
                 key={`select-item-${index}-wrapper`}
                 value={item[value]}
@@ -51,7 +55,7 @@ class Select extends Component {
         ));
     };
 
-	componentWillMount() {
+    componentWillMount() {
         let { options } = this.props;
         let { url } = options;
 
@@ -63,17 +67,17 @@ class Select extends Component {
 
     render() {
         let { addonBefore, addonAfter, displayName, name, placeholder, error, touched, active, help, onBlur, required } = this.props;
-	    let errors = (touched || active)? error : null;
-	    let { value } = this.state;
+        let errors = (touched || active) ? error : null;
+        let { value } = this.state;
 
-	    let props = {
-		    displayName,
-		    name,
-		    help,
-		    addonBefore,
-		    addonAfter,
+        let props = {
+            displayName,
+            name,
+            help,
+            addonBefore,
+            addonAfter,
             required
-	    };
+        };
 
         return (
             <FormGroup {...props}>
@@ -91,7 +95,3 @@ class Select extends Component {
         )
     }
 }
-
-Select.propTypes = propTypes;
-
-export default Select;

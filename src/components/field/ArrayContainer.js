@@ -1,10 +1,19 @@
-import React, { Component, PropTypes } from 'react';
-import { RaisedButton, Toolbar, ToolbarGroup, ToolbarTitle } from 'material-ui';
-import Item from '../common/ArrayContainerItem';
+import React from 'react';
+import PropTypes from 'prop-types';
+import Toolbar from 'material-ui/Toolbar/Toolbar';
+import ToolbarGroup from 'material-ui/Toolbar/ToolbarGroup';
+import ToolbarTitle from 'material-ui/Toolbar/ToolbarTitle';
+import RaisedButton from 'material-ui/RaisedButton/RaisedButton';
+
 import FormGroup from '../common/FormGroup';
+import Item from '../common/ArrayContainerItem';
 import propTypes from '../../util/FieldPropTypes';
 
-class ArrayContainer extends Component {
+export default class ArrayContainer extends React.Component {
+    static propTypes = {
+        ...propTypes,
+        reduxFormProps: PropTypes.array.isRequired
+    };
 
     onClick = () => {
         let { reduxFormProps } = this.props;
@@ -63,7 +72,7 @@ class ArrayContainer extends Component {
 
         return fields.map((field, index) => (
             <Item key={`array-item-${index}-wrapper`} index={index} onAction={this.onAction}>
-                { this.buildGroupComponent(field) }
+                {this.buildGroupComponent(field)}
             </Item>
         ));
     };
@@ -75,18 +84,18 @@ class ArrayContainer extends Component {
         let components = this.getComponents();
 
         if (components.length) {
-	        return (
-		        <Toolbar>
-			        <ToolbarGroup firstChild/>
-			        <ToolbarGroup lastChild>
-				        <RaisedButton
-					        label={text}
-					        onClick={this.onClick}
-					        primary
-				        />
-			        </ToolbarGroup>
-		        </Toolbar>
-	        );
+            return (
+                <Toolbar>
+                    <ToolbarGroup firstChild />
+                    <ToolbarGroup lastChild>
+                        <RaisedButton
+                            label={text}
+                            onClick={this.onClick}
+                            primary
+                        />
+                    </ToolbarGroup>
+                </Toolbar>
+            );
         }
 
         return null;
@@ -96,8 +105,8 @@ class ArrayContainer extends Component {
         let components = this.getComponents();
 
         const title = {
-	        fontSize: "14px",
-	        marginLeft: "10px"
+            fontSize: "14px",
+            marginLeft: "10px"
         };
 
         if (components.length) {
@@ -105,18 +114,18 @@ class ArrayContainer extends Component {
         } else {
             return (
                 <Toolbar>
-	                <ToolbarGroup firstChild>
-	                    <ToolbarTitle
-		                    text="This array is empty"
-		                    style={title}
-	                    />
-	                </ToolbarGroup>
+                    <ToolbarGroup firstChild>
+                        <ToolbarTitle
+                            text="This array is empty"
+                            style={title}
+                        />
+                    </ToolbarGroup>
                     <ToolbarGroup>
-	                    <RaisedButton
-		                    label="Add new Item"
-		                    onClick={this.onClick}
-	                        primary
-	                    />
+                        <RaisedButton
+                            label="Add new Item"
+                            onClick={this.onClick}
+                            primary
+                        />
                     </ToolbarGroup>
                 </Toolbar>
             );
@@ -126,26 +135,22 @@ class ArrayContainer extends Component {
     render() {
         let { displayName, fieldLayout, innerSize, name, addonAfter, help, addonBefore, required } = this.props;
 
-	    let props = {
-        	displayName,
-	        name,
-	        fieldLayout,
-	        innerSize,
-	        addonAfter,
-	        addonBefore,
-	        help,
-		    required
+        let props = {
+            displayName,
+            name,
+            fieldLayout,
+            innerSize,
+            addonAfter,
+            addonBefore,
+            help,
+            required
         };
 
         return (
             <FormGroup {...props}>
-	            {this.getAllComponents()}
+                {this.getAllComponents()}
                 {this.getAddBar()}
             </FormGroup>
         );
     }
 }
-
-ArrayContainer.propTypes = propTypes;
-
-export default ArrayContainer;

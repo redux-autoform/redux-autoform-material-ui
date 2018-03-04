@@ -1,10 +1,14 @@
-import React, { Component, PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { getDateLocalizer } from 'redux-autoform-utils';
+import DatePicker from 'material-ui/DatePicker/DatePicker';
+import TimePicker from 'material-ui/TimePicker/TimePicker';
+
 import FormGroup from '../common/FormGroup';
-import { DatePicker, TimePicker } from 'material-ui';
 import propTypes from '../../util/FieldPropTypes';
 
-class DateTimePicker extends Component {
+export default class DateTimePicker extends React.Component {
+	static propTypes = propTypes;
 
 	getFormat = (format, type, formats) => {
 		if (!type) {
@@ -19,7 +23,7 @@ class DateTimePicker extends Component {
 			return format;
 		}
 
-		switch(type) {
+		switch (type) {
 			case 'datetime':
 				return formats.default;
 			case 'date':
@@ -60,7 +64,7 @@ class DateTimePicker extends Component {
 		let { value } = this.props;
 
 		if (typeof value === 'string') {
-			return (value !== '')? this.asDate(value) : null;
+			return (value !== '') ? this.asDate(value) : null;
 		} else {
 			return value;
 		}
@@ -68,7 +72,7 @@ class DateTimePicker extends Component {
 
 	render() {
 		let { name, displayName, help, error, active, touched, onBlur, type, placeholder, addonBefore, addonAfter, required } = this.props;
-		let errors = (touched || active)? error : null;
+		let errors = (touched || active) ? error : null;
 
 		let props = {
 			displayName,
@@ -120,7 +124,3 @@ class DateTimePicker extends Component {
 		}
 	}
 }
-
-DateTimePicker.propTypes = propTypes;
-
-export default DateTimePicker;

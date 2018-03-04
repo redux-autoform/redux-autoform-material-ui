@@ -1,8 +1,12 @@
-import React, { Component, PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
+
 import BaseGroup from './BaseGroup';
 import propTypes from '../../util/GroupPropTypes';
 
-class Group extends BaseGroup {
+export default class Group extends BaseGroup {
+    static propTypes = propTypes;
+
     render() {
         return (
             <section>
@@ -22,7 +26,3 @@ class Group extends BaseGroup {
         );
     }
 }
-
-Group.propTypes = propTypes;
-
-export default Group;

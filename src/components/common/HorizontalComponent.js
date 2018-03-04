@@ -1,20 +1,17 @@
-import React, { Component, PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
-class HorizontalComponent extends Component {
+export default class HorizontalComponent extends React.Component {
+	static propTypes = {
+		children: PropTypes.object,
+		size: PropTypes.number.isRequired
+	};
+
 	render() {
-		let {children, size} = this.props;
-
 		return (
-			<div className={`col-md-${size}`}>
-				{children}
+			<div className={`col-md-${this.props.size}`}>
+				{this.props.children}
 			</div>
 		)
 	}
 }
-
-HorizontalComponent.propTypes = {
-	children: PropTypes.object,
-	size: PropTypes.number.isRequired
-};
-
-export default HorizontalComponent;

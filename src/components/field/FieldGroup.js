@@ -1,8 +1,11 @@
-import React, { Component, PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
+
 import FormGroup from '../common/FormGroup';
 import propTypes from '../../util/FieldPropTypes';
 
-class FieldGroup extends Component {
+export default class FieldGroup extends React.Component {
+    static propTypes = propTypes;
 
     getGroupContent = () => {
         let { componentFactory, _extra: { layout, fields }, group: groupName } = this.props;
@@ -25,12 +28,12 @@ class FieldGroup extends Component {
         let { required, name, displayName, help, addonAfter, addonBefore } = this.props;
 
         let props = {
-        	displayName,
-	        name,
-	        help,
-	        addonAfter,
-	        addonBefore,
-	        required
+            displayName,
+            name,
+            help,
+            addonAfter,
+            addonBefore,
+            required
         };
 
         return (
@@ -40,7 +43,3 @@ class FieldGroup extends Component {
         );
     }
 }
-
-FieldGroup.propTypes = propTypes;
-
-export default FieldGroup;

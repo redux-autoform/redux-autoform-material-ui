@@ -1,12 +1,16 @@
-import React, { Component, PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
+import TextField from 'material-ui/TextField/TextField';
+
 import FormGroup from '../common/FormGroup';
-import { TextField } from 'material-ui';
 import propTypes from '../../util/FieldPropTypes';
 
-class Static extends Component {
+export default class Static extends React.Component {
+    static propTypes = propTypes;
+
     render() {
         let { value, name, displayName, help, error, touched, active, addonBefore, addonAfter } = this.props;
-        let errors = (touched || active)? error : null;
+        let errors = (touched || active) ? error : null;
         let props = {
             displayName,
             name,
@@ -29,7 +33,3 @@ class Static extends Component {
         )
     }
 }
-
-Static.propTypes = propTypes;
-
-export default Static;

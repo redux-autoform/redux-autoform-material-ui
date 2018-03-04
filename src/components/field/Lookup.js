@@ -1,10 +1,14 @@
-import React, { Component, PropTypes } from 'react';
-import { AutoComplete } from 'material-ui';
+import React from 'react';
+import PropTypes from 'prop-types';
+import AutoComplete from 'material-ui/AutoComplete/AutoComplete';
+
 import callApi from '../../util/FetchUtils';
 import FormGroup from '../common/FormGroup';
 import propTypes from '../../util/FieldPropTypes';
 
-class Lookup extends Component {
+export default class Lookup extends React.Component {
+    static propTypes = propTypes;
+
     state = {
         dataSource: [],
         inputValue: ''
@@ -90,17 +94,17 @@ class Lookup extends Component {
 
     render() {
         let { required, displayName, name, addonAfter, addonBefore, placeholder, error, touched, active, help, onBlur } = this.props;
-        let errors = (touched || active)? error : null;
+        let errors = (touched || active) ? error : null;
         let { dataSource } = this.state;
 
-	    let props = {
-	    	displayName,
-		    name,
-		    help,
-		    addonAfter,
-		    addonBefore,
-		    required
-	    };
+        let props = {
+            displayName,
+            name,
+            help,
+            addonAfter,
+            addonBefore,
+            required
+        };
 
         return (
             <FormGroup {...props}>
@@ -120,7 +124,3 @@ class Lookup extends Component {
         )
     }
 }
-
-Lookup.propTypes = propTypes;
-
-export default Lookup;

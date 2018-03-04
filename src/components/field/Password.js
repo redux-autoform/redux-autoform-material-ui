@@ -1,12 +1,16 @@
-import React, { Component, PropTypes } from 'react';
-import { TextField } from 'material-ui';
+import React from 'react';
+import PropTypes from 'prop-types';
+import TextField from 'material-ui/TextField/TextField';
+
 import FormGroup from '../common/FormGroup';
 import propTypes from '../../util/FieldPropTypes';
 
-class Password extends Component {
+export default class Password extends React.Component {
+    static propTypes = propTypes;
+
     render() {
-        let {value, required, error, displayName, name, onChange, placeholder, touched, active, onBlur, help, addonAfter, addonBefore, maxLength} = this.props;
-        let errors = (touched || active)? error : null;
+        let { value, required, error, displayName, name, onChange, placeholder, touched, active, onBlur, help, addonAfter, addonBefore, maxLength } = this.props;
+        let errors = (touched || active) ? error : null;
 
         let props = {
             displayName,
@@ -14,7 +18,7 @@ class Password extends Component {
             help,
             addonAfter,
             addonBefore,
-	        required
+            required
         };
 
         return (
@@ -34,7 +38,3 @@ class Password extends Component {
         );
     }
 }
-
-Password.propTypes = propTypes;
-
-export default Password;

@@ -1,7 +1,41 @@
+import React from 'react';
 import accepts from 'attr-accept';
-import React, { Component, PropTypes } from 'react';
+import PropTypes from 'prop-types';
 
-class DropZone extends Component {
+export default class DropZone extends React.Component {
+	static propTypes = {
+		// Overriding drop behavior
+		onDrop: PropTypes.func,
+		onDropAccepted: PropTypes.func,
+		onDropRejected: PropTypes.func,
+
+		// Overriding drag behavior
+		onDragStart: PropTypes.func,
+		onDragEnter: PropTypes.func,
+		onDragLeave: PropTypes.func,
+
+		children: PropTypes.node, // Contents of the dropzone
+		style: PropTypes.object, // CSS styles to apply
+		activeStyle: PropTypes.object, // CSS styles to apply when drop will be accepted
+		rejectStyle: PropTypes.object, // CSS styles to apply when drop will be rejected
+		className: PropTypes.string, // Optional className
+		activeClassName: PropTypes.string, // className for accepted state
+		rejectClassName: PropTypes.string, // className for rejected state
+
+		disablePreview: PropTypes.bool, // Enable/disable preview generation
+		disableClick: PropTypes.bool, // Disallow clicking on the dropzone container to open file dialog
+
+		inputProps: PropTypes.object, // Pass additional attributes to the <input type="file"/> tag
+		multiple: PropTypes.bool, // Allow dropping multiple files
+		accept: PropTypes.string, // Allow specific types of files. See https://github.com/okonet/attr-accept for more information
+		name: PropTypes.string // name attribute for the input tag
+	};
+
+	static defaultProps = {
+		disablePreview: false,
+		disableClick: false,
+		multiple: true
+	};
 
 	state = {
 		isDragActive: false
@@ -18,7 +52,7 @@ class DropZone extends Component {
 	};
 
 	onDragEnter = (e) => {
-		const {onDragEnter} = this.props;
+		const { onDragEnter } = this.props;
 
 		e.preventDefault();
 
@@ -49,7 +83,7 @@ class DropZone extends Component {
 	};
 
 	onDragLeave = (e) => {
-		const {onDragLeave} = this.props;
+		const { onDragLeave } = this.props;
 
 		e.preventDefault();
 
@@ -69,7 +103,7 @@ class DropZone extends Component {
 	};
 
 	onDrop = (e) => {
-		const {onDrop, onDropAccepted, onDropRejected} = this.props;
+		const { onDrop, onDropAccepted, onDropRejected } = this.props;
 
 		e.preventDefault();
 
@@ -144,7 +178,7 @@ class DropZone extends Component {
 			...props // eslint-disable-line prefer-const
 		} = rest;
 
-		const {isDragActive, isDragReject} = this.state;
+		const { isDragActive, isDragReject } = this.state;
 
 		className = className || '';
 
@@ -194,7 +228,7 @@ class DropZone extends Component {
 		const inputAttributes = {
 			accept,
 			type: 'file',
-			style: {display: 'none'},
+			style: { display: 'none' },
 			multiple: multiple,
 			ref: el => this.fileInputEl = el, // eslint-disable-line
 			onChange: this.onDrop
@@ -206,7 +240,7 @@ class DropZone extends Component {
 
 		// Remove custom properties before passing them to the wrapper div element
 		const customProps = ['disablePreview', 'disableClick', 'onDropAccepted', 'onDropRejected'];
-		const divProps = {...props};
+		const divProps = { ...props };
 		customProps.forEach(prop => delete divProps[prop]);
 
 		return (
@@ -225,45 +259,8 @@ class DropZone extends Component {
 				<input
 					{...inputProps/* expand user provided inputProps first so inputAttributes override them */}
 					{...inputAttributes}
-					multiple/>
+					multiple />
 			</div>
 		);
 	}
 }
-
-DropZone.propTypes = {
-	// Overriding drop behavior
-	onDrop: PropTypes.func,
-	onDropAccepted: PropTypes.func,
-	onDropRejected: PropTypes.func,
-
-	// Overriding drag behavior
-	onDragStart: PropTypes.func,
-	onDragEnter: PropTypes.func,
-	onDragLeave: PropTypes.func,
-
-	children: PropTypes.node, // Contents of the dropzone
-	style: PropTypes.object, // CSS styles to apply
-	activeStyle: PropTypes.object, // CSS styles to apply when drop will be accepted
-	rejectStyle: PropTypes.object, // CSS styles to apply when drop will be rejected
-	className: PropTypes.string, // Optional className
-	activeClassName: PropTypes.string, // className for accepted state
-	rejectClassName: PropTypes.string, // className for rejected state
-
-	disablePreview: PropTypes.bool, // Enable/disable preview generation
-	disableClick: PropTypes.bool, // Disallow clicking on the dropzone container to open file dialog
-
-	inputProps: PropTypes.object, // Pass additional attributes to the <input type="file"/> tag
-	multiple: PropTypes.bool, // Allow dropping multiple files
-	accept: PropTypes.string, // Allow specific types of files. See https://github.com/okonet/attr-accept for more information
-	name: PropTypes.string // name attribute for the input tag
-};
-
-
-DropZone.defaultProps = {
-	disablePreview: false,
-	disableClick: false,
-	multiple: true
-};
-
-export default DropZone;

@@ -1,20 +1,23 @@
-import React, { Component, PropTypes } from 'react';
-import { TextField } from 'material-ui';
+import React from 'react';
+import PropTypes from 'prop-types';
+import TextField from 'material-ui/TextField/TextField';
+
 import FormGroup from '../common/FormGroup';
 import propTypes from '../../util/FieldPropTypes';
 
-class Email extends Component {
+export default class Email extends React.Component {
+    static propTypes = propTypes;
 
     render() {
-        let {required, value, error, displayName, name, onChange, placeholder, touched, active, onBlur, addonBefore, addonAfter, help, maxLength} = this.props;
-        let errors = (touched || active)? error : null;
+        let { required, value, error, displayName, name, onChange, placeholder, touched, active, onBlur, addonBefore, addonAfter, help, maxLength } = this.props;
+        let errors = (touched || active) ? error : null;
         let props = {
             displayName,
             name,
             help,
             addonAfter,
             addonBefore,
-	        required
+            required
         };
 
         return (
@@ -34,7 +37,3 @@ class Email extends Component {
         );
     }
 }
-
-Email.propTypes = propTypes;
-
-export default Email;

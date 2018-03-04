@@ -1,11 +1,16 @@
-import React, { Component, PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
-class Label extends Component {
+export default class Label extends React.Component {
+    static propTypes = {
+        text: PropTypes.string.isRequired,
+        position: PropTypes.string.isRequired
+    };
+
     render() {
-        let { position, text } = this.props;
         let style = null;
 
-        if (position === 'left') {
+        if (this.props.position === 'left') {
             style = {
                 float: 'left',
                 width: '10em',
@@ -14,7 +19,7 @@ class Label extends Component {
             };
         }
 
-        if (position === 'right') {
+        if (this.props.position === 'right') {
             style = {
                 float: 'right',
                 width: '10em',
@@ -25,15 +30,8 @@ class Label extends Component {
 
         return (
             <label style={style}>
-                {text}
+                {this.props.text}
             </label>
         );
     }
 }
-
-Label.propTypes = {
-    text: PropTypes.string.isRequired,
-    position: PropTypes.string.isRequired
-};
-
-export default Label;

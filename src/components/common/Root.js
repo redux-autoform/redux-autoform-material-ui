@@ -1,23 +1,19 @@
-import React, { Component, PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
-class Root extends Component {
+export default class Root extends React.Component {
+    static propTypes = {
+        children: PropTypes.array,
+        handleSubmit: PropTypes.func.isRequired
+    };
 
     render() {
-        let { handleSubmit, children } = this.props;
-
         return (
-	        <div className="meta-form">
-		        <form onSubmit={handleSubmit}>
-			        {children}
-		        </form>
-	        </div>
+            <div className="meta-form">
+                <form onSubmit={this.props.handleSubmit}>
+                    {this.props.children}
+                </form>
+            </div>
         );
     }
 }
-
-Root.propTypes = {
-    children: PropTypes.array,
-    handleSubmit: PropTypes.func.isRequired
-};
-
-export default Root;

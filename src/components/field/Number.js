@@ -1,21 +1,25 @@
-import React, { Component, PropTypes } from 'react';
-import { TextField } from 'material-ui';
+import React from 'react';
+import PropTypes from 'prop-types';
+import TextField from 'material-ui/TextField/TextField';
+
 import FormGroup from '../common/FormGroup';
 import propTypes from '../../util/FieldPropTypes';
 
-class Number extends Component {
+export default class Number extends React.Component {
+    static propTypes = propTypes;
+
     render() {
         let { required, value, error, addonAfter, addonBefore, displayName, help, name, onChange, placeholder, min, max, touched, active, onBlur, maxLength } = this.props;
-	    let errors = (touched || active)? error : null;
-		let intValue = (value)? value : min;
+        let errors = (touched || active) ? error : null;
+        let intValue = (value) ? value : min;
 
         let props = {
             displayName,
             name,
             help,
-	        addonAfter,
-	        addonBefore,
-	        required
+            addonAfter,
+            addonBefore,
+            required
         };
 
         return (
@@ -34,10 +38,6 @@ class Number extends Component {
                     fullWidth
                 />
             </FormGroup>
-		);
+        );
     }
 }
-
-Number.propTypes = propTypes;
-
-export default Number;

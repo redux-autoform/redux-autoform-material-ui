@@ -1,7 +1,10 @@
-import React, { Component, PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
+
 import propTypes from '../../util/FieldPropTypes';
 
-class EntityContainer extends Component {
+export default class EntityContainer extends React.Component {
+    static propTypes = propTypes;
 
     getHeader = () => {
         let { displayName } = this.props;
@@ -41,7 +44,3 @@ class EntityContainer extends Component {
         );
     }
 }
-
-EntityContainer.props = propTypes;
-
-export default EntityContainer;

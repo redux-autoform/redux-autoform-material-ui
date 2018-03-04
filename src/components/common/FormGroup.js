@@ -1,9 +1,22 @@
-import React, { Component, PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
-class FormGroup extends Component {
+export default class FormGroup extends React.Component {
+	static propTypes = {
+		//Node props
+		children: PropTypes.node,
+		//String props
+		component: PropTypes.string,
+		displayName: PropTypes.string,
+		name: PropTypes.string,
+		help: PropTypes.string,
+		addonAfter: PropTypes.string,
+		addonBefore: PropTypes.string,
+		required: PropTypes.bool
+	};
 
 	getTitleBlock = () => {
-		let {displayName, name, component, required } = this.props;
+		let { displayName, name, component, required } = this.props;
 
 		switch (component) {
 			case "Checkbox":
@@ -39,7 +52,7 @@ class FormGroup extends Component {
 	};
 
 	getHelpBlock = () => {
-		let {help} = this.props;
+		let { help } = this.props;
 
 		if (help) {
 			return (
@@ -53,7 +66,7 @@ class FormGroup extends Component {
 	};
 
 	getAddonBeforeBlock = () => {
-		let {addonBefore} = this.props;
+		let { addonBefore } = this.props;
 
 		if (addonBefore) {
 			return (
@@ -69,7 +82,7 @@ class FormGroup extends Component {
 	};
 
 	getAddonAfterBlock = () => {
-		let {addonAfter} = this.props;
+		let { addonAfter } = this.props;
 
 		if (addonAfter) {
 			return (
@@ -91,42 +104,24 @@ class FormGroup extends Component {
 			return (
 				<div className="col-md-9" style={{ margin: "0px", padding: "0px" }}>
 					{children}
-				</div>			
+				</div>
 			);
 		}
-		
+
 		return children;
 	};
 
-    render() {
-        return (
-            <div style={{ marginTop: "10px", marginBottom: "10px" }}>
-	            {this.getTitleBlock()}
-                <div>
-	                {this.getAddonBeforeBlock()}
-	                {this.getChildrenBlock()}
-	                {this.getAddonAfterBlock()}
-                </div>
-	            {this.getHelpBlock()}
-            </div>
-        );
-    }
+	render() {
+		return (
+			<div style={{ marginTop: "10px", marginBottom: "10px" }}>
+				{this.getTitleBlock()}
+				<div>
+					{this.getAddonBeforeBlock()}
+					{this.getChildrenBlock()}
+					{this.getAddonAfterBlock()}
+				</div>
+				{this.getHelpBlock()}
+			</div>
+		);
+	}
 }
-
-FormGroup.propTypes = {
-
-	//Node props
-	children: PropTypes.node,
-
-	//String props
-	component: PropTypes.string,
-    displayName: PropTypes.string,
-    name: PropTypes.string,
-	help: PropTypes.string,
-	addonAfter: PropTypes.string,
-	addonBefore: PropTypes.string,
-
-	required: PropTypes.bool
-};
-
-export default FormGroup;

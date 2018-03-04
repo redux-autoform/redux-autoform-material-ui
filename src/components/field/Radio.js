@@ -1,28 +1,30 @@
-import React, { Component, PropTypes } from 'react';
-import { RadioButton, RadioButtonGroup } from 'material-ui';
+import React from 'react';
+import PropTypes from 'prop-types';
+import RadioButton from 'material-ui/RadioButton/RadioButton';
+import RadioButtonGroup from 'material-ui/RadioButton/RadioButtonGroup';
+
 import FormGroup from '../common/FormGroup';
 import propTypes from '../../util/FieldPropTypes';
 
-class Radio extends Component {
-    onChange = (event, value) => {
-        let { onChange } = this.props;
-        onChange(value);
-    };
+export default class Radio extends React.Component {
+    static propTypes = propTypes;
+
+    onChange = (event, value) => this.props.onChange(value);
 
     getOptions = () => {
         let { options } = this.props;
-        return options.map(({text, value}, index) => <RadioButton key={index} label={text} value={value}/>)
+        return options.map(({ text, value }, index) => <RadioButton key={index} label={text} value={value} />)
     };
 
     render() {
-        let { required, displayName, name, help, value, onBlur, addonAfter, addonBefore, component} = this.props;
+        let { required, displayName, name, help, value, onBlur, addonAfter, addonBefore, component } = this.props;
         let props = {
-        	displayName,
-	        name,
-	        help,
-	        addonAfter,
-	        addonBefore,
-	        component,
+            displayName,
+            name,
+            help,
+            addonAfter,
+            addonBefore,
+            component,
             required
         };
 
@@ -40,7 +42,3 @@ class Radio extends Component {
         )
     }
 }
-
-Radio.propTypes = propTypes;
-
-export default Radio;

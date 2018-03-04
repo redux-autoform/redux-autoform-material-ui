@@ -23,7 +23,7 @@ class Server {
 			}
 		});
 
-		return multer({storage});
+		return multer({ storage });
 	}
 
 	static init() {
@@ -38,12 +38,12 @@ class Server {
 
 		router.post("/upload", (request, response) => {
 			upload.array("fileData")(request, response, (err) => {
-				if(err) {
-					response.json({status: false, message: "There was an error while uploading files."});
+				if (err) {
+					response.json({ status: false, message: "There was an error while uploading files." });
 					return;
 				}
 
-				response.json({status: true, message: "Files correctly uploaded."});
+				response.json({ status: true, message: "Files correctly uploaded." });
 			})
 		});
 
